@@ -3,6 +3,12 @@ package com.modulo4;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.reactnative.maskedview.RNCMaskedViewPackage;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
+import com.swmansion.rnscreens.RNScreensPackage;
+import com.reactnativecommunity.picker.RNCPickerPackage;
+import com.reactnativecommunity.toolbarandroid.ReactToolbarPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -11,6 +17,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.horcrux.svg.SvgPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,10 +34,17 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNCMaskedViewPackage(),
+            new SafeAreaContextPackage(),
+            new ReactCheckBoxPackage(),
+            new RNScreensPackage(),
+            new RNCPickerPackage(),
+            new ReactToolbarPackage(),
             new VectorIconsPackage(),
             new AsyncStoragePackage(),
             new LinearGradientPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+	    new SvgPackage()
       );
     }
 

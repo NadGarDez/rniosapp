@@ -1,26 +1,41 @@
 import { createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
-import SignIn from '~/pages/SignIn';
-import Products from '~/pages/Products';
-import Types from '~/pages/Types';
-import SizePrices from '~/pages/SizePrices';
-import Cart from '~/pages/Cart';
-import Checkout from '~/pages/Checkout';
-import Orders from '~/pages/Orders';
+import SignIn from '~/pages/register/register.js';
+
+import Home from '~/pages/home/home.js';
+import Categoria from '~/pages/categoria/categoria.js';
+
+import Menu from '~/pages/menu/menu.js';
+
+import Attivita from '~/pages/attivita/attivita.js';
+
+import MLogin from '~/pages/menuLogin/menuLogin.js';
+
+import InserimentoAttivita from '~/pages/inserimentoAttivita/inserimentoAttivita.js';
+
+import Establecimiento from '~/components/establecimiento/establecimiento.js';
+
+import Recomendaciones from "~/pages/recomendaciones/recomendaciones.js";
+
 
 function createNavigator(isLoggedIn = false) {
   return createAppContainer(
     createSwitchNavigator(
       {
-        SignIn,
+        MLogin,
         Main: createStackNavigator(
           {
-            Products,
-            Types,
-            SizePrices,
-            Cart,
-            Checkout,
-            Orders,
+            Home,
+            InserimentoAttivita,
+            Attivita,
+            Recomendaciones,
+            Categoria,
+            Establecimiento,
+            MLogin,
+            Menu,
+            SignIn,
+
+
           },
           {
             defaultNavigationOptions: {

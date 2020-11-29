@@ -25,13 +25,14 @@ export function* signIn(action) {
   try {
     const response = yield call(api.post, 'session', { email, password });
     const { user, token } = response.data;
-
+    console.log(response.data);
+    /*
     if (user.admin) {
       yield put(AuthActions.signInError());
       yield put(ToastActionsCreators.displayError('Não autorizado!'));
       return;
     }
-
+*/
     const authData = {
       user: {
         id: user.id,

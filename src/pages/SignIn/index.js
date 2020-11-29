@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StatusBar, ActivityIndicator } from 'react-native';
+import { Platform, StatusBar, ActivityIndicator,Alert } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -23,13 +23,14 @@ const SignIn = ({ signInRequest, signUpRequest, loading }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginActive, setLoginActive] = useState(true);
-
+//user.generateToken()
   let passwordInput;
   let emailInput;
 
   const handleSubmit = () => {
     if (loginActive) {
       signInRequest(email, password);
+      console.log(signInRequest(email, password));
     } else {
       signUpRequest(name, email, password);
     }
@@ -64,7 +65,7 @@ const SignIn = ({ signInRequest, signUpRequest, loading }) => {
             underlineColorAndroid="transparent"
             autoFocus
             returnKeyType="next"
-            placeholder="Seu e-mail"
+            placeholder="Email"
             onSubmitEditing={() => passwordInput.focus()}
             onChangeText={text => setEmail(text)}
             value={email}
@@ -78,7 +79,7 @@ const SignIn = ({ signInRequest, signUpRequest, loading }) => {
             autoCorrect={false}
             underlineColorAndroid="transparent"
             returnKeyType="send"
-            placeholder="Senha secreta"
+            placeholder="Contraceña"
             onChangeText={text => setPassword(text)}
             value={password}
             ref={(e) => {
@@ -91,15 +92,15 @@ const SignIn = ({ signInRequest, signUpRequest, loading }) => {
             {loading ? (
               <ActivityIndicator />
             ) : (
-              <ButtonText>{loginActive ? 'Entrar' : 'Criar conta'}</ButtonText>
+              <ButtonText>{loginActive ? 'Entrar' : 'Crear Cuenta'}</ButtonText>
             )}
           </Button>
 
           <SwitchButton onPress={toggleLoginActive}>
             {loginActive ? (
-              <SwitchButtonText>Criar conta gratuita</SwitchButtonText>
+              <SwitchButtonText>Crear Cuenta Gratuita</SwitchButtonText>
             ) : (
-              <SwitchButtonText>Já tenho login</SwitchButtonText>
+              <SwitchButtonText>Volver al login</SwitchButtonText>
             )}
           </SwitchButton>
         </Gradient>

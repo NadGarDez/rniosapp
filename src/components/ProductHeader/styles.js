@@ -11,6 +11,7 @@ export const Container = styled.ImageBackground`
 
 export const HeaderContent = styled.View`
   width: 100%;
+  height:80px;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
@@ -18,10 +19,11 @@ export const HeaderContent = styled.View`
 
 export const Title = styled.Text`
   font-family: Helvetica-Bold;
-  font-size: 18px;
+  width:50%;
+  font-size: 20px;
   color: #ffffff;
   letter-spacing: 0;
-  text-align: left;
+  text-align: center;
 `;
 
 export const Cart = styled.TouchableOpacity`
