@@ -15,8 +15,32 @@ export default class Home extends Component {
       this.state = {
 
       };
+      this.getVariable= this.getVariable.bind(this);
+
   }
 
+  componentWillMount(){
+
+
+  }
+
+
+
+  getVariable(name){
+    superObj={};
+    for(item in this.props.variables){
+
+      if(item == name){
+        superObj = this.props.variables[item]
+      }
+      else{
+        superObj=null;
+      }
+
+    }
+
+    return superObj
+  }
 
   handlePress(target, owner) {
     if (this.props.onPress) {

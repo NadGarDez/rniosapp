@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity, Alert} from 'react-native';
 import { Container, Header, Content, Accordion ,Button} from "native-base";
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
@@ -11,62 +11,140 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
 import CheckBox from '@react-native-community/checkbox';
+import Sfetch from "../../services/fetchManager.js";
+import {url, sURL} from "../../services/url.js";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class MenuLogin extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-
+        email:"",
+        password:"",
+        mantenerIniciada:false
       };
+      this.eviar = this.enviar.bind(this);
+      this.getVariable = this.getVariable.bind(this);
+      this.handleTextInput = this.handleTextInput.bind(this);
+      this.handleResponse = this.handleResponse.bind(this);
+      this.querystring = this.querystring.bind(this)
+      this.guardarTokenPermanente = this.guardarTokenPermanente.bind(this);
   }
 
-
-  handlePress(target, owner) {
-    if (this.props.onPress) {
-        let name;
-        let id;
-        let index = -1;
-        if (target.search("::") > -1) {
-            const varCount = target.split("::").length;
-            if (varCount === 2) {
-                name = target.split("::")[0];
-                id = target.split("::")[1];
-            } else if (varCount === 3) {
-                name = target.split("::")[0];
-                index = parseInt(target.split("::")[1]);
-                id = target.split("::")[2];
-            }
-        } else {
-            name = target;
-        }
-        this.props.onPress({ type: 'button', name: name, index: index, id: id, owner: owner });
+  componentWillMount(){
+    token = this.getVariable("tokenLogin");
+    if(token.value!=""){
+      this.props.navigation.navigate("Menu");
     }
+    
+
   }
 
-  handleChangeTextinput(name, value) {
-      let id;
-      let index = -1;
-      if (name.search('::') > -1) {
-          const varCount = name.split("::").length;
-          if (varCount === 2) {
-              name = name.split("::")[0];
-              id = name.split("::")[1];
-          } else if (varCount === 3) {
-              name = name.split("::")[0];
-              index = name.split("::")[1];
-              id = name.split("::")[2];
-          }
-      } else {
-          name = name;
+  querystring(obj){
+
+    const query = Object.keys(obj)
+    .map(key => `${key}=${obj[key]}`)
+    .join('&');
+
+    return query;
+
+  }
+
+  getVariable(name){
+    superObj={};
+    for(item in this.props.variables){
+
+      if(item == name){
+        superObj = this.props.variables[item]
       }
-      let state = this.state;
-      state[name.split('::').join('')] = value;
-      this.setState(state, () => {
-          if (this.props.onChange) {
-              this.props.onChange({ type: 'textinput', name: name, value: value, index: index, id: id });
+
+
+    }
+
+    return superObj
+  }
+
+  handleTextInput(value, name){
+    this.state[name]= value;
+    this.forceUpdate()
+    console.log(this.state)
+  }
+
+  async enviar(){
+  //  console.log(this.querystring(this.state))
+
+    //console.log(url());
+
+    baseUrl = "http://localhost:3333";
+    baseUrl+="/session";
+    a = new Sfetch(baseUrl);
+
+    try{
+      b = await a.postJson({email:this.state.email, password:this.state.password});
+      this.handleResponse(b);
+
+    }
+    catch(error){
+      console.log(error);
+    }
+
+
+
+
+  }
+
+  guardarTokenPermanente(){
+
+  }
+
+  handleResponse(response){
+
+    if(response.token){
+
+      user = this.getVariable("user");
+      token = this.getVariable("tokenLogin")
+
+      user.action(response.user, user);
+      token.action(response.token, token);
+
+      if(this.state.mantenerIniciada==true){
+        try {
+          await AsyncStorage.setItem('email', this.state.email);
+          await AsyncStorage.setItem('password', this.state.password);
+        } catch (e) {
+          // saving error
+        }
+
+
+      }
+      else{
+        try {
+          correo = await AsyncStorage.getItem('email');
+          contracena = await AsyncStorage.getItem('password');
+
+          if((correo!=null)&&(contracena!=null)){
+            try {
+              await AsyncStorage.removeItem('email')
+              await AsyncStorage.removeItem('password')
+            } catch(e) {
+              // remove error
+            }
           }
-      });
+        } catch (e) {
+          // saving error
+        }
+      }
+
+      Alert.alert("login exitoso")
+      this.props.navigation.navigate("Menu")
+
+    }
+
+    else{
+      Alert.alert("login invalido")
+    }
+
   }
 
   render() {
@@ -109,7 +187,15 @@ export default class MenuLogin extends Component {
                     <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
 
 
+                      <TextInput
+                        onChangeText={(text)=>{
+                          this.handleTextInput(text,"email")
+                        }}
 
+                        value={this.state.correo}
+
+                        style={{width:"100%", height:"100%"}}
+                      />
 
                     </View>
                   </View>
@@ -117,7 +203,16 @@ export default class MenuLogin extends Component {
                   <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"50%",alignItems:"center"}}>
                     <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
 
+                    <TextInput
+                      secureTextEntry={true}
+                      onChangeText={(text)=>{
+                        this.handleTextInput(text,"password")
+                      }}
 
+                      value={this.state.pass}
+
+                      style={{width:"100%", height:"100%"}}
+                    />
 
 
                     </View>
@@ -125,10 +220,12 @@ export default class MenuLogin extends Component {
 
                 </View>
                 <View style={{width:"25%", height:"100%",display:"flex", flexDirection:"column-reverse", }}>
-                  <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"50%",alignItems:"center"}}>
-                    <View data-layer="323b1996-02bb-4a46-94a0-a1037add1660" style={styles.menuLogin_rettangolo20}>
-                    <Text data-layer="e0c1fa49-7aaa-4e47-8fbf-21da82753515" style={styles.menuLogin_signin}>Sign{"\n"}in</Text>
-                    </View>
+                  <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"50%",alignItems:"center"}}
+                    onPress={this.enviar}
+                  >
+                    <TouchableOpacity data-layer="323b1996-02bb-4a46-94a0-a1037add1660" style={styles.menuLogin_rettangolo20}   onPress={()=>{this.enviar()}}>
+                      <Text data-layer="e0c1fa49-7aaa-4e47-8fbf-21da82753515" style={styles.menuLogin_signin}>Sign{"\n"}in</Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
 
@@ -136,8 +233,11 @@ export default class MenuLogin extends Component {
               <View style={{width:"100%", height:"20%",display:"flex", flexDirection:"row", alignItems:"center"}}>
                 <CheckBox
                  disabled={false}
-                 value={true}
-                 onValueChange={(newValue) => {console.log('hola')}}
+                 value={this.state.mantenerIniciada}
+                 onValueChange={(newValue) => {
+                   this.state.mantenerIniciada = newValue;
+                   this.forceUpdate();
+                 }}
                  color="blue"
                 />
 
@@ -193,9 +293,15 @@ export default class MenuLogin extends Component {
                     <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Contact</Text>
                   </View>
                 </View>
-                <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
+                <TouchableOpacity style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}
+                  onPress={
+                    ()=>{
+                      this.props.navigation.navigate("SignIn")
+                    }
+                  }
+                >
                   <Icon name="close" size={30} color="rgba(35, 171, 224, 1)" />
-                </View>
+                </TouchableOpacity>
 
               </View>
 

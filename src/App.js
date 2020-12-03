@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, TouchableOpacity} from 'react-native';
+import RNFS from 'react-native-fs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import SignIn from '~/pages/register/register.js';
 
@@ -28,6 +31,7 @@ import createNavigator from '~/routes';
 import { setNavigator } from './services/navigation';
 */
 export default class App extends Component {
+  /*
   static propTypes = {
     auth: PropTypes.shape({
       authChecked: PropTypes.bool,
@@ -36,28 +40,120 @@ export default class App extends Component {
   };
 
   registerService = (ref) => {
-    setNavigator(ref);
+    setNavigator(ref);''
   };
-
+*/
   constructor(props){
 
     super(props);
 
+
     this.state={
-/*
+
       variables:{
-        login:[
-          false,
-          (newValue)=>{
-            this.state.variables.login[0]= newValue;
-            this.forceUpdate();
+        tokenLogin:{
+          value:"",
+          action:(value, obj)=>{
+
+              obj.value = value;
+              this.forceUpdate();
+
           }
-        ]
+        },
+        user:{
+          value:{},
+          action:(value, obj)=>{
+
+              obj.value = value;
+              this.forceUpdate();
+
+          }
+        },
+
       }
-*/
+
+    }
+    this.enviar = this.enviar.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
+    this.verificarDatosGuardados= this.verificarDatosGuardados.bind(this);
+    this.verificarDatosGuardados()
+
+  }
+
+  async verificarDatosGuardados(){
+    correo = await AsyncStorage.getItem('email');
+    contracena = await AsyncStorage.getItem('password');
+
+
+    if((correo!=null)&&(contracena!=null)){
+      this.enviar(correo,contracena);
+    }
+  }
+
+
+  componentDidUpdate(){
+
+  }
+
+  async enviar(correo,contracena){
+  //  console.log(this.querystring(this.state))
+
+    //console.log(url());
+
+    baseUrl = "http://localhost:3333";
+    baseUrl+="/session";
+    a = new Sfetch(baseUrl);
+
+    try{
+      b = await a.postJson({email:correo, password:contracena});
+      this.handleResponse(b);
+
+    }
+    catch(error){
+      console.log(error);
+    }
+
+
+
+
+  }
+
+  handleResponse(response){
+
+    if(response.token){
+
+      user = this.state.variables.user;
+      token = this.state.variables.tokenLogin;
+
+      user.action(response.user, user);
+      token.action(response.token, token);
+
+    }
+
+    else{
+
     }
 
   }
+
+  getVariable(name){
+    superObj={};
+    for(item in this.props.variables){
+
+      if(item == nombre){
+        superObj = this.props.variables[item]
+      }
+      else{
+        superObj=null;
+      }
+
+    }
+
+    return superObj
+  }
+
+
+
 
 
    HomeScreen() {
@@ -78,15 +174,54 @@ export default class App extends Component {
         <Stack.Navigator
 
         >
-          <Stack.Screen name="SignIn" component={SignIn} />
-          <Stack.Screen name="Menu"  component={Menu} />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Categoria" component={Categoria} />
-          <Stack.Screen name="Attivita" component={Attivita} />
-          <Stack.Screen name="Recomendaciones" component={Recomendaciones} />
-            <Stack.Screen name="Establecimiento" component={Establecimiento} />
-            <Stack.Screen name="MLogin" component={MLogin} />
-            <Stack.Screen name="InserimentoAttivita" component={InserimentoAttivita} />
+        <Stack.Screen name="MLogin" >
+          {
+            props=><MLogin {...props} variables={this.state.variables} />
+          }
+        </Stack.Screen>
+          <Stack.Screen name="Home" >
+            {
+              props=><Home {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
+
+          <Stack.Screen name="SignIn" >
+            {
+              props=><SignIn {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
+          <Stack.Screen name="Menu"  >
+            {
+              props=><Menu {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
+
+          <Stack.Screen name="Categoria" >
+            {
+              props=><Categoria {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
+          <Stack.Screen name="Attivita" >
+            {
+              props=><Attivita {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
+          <Stack.Screen name="Recomendaciones" >
+            {
+              props=><Recomendaciones {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
+            <Stack.Screen name="Establecimiento" >
+              {
+                props=><Establecimiento {...props} variables={this.state.variables} />
+              }
+            </Stack.Screen>
+
+            <Stack.Screen name="InserimentoAttivita" >
+              {
+                props=><InserimentoAttivita {...props} variables={this.state.variables} />
+              }
+            </Stack.Screen>
           {/*
           <Stack.Screen name="SignIn" component={SignIn} />
 

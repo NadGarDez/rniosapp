@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity,Alert} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -9,63 +9,129 @@ import {Image as SvgImage} from 'react-native-svg';
 import {  Footer, FooterTab, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
+import Sfetch from "../../services/fetchManager.js";
+import {url, sURL} from "../../services/url.js";
 
 export default class Register extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-
+        name:"",
+        correo:"",
+        'contracena':{
+          'uno':'',
+          'dos':'',
+          'validado':false
+        },
       };
+
+
+      this.eviar = this.enviar.bind(this);
+      this.getVariable = this.getVariable.bind(this);
+      this.handleTextInput = this.handleTextInput.bind(this);
+      this.handleResponse = this.handleResponse.bind(this);
+      this.compararContracenas = this.compararContracenas.bind(this);
   }
 
 
-  handlePress(target, owner) {
-    if (this.props.onPress) {
-        let name;
-        let id;
-        let index = -1;
-        if (target.search("::") > -1) {
-            const varCount = target.split("::").length;
-            if (varCount === 2) {
-                name = target.split("::")[0];
-                id = target.split("::")[1];
-            } else if (varCount === 3) {
-                name = target.split("::")[0];
-                index = parseInt(target.split("::")[1]);
-                id = target.split("::")[2];
-            }
-        } else {
-            name = target;
-        }
-        this.props.onPress({ type: 'button', name: name, index: index, id: id, owner: owner });
-    }
-  }
 
-  handleChangeTextinput(name, value) {
-      let id;
-      let index = -1;
-      if (name.search('::') > -1) {
-          const varCount = name.split("::").length;
-          if (varCount === 2) {
-              name = name.split("::")[0];
-              id = name.split("::")[1];
-          } else if (varCount === 3) {
-              name = name.split("::")[0];
-              index = name.split("::")[1];
-              id = name.split("::")[2];
-          }
-      } else {
-          name = name;
+  getVariable(name){
+    superObj={};
+    for(item in this.props.variables){
+
+      if(item == name){
+        superObj = this.props.variables[item]
       }
-      let state = this.state;
-      state[name.split('::').join('')] = value;
-      this.setState(state, () => {
-          if (this.props.onChange) {
-              this.props.onChange({ type: 'textinput', name: name, value: value, index: index, id: id });
-          }
-      });
+      else{
+        superObj=null;
+      }
+
+    }
+
+    return superObj
   }
+
+
+  handleTextInput(value, name){
+
+    if((name=="uno")||(name=="dos")){
+      this.state.contracena[name] = value
+    }
+    this.state[name]= value;
+    this.forceUpdate()
+    console.log(this.state)
+  }
+
+  async enviar(){
+    this.compararContracenas();
+
+    if(this.state.contracena.validado==true){
+      obj ={
+        name:this.state.name,
+        email:this.state.correo,
+        password:this.state.contracena.uno,
+        admin:false
+
+      }
+
+      baseUrl = url();
+      baseUrl+="/users";
+      a = new Sfetch(baseUrl);
+      try{
+        b = await a.postJson(obj);
+        console.log(b);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+
+    else{
+      Alert.alert("Contraceñas no coinciden")
+    }
+
+  }
+
+  compararContracenas(){
+
+    if(this.state.contracena.uno==this.state.contracena.dos){
+
+      this.state.contracena.validado=true;
+      this.forceUpdate();
+
+      console.log('contracenas validadas');
+    }
+
+    else{
+      this.state.contracena.validado=false;
+      this.forceUpdate();
+
+      console.log('contracenas no validadas');
+
+    }
+
+  }
+
+  handleResponse(response){
+
+    if(response.token){
+
+      user = this.getVariable("user");
+      token = this.getVariable("tokenLogin")
+
+      user.action(response.user, user);
+      token.action(response.token, token);
+
+      console.log(this.props.variables);
+
+
+
+    }
+
+  }
+
+
 
   render() {
 
@@ -75,14 +141,65 @@ export default class Register extends Component {
 
       <View data-layer="04a1457b-62f1-488c-a132-8f82b4559667" style={styles.register_rettangolo11}>
         <View style={{width:"100%", height:"60%", display:"flex", flexDirection:"column"}}>
-          <View style={{width:"100%", height:"30%", display:"flex", alignItems:"center", justifyContent:"center"}}>
+          <View style={{width:"100%", height:"20%", display:"flex", alignItems:"center", justifyContent:"center"}}>
             <View>
               <Text data-layer="ecf20f39-2705-4e8d-a5bd-586cd822ffaa" style={styles.register_adherer}>Adherer</Text>
             </View>
           </View>
-          <View style={{width:"100%", height:"70%", display:"flex", flexDirection:"column", alignItems:"center"}}>
+          <View style={{width:"100%", height:"80%", display:"flex", flexDirection:"column", alignItems:"center"}}>
+            <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"20%",alignItems:"center"}}>
+
+              <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
+
+                <TextInput
+                  onChangeText={(text)=>{
+                    this.handleTextInput(text,"name")
+                  }}
+                  placeholder="Nombre de Usuario"
+                  value={this.state.nombre}
+
+                  style={{width:"100%", height:"100%"}}
+                />
+
+
+
+              </View>
+            </View>
+
+
+            <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"20%",alignItems:"center"}}>
+
+              <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
+
+                <TextInput
+                  onChangeText={(text)=>{
+                    this.handleTextInput(text,"correo")
+                  }}
+                  placeholder="Correo"
+                  value={this.state.correo}
+
+                  style={{width:"100%", height:"100%"}}
+                />
+
+
+
+              </View>
+            </View>
             <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"20%",alignItems:"center"}}>
               <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
+
+              <TextInput
+                secureTextEntry={true}
+                onChangeText={(text)=>{
+                  this.handleTextInput(text,"uno")
+                }}
+
+                placeholder="Contraceña"
+
+                value={this.state.contracena.uno}
+
+                style={{width:"100%", height:"100%"}}
+              />
 
 
 
@@ -93,21 +210,26 @@ export default class Register extends Component {
               <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
 
 
+                <TextInput
 
+                  secureTextEntry={true}
+                  onChangeText={(text)=>{
+                    this.handleTextInput(text,"dos")
+                  }}
 
-              </View>
-            </View>
-            <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"20%",alignItems:"center"}}>
-              <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
+                  value={this.state.contracena.dos}
 
+                  placeholder="Confirmar Contraceña"
 
+                  style={{width:"100%", height:"100%"}}
+                />
 
 
               </View>
             </View>
 
               <TouchableOpacity style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"20%",alignItems:"center"}}
-                onPress={()=>this.props.navigation.navigate("Home")}
+                onPress={()=>this.enviar()}
               >
                 <View data-layer="02f5db02-5a51-4d00-9a6f-0d6e25a81171" style={styles.home_rettangolo12}>
                   <Text data-layer="048aae7c-66f9-4afc-8adb-06b7220eabe1" style={styles.home_chercher}>Chercher</Text>

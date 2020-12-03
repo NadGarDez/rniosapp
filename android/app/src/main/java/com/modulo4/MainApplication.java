@@ -3,12 +3,12 @@ package com.modulo4;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
 import org.reactnative.maskedview.RNCMaskedViewPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
 import com.swmansion.rnscreens.RNScreensPackage;
 import com.reactnativecommunity.picker.RNCPickerPackage;
-import com.reactnativecommunity.toolbarandroid.ReactToolbarPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -34,12 +34,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
             new RNCMaskedViewPackage(),
             new SafeAreaContextPackage(),
             new ReactCheckBoxPackage(),
             new RNScreensPackage(),
             new RNCPickerPackage(),
-            new ReactToolbarPackage(),
             new VectorIconsPackage(),
             new AsyncStoragePackage(),
             new LinearGradientPackage(),
