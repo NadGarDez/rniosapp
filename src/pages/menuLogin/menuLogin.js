@@ -32,12 +32,13 @@ export default class MenuLogin extends Component {
       this.guardarTokenPermanente = this.guardarTokenPermanente.bind(this);
   }
 
-  componentWillMount(){
+  componentDidlMount(){
     token = this.getVariable("tokenLogin");
+    Alert.alert(token.value)
     if(token.value!=""){
       this.props.navigation.navigate("Menu");
     }
-    
+
 
   }
 
@@ -98,7 +99,7 @@ export default class MenuLogin extends Component {
 
   }
 
-  handleResponse(response){
+  async handleResponse(response){
 
     if(response.token){
 

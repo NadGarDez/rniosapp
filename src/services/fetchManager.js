@@ -98,7 +98,7 @@
           method: 'POST', // or 'PUT'
           body: JSON.stringify(body), // data can be `string` or {object}!
           headers:{
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
             'Authorization':autentication
           }
         }).then(res => resolve(res.json()))

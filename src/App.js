@@ -4,7 +4,7 @@ import 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView,Alert, TouchableHighlight, ImageBackground, TouchableOpacity} from 'react-native';
 import RNFS from 'react-native-fs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -15,6 +15,7 @@ import Home from '~/pages/home/home.js';
 import Categoria from '~/pages/categoria/categoria.js';
 
 import Menu from '~/pages/menu/menu.js';
+import Load from '~/pages/load/load.js';
 
 import Attivita from '~/pages/attivita/attivita.js';
 
@@ -25,7 +26,8 @@ import InserimentoAttivita from '~/pages/inserimentoAttivita/inserimentoAttivita
 import Establecimiento from '~/components/establecimiento/establecimiento.js';
 
 import Recomendaciones from "~/pages/recomendaciones/recomendaciones.js";
-
+import Sfetch from "./services/fetchManager.js";
+import {url, sURL} from "./services/url.js";
 /*
 import createNavigator from '~/routes';
 import { setNavigator } from './services/navigation';
@@ -76,7 +78,7 @@ export default class App extends Component {
     this.enviar = this.enviar.bind(this);
     this.handleResponse = this.handleResponse.bind(this);
     this.verificarDatosGuardados= this.verificarDatosGuardados.bind(this);
-    this.verificarDatosGuardados()
+
 
   }
 
@@ -121,12 +123,14 @@ export default class App extends Component {
   handleResponse(response){
 
     if(response.token){
-
+      Alert.alert("login exitoso")
       user = this.state.variables.user;
       token = this.state.variables.tokenLogin;
 
       user.action(response.user, user);
       token.action(response.token, token);
+
+      console.log(this.state.variables)
 
     }
 
@@ -174,6 +178,11 @@ export default class App extends Component {
         <Stack.Navigator
 
         >
+        <Stack.Screen name="Load" >
+          {
+            props=><Load {...props} variables={this.state.variables} />
+          }
+        </Stack.Screen>
         <Stack.Screen name="MLogin" >
           {
             props=><MLogin {...props} variables={this.state.variables} />
