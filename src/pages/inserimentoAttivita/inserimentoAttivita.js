@@ -13,81 +13,116 @@ import Imagenes1 from '~/components/headerInsersi/imagenes.js';
 import Imagenes2 from '~/components/headerInsersi/imagenes2.js';
 import Social from '~/components/headerInsersi/social.js';
 import Enviar from '~/components/headerInsersi/enviar.js';
+import Sfetch from "../../services/fetchManager.js";
+const scom = require("../../services/url.js");
 
 export default class InserimentoAttivita extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-
+        attivitaLuogo:"",
+        indirizzo:"",
+        citta:"",
+        telefono:"",
+        descrizione:"",
+        categoria1:false,
+        categoria2:false,
+        categoria3:false,
+        categoria4:false,
+        imagine1:[],
+        imagine2:[],
+        imagine:[],
+        social:"",
+        pagado:false,
+        fechaPago: new Date(),
+        vencimiento: new Date(),
+        idUsuario:""
       };
+
+      this.handleTextInput = this.handleTextInput.bind(this);
+      this.getVariable = this.getVariable.bind(this);
+      this.enviar = this.enviar.bind(this)
+      this.handleResponse = this.handleResponse.bind(this);
   }
 
+  handleResponse(obj){
+    if(obj.status == "exitoso"){
+        Alert.alert("ingresado correctamente")
+        this.props.navigation.navigate("Menu");
+    }
 
-  handlePress(target, owner) {
-    if (this.props.onPress) {
-        let name;
-        let id;
-        let index = -1;
-        if (target.search("::") > -1) {
-            const varCount = target.split("::").length;
-            if (varCount === 2) {
-                name = target.split("::")[0];
-                id = target.split("::")[1];
-            } else if (varCount === 3) {
-                name = target.split("::")[0];
-                index = parseInt(target.split("::")[1]);
-                id = target.split("::")[2];
-            }
-        } else {
-            name = target;
-        }
-        this.props.onPress({ type: 'button', name: name, index: index, id: id, owner: owner });
+  }
+
+  async enviar(){
+    this.state.idUsuario = this.props.variables.user.value.id;
+    this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
+
+    objE = {}
+
+    for(let i in this.state){
+      if((i!=="imagine1") && (i!=="imagine2")){
+        objE[i]= this.state[i];
+      }
+    }
+
+    console.log(objE);
+
+
+    baseUrl = scom.url;
+    baseUrl+="/crear_actividad";
+    a = new Sfetch(baseUrl);
+
+    try{
+      b = await a.postJson(objE);
+      console.log(b)
+      this.handleResponse(b);
+
+    }
+    catch(error){
+      console.log(error);
     }
   }
 
-  handleChangeTextinput(name, value) {
-      let id;
-      let index = -1;
-      if (name.search('::') > -1) {
-          const varCount = name.split("::").length;
-          if (varCount === 2) {
-              name = name.split("::")[0];
-              id = name.split("::")[1];
-          } else if (varCount === 3) {
-              name = name.split("::")[0];
-              index = name.split("::")[1];
-              id = name.split("::")[2];
-          }
-      } else {
-          name = name;
-      }
-      let state = this.state;
-      state[name.split('::').join('')] = value;
-      this.setState(state, () => {
-          if (this.props.onChange) {
-              this.props.onChange({ type: 'textinput', name: name, value: value, index: index, id: id });
-          }
-      });
+  handleTextInput(value, name){
+    this.state[name]= value;
+    this.forceUpdate()
+    console.log(this.state)
   }
+
+  getVariable(name){
+    superObj={};
+    for(item in this.props.variables){
+
+      if(item == name){
+        superObj = this.props.variables[item]
+      }
+
+
+    }
+
+    return superObj
+  }
+
+
 
   render() {
 
     objDat={
-      nameUser:"sopa de pollo",
-      idUser:""
+      nameUser:this.props.variables.user.value.name,
+      idUser:this.props.variables.user.value.id
     }
 
     return (
     <ScrollView data-layer="1398e460-2e53-4563-9977-48bb596277a5" style={styles.inserimentoAttivita}>
       <View data-layer="30490757-9eba-42ee-9721-60e6b086022e" style={styles.inserimentoAttivita_rettangolo11}>
         <HeaderI datos={objDat} />
-        <TextInputs />
-        <Checks />
-        <Imagenes1 />
-        <Imagenes2 />
-        <Social />
-        <Enviar />
+        <TextInputs saveText={this.handleTextInput}/>
+        <Checks saveCheck={this.handleTextInput}/>
+        <Imagenes1 saveImages={this.handleTextInput} variables={this.props.variables}/>
+        <Imagenes2 saveImages={this.handleTextInput} variables={this.props.variables}/>
+        <Social saveText={this.handleTextInput}/>
+        <Enviar enviar={this.enviar} />
 
       </View>
 

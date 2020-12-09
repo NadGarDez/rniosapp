@@ -10,7 +10,7 @@ import {  Footer, FooterTab, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Sfetch from "../../services/fetchManager.js";
-import {url, sURL} from "../../services/url.js";
+const scom = require("../../services/url.js");
 
 export default class Register extends Component {
 
@@ -75,7 +75,7 @@ export default class Register extends Component {
 
       }
 
-      baseUrl = url();
+      baseUrl = scom.url;
       baseUrl+="/users";
       a = new Sfetch(baseUrl);
       try{

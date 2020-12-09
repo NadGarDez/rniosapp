@@ -35,4 +35,4 @@ function url(){
   return url;
 }
 
-export {url, sURL}
+exports.url= data.localUrl;

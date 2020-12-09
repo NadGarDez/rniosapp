@@ -29,7 +29,11 @@ export default class Social extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          value:""
+          social:{
+            facebook:"",
+            instagram:"",
+            tripadvisor:""
+          }
         };
 
         this.alto = Dimensions.get('window').height,
@@ -239,7 +243,16 @@ export default class Social extends Component {
             </View>
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
-             <TextInput />
+             <TextInput
+               onChangeText={
+                 (text)=>{
+                   this.state.social.facebook = text;
+                   this.forceUpdate();
+                   this.props.saveText(this.state.social,"social")
+                 }
+               }
+
+             />
 
             </View>
 
@@ -251,7 +264,16 @@ export default class Social extends Component {
             </View>
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
-             <TextInput />
+             <TextInput
+               onChangeText={
+                 (text)=>{
+                   this.state.social.instagram = text;
+                   this.forceUpdate();
+                   this.props.saveText(this.state.social,"social")
+                 }
+               }
+
+             />
 
             </View>
 
@@ -263,7 +285,15 @@ export default class Social extends Component {
             </View>
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
-             <TextInput />
+             <TextInput
+               onChangeText={
+                 (text)=>{
+                   this.state.social.tripadvisor = text;
+                   this.forceUpdate();
+                   this.props.saveText(this.state.social,"social")
+                 }
+               }
+             />
 
             </View>
 

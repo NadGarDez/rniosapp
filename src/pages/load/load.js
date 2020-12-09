@@ -12,8 +12,9 @@ import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Sfetch from "../../services/fetchManager.js";
-import {url, sURL} from "../../services/url.js";
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+const scom = require("../../services/url.js");
 
 export default class MenuLogin extends Component {
 
@@ -42,7 +43,7 @@ export default class MenuLogin extends Component {
   //  console.log(this.querystring(this.state))
 
     //console.log(url());
-    baseUrl = "http://localhost:3333";
+    baseUrl = scom.url;
     baseUrl+="/session";
     a = new Sfetch(baseUrl);
 

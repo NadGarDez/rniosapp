@@ -6,7 +6,7 @@ import Icon3 from "react-native-vector-icons/Ionicons";
 import Icon4 from "react-native-vector-icons/MaterialIcons";
 import Icon5 from "react-native-vector-icons/Fontisto";
 import Icon6 from "react-native-vector-icons/AntDesign";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image, TouchableOpacity} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -270,9 +270,16 @@ export default class Social extends Component {
           <CheckBox style={{marginLeft:"5%"}} />
         </View>
         <View style={[misEstilos.flexPerfectCenter, this.sizes("100%","50%")]}>
-          <View style={[misEstilos.flexPerfectCenter, misEstilos.inserimentoAttivita_raggruppa50_rettangolo122c2ea86a]}>
+          <TouchableOpacity style={[misEstilos.flexPerfectCenter, misEstilos.inserimentoAttivita_raggruppa50_rettangolo122c2ea86a]}
+            onPress={
+              ()=>{
+                
+                this.props.enviar()
+              }
+            }
+          >
             <Text style={misEstilos.inserimentoAttivita_raggruppa50_envoyer}>Envoyer</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
       </View>

@@ -357,7 +357,7 @@ export default class Menu extends Component {
 
         <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
           onPress={
-            ()=>{this.props.navigation.goBack()}
+            ()=>{this.props.navigation.navigate("InserimentoAttivita")}
           }
         >
           <Icon  name="left" size={30}/>

@@ -70,6 +70,8 @@
 		E418E6E15C5A4269885BE92C /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B1A8B4339546FABA47B0CA /* libRNCSafeAreaContext.a */; };
 		ADF0784D71844F96BD57F827 /* libRNCMaskedView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DF13DF3EF345CEA2D15BBC /* libRNCMaskedView.a */; };
 		68D756F1008B498CAEBA0A73 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57172BD58B2A416F9F6C664A /* libRNFS.a */; };
+		65199C0CADA644A4B6418516 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB2E768883140DAA3B89F25 /* libRNImagePicker.a */; };
+		8FDD82ADF2344DA8BBB681BE /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 343161EAF7394A86B451A1CE /* libRNFetchBlob.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -417,6 +419,10 @@
 		51DF13DF3EF345CEA2D15BBC /* libRNCMaskedView.a */ = {isa = PBXFileReference; name = "libRNCMaskedView.a"; path = "libRNCMaskedView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		417D84B0846D4F3783DD3CBE /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		57172BD58B2A416F9F6C664A /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E584ED162F774465AC562937 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		7EB2E768883140DAA3B89F25 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		149DACDD9E2140ABA976DC92 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		343161EAF7394A86B451A1CE /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,6 +461,8 @@
 				E418E6E15C5A4269885BE92C /* libRNCSafeAreaContext.a in Frameworks */,
 				ADF0784D71844F96BD57F827 /* libRNCMaskedView.a in Frameworks */,
 				68D756F1008B498CAEBA0A73 /* libRNFS.a in Frameworks */,
+				65199C0CADA644A4B6418516 /* libRNImagePicker.a in Frameworks */,
+				8FDD82ADF2344DA8BBB681BE /* libRNFetchBlob.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +666,8 @@
 				519BCCA9CCD24D358218AB8A /* SafeAreaView.xcodeproj */,
 				5699C0782C324F8D92105D9B /* RNCMaskedView.xcodeproj */,
 				417D84B0846D4F3783DD3CBE /* RNFS.xcodeproj */,
+				E584ED162F774465AC562937 /* RNImagePicker.xcodeproj */,
+				149DACDD9E2140ABA976DC92 /* RNFetchBlob.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1326,6 +1336,8 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/modulo4.app/modulo4";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1340,6 +1352,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1361,6 +1375,8 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/modulo4.app/modulo4";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1375,6 +1391,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Release;
@@ -1408,6 +1426,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1440,6 +1460,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Release;
@@ -1469,6 +1491,8 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1483,6 +1507,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1512,6 +1538,8 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1526,6 +1554,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Release;
@@ -1554,6 +1584,8 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1568,6 +1600,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1596,6 +1630,8 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1610,6 +1646,8 @@
 					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 					"$(SRCROOT)/../node_modules/@react-native-masked-view/masked-view/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
 				);
 			};
 			name = Release;

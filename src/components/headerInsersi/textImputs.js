@@ -28,7 +28,7 @@ export default class TextInputs extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          value:""
+
         };
 
         this.alto = Dimensions.get('window').height,
@@ -139,7 +139,14 @@ export default class TextInputs extends Component {
           </View>
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
-           <TextInput />
+           <TextInput
+             style={{ height: "100%", width:"100%", backgroundColor:"white"}}
+             onChangeText={
+               (text)=>{
+                 this.props.saveText(text,"attivitaLuogo")
+               }
+             }
+           />
 
           </View>
 
@@ -152,8 +159,11 @@ export default class TextInputs extends Component {
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
             <TextInput
              style={{ height: "100%", width:"100%", backgroundColor:"white"}}
-             onChangeText={text => {console.log(text)}}
-             value={value}
+             onChangeText={
+               (text)=>{
+                 this.props.saveText(text,"indirizzo")
+               }
+             }
             />
 
           </View>
@@ -166,8 +176,11 @@ export default class TextInputs extends Component {
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
             <TextInput
              style={{ height: "100%", width:"100%", backgroundColor:"white"}}
-             onChangeText={text => {console.log(text)}}
-             value={value}
+             onChangeText={
+               (text)=>{
+                 this.props.saveText(text,"citta")
+               }
+             }
             />
           </View>
         </View>
@@ -179,8 +192,11 @@ export default class TextInputs extends Component {
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
             <TextInput
              style={{ height: "100%", width:"100%", backgroundColor:"white"}}
-             onChangeText={text => {console.log(text)}}
-             value={value}
+             onChangeText={
+               (text)=>{
+                 this.props.saveText(text,"telefono")
+               }
+             }
             />
           </View>
         </View>
@@ -194,8 +210,11 @@ export default class TextInputs extends Component {
               multiline
               numberOfLines={10}
               style={{ height: "100%", width:"100%", backgroundColor:"white"}}
-              onChangeText={text => {console.log(text)}}
-              value={value}
+              onChangeText={
+                (text)=>{
+                  this.props.saveText(text,"descrizione")
+                }
+              }
             />
           </View>
         </View>

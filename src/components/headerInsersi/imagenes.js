@@ -6,12 +6,15 @@ import Icon3 from "react-native-vector-icons/Ionicons";
 import Icon4 from "react-native-vector-icons/MaterialIcons";
 import Icon5 from "react-native-vector-icons/Fontisto";
 import Icon6 from "react-native-vector-icons/AntDesign";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image, TouchableOpacity} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
+import ImagePicker from 'react-native-image-picker';
+const scom = require("../../services/url.js");
+import RNFetchBlob from 'rn-fetch-blob';
 //import Absolute from 'react-native-absolute';
 
 export default class Imagenes extends Component {
@@ -29,13 +32,94 @@ export default class Imagenes extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          value:""
+          imagenes:{
+            profolio:{
+              source:{},
+              name:"",
+              data:""
+            }
+            ,
+            copertina:{
+              source:{},
+              name:"",
+              data:""
+            }
+          }
         };
 
         this.alto = Dimensions.get('window').height,
         this.ancho = Dimensions.get('window').width,
         this.altoComponente =  10 * this.alto;
         this.altoComponente = this.altoComponente / 100;
+        this.actionImage = this.actionImage.bind(this)
+        this.guardarImagenes= this.guardarImagenes.bind(this);
+        this.getVariable = this.getVariable.bind(this)
+
+    }
+
+    getVariable(name){
+      superObj={};
+      for(item in this.props.variables){
+
+        if(item == name){
+          superObj = this.props.variables[item]
+        }
+//
+      }
+
+      return superObj
+    }
+
+  actionImage(titulo, imagen){
+      const options = {
+        title: titulo,
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
+
+
+      ImagePicker.showImagePicker(options, (response) => {
+        console.log('Response = ', response);
+
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          user = this.getVariable("user").value.id;
+          extension = response.fileName.split(".");
+          this.state.imagenes[imagen].data = response.data;
+          this.state.imagenes[imagen].name =`${user}-${imagen}.${extension[1]}`;
+          this.state.imagenes[imagen].source={uri:response.uri};
+
+          this.forceUpdate();
+
+          keys = Object.keys(this.state.imagenes);
+
+          arrayI = keys.map(
+            (item)=>{
+
+                return this.state.imagenes[item].name;
+
+
+            }
+          )
+          console.log(arrayI);
+          this.props.saveImages(arrayI, "imagine1")
+          this.guardarImagenes(imagen)
+          //this.props.saveImages(this.state.imagenes, "imagine1")
+        }
+      });
+
+
+
+
+
+
 
 
     }
@@ -49,6 +133,26 @@ export default class Imagenes extends Component {
 
     }
 
+    guardarImagenes(name){
+
+      baseUrl = scom.url;
+      baseUrl+="/files";
+
+      RNFetchBlob.fetch('POST', baseUrl, {
+
+        'Content-Type' : 'multipart/form-data',
+      }, [
+        // element with property `filename` will be transformed into `file` in form data
+        { name : 'imagen' , filename : this.state.imagenes[name].name, data: this.state.imagenes[name].data},
+        // elements without property `filename` will be sent as plain text
+
+      ]).then((resp) => {
+        console.log(resp);
+      }).catch((err) => {
+        console.log(err);
+      });
+
+    }
 
     changeValueImputs(value){
       this.state.value=value;
@@ -166,7 +270,7 @@ export default class Imagenes extends Component {
         "opacity": 1,
         "backgroundColor": "rgba(35, 171, 224, 1)",
 
-        "width": "50%",
+        "width": "80%",
         "height": "50%",
       },
 
@@ -232,13 +336,23 @@ export default class Imagenes extends Component {
 
           </View>
 
-          <View style={[misEstilos.flexPerfectCenter, this.sizes("50%","50%")]}>
+          <View style={[misEstilos.flexPerfectCenter, this.sizes("25%","50%")]}>
+            <Image source={Object.entries(this.state.imagenes.profolio.source).length == 0 ? {uri:"https://lh3.googleusercontent.com/proxy/ivAXjdjgF0lEqRfz_v8I3xbqi6MhV8E8TPUOScyxF1WJxST6SmiBDyp53VDKqEupUAFtASa7VqZI-fIMM41n1y0pw1tXlK_zQDxaaatQqWJhQjOENUc4P_0jGnEGv5SvFIUhZNkZ6BFvXTiPnwF7EGbmlc_tCJNH8i_Hp2J8XvmPd2HwHad2GufyQE78SySzmHLkMs2u7vPwGRCmqJCeurp1KxSw59IzWsT7W9ZkB-AjsxA3WuF3dBgxUu1lYYdfbkR2d73qRXhYdEZSaBRRUfJryzlkyTdIhjPAGWg0g_0h81jCOoRw9zD5Kdl7OlGn1_a6oaUaUcGXH8Xxh8YtRxbZo-duUPwEJLYM0GhtoskUfNY4rl8eeeKgxw_UBW5F2bHsbRmKlSk52meoz7NtvMSMdGYdn3_CcdfShlfBaab6HenyCRBLqLo8LnYIrfaIopd8jEUHtbHMtJ9OE7UJTQTEW-3bp_Ln0W2C5HThgahtQuv-mdG0qvq_32l2uruoe5P788jeEW6CCsnVeIHaAKDNcDiy-ViFdv8_5BOAR9O6sPXol-e0kY7-rzmJOJfn7YtPWaU"} : this.state.imagenes.profolio.source } style={this.sizes("80%","80%")} />
+          </View>
 
-            <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
+          <View style={[misEstilos.flexPerfectCenter, this.sizes("25%","50%")]}>
+
+            <TouchableOpacity style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}
+              onPress={
+                ()=>{
+                  this.actionImage("Imagina Profolio", "profolio");
+                }
+              }
+            >
 
               <Text>Charger</Text>
 
-            </View>
+            </TouchableOpacity>
 
           </View>
 
@@ -248,13 +362,23 @@ export default class Imagenes extends Component {
 
           </View>
 
-          <View style={[misEstilos.flexPerfectCenter, this.sizes("50%","50%")]}>
+          <View style={[misEstilos.flexPerfectCenter, this.sizes("25%","50%")]}>
+            <Image source={Object.entries(this.state.imagenes.copertina.source).length == 0 ? {uri:"https://lh3.googleusercontent.com/proxy/ivAXjdjgF0lEqRfz_v8I3xbqi6MhV8E8TPUOScyxF1WJxST6SmiBDyp53VDKqEupUAFtASa7VqZI-fIMM41n1y0pw1tXlK_zQDxaaatQqWJhQjOENUc4P_0jGnEGv5SvFIUhZNkZ6BFvXTiPnwF7EGbmlc_tCJNH8i_Hp2J8XvmPd2HwHad2GufyQE78SySzmHLkMs2u7vPwGRCmqJCeurp1KxSw59IzWsT7W9ZkB-AjsxA3WuF3dBgxUu1lYYdfbkR2d73qRXhYdEZSaBRRUfJryzlkyTdIhjPAGWg0g_0h81jCOoRw9zD5Kdl7OlGn1_a6oaUaUcGXH8Xxh8YtRxbZo-duUPwEJLYM0GhtoskUfNY4rl8eeeKgxw_UBW5F2bHsbRmKlSk52meoz7NtvMSMdGYdn3_CcdfShlfBaab6HenyCRBLqLo8LnYIrfaIopd8jEUHtbHMtJ9OE7UJTQTEW-3bp_Ln0W2C5HThgahtQuv-mdG0qvq_32l2uruoe5P788jeEW6CCsnVeIHaAKDNcDiy-ViFdv8_5BOAR9O6sPXol-e0kY7-rzmJOJfn7YtPWaU"} : this.state.imagenes.copertina.source } style={this.sizes("80%","80%")} />
+          </View>
 
-            <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
+          <View style={[misEstilos.flexPerfectCenter, this.sizes("25%","50%")]}>
+
+            <TouchableOpacity style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}
+            onPress={
+              ()=>{
+                this.actionImage("Imagina Profolio", "copertina");
+              }
+            }
+            >
 
               <Text>Charger</Text>
 
-            </View>
+            </TouchableOpacity>
 
           </View>
         </View>

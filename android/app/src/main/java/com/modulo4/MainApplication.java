@@ -3,6 +3,8 @@ package com.modulo4;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
 import org.reactnative.maskedview.RNCMaskedViewPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
@@ -34,6 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFetchBlobPackage(),
+            new ImagePickerPackage(),
             new RNFSPackage(),
             new RNCMaskedViewPackage(),
             new SafeAreaContextPackage(),

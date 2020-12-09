@@ -178,6 +178,7 @@ export default class App extends Component {
         <Stack.Navigator
 
         >
+
         <Stack.Screen name="Load" >
           {
             props=><Load {...props} variables={this.state.variables} />
@@ -225,12 +226,13 @@ export default class App extends Component {
                 props=><Establecimiento {...props} variables={this.state.variables} />
               }
             </Stack.Screen>
+          <Stack.Screen name="InserimentoAttivita" >
+            {
+              props=><InserimentoAttivita {...props} variables={this.state.variables} />
+            }
+          </Stack.Screen>
 
-            <Stack.Screen name="InserimentoAttivita" >
-              {
-                props=><InserimentoAttivita {...props} variables={this.state.variables} />
-              }
-            </Stack.Screen>
+
           {/*
           <Stack.Screen name="SignIn" component={SignIn} />
 

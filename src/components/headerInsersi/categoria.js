@@ -29,7 +29,10 @@ export default class Checks extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          value:""
+          categoria1:false,
+          categoria2:false,
+          categoria3:false,
+          categoria4:false
         };
 
         this.alto = Dimensions.get('window').height,
@@ -136,19 +139,52 @@ export default class Checks extends Component {
         <View style={misEstilos.contenedorCheck}>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Manger</Text>
-            <CheckBox />
+            <CheckBox
+
+              onValueChange={(newValue) => {
+                  this.state.categoria1=newValue;
+                  this.forceUpdate()
+                  this.props.saveCheck(newValue,"categoria1")
+              }}
+
+              value={this.state.categoria1}
+            />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Visiter</Text>
-            <CheckBox />
+            <CheckBox
+              onValueChange={(newValue) => {
+                  this.state.categoria2=newValue;
+                  this.forceUpdate()
+                  this.props.saveCheck(newValue,"categoria2")
+              }}
+
+              value={this.state.categoria2}
+            />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
-            <CheckBox />
+            <CheckBox
+              onValueChange={(newValue) => {
+                  this.state.categoria3=newValue;
+                  this.forceUpdate()
+                  this.props.saveCheck(newValue,"categoria3")
+              }}
+
+              value={this.state.categoria3}
+            />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Dormir</Text>
-            <CheckBox />
+            <CheckBox
+              onValueChange={(newValue) => {
+                  this.state.categoria4=newValue;
+                  this.forceUpdate()
+                  this.props.saveCheck(newValue,"categoria4")
+              }}
+
+              value={this.state.categoria4}
+            />
           </View>
         </View>
 
