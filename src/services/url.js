@@ -1,7 +1,7 @@
 data ={
   mode:"local",
   localUrl:'http://localhost:3333',
-  publicUrl:"http:\//51.178.16.150:3000"
+  publicUrl:"http:\//51.178.16.150:3333"
 
 }
 
@@ -35,4 +35,4 @@ function url(){
   return url;
 }
 
-exports.url= data.localUrl;
+exports.url= data.publicUrl;

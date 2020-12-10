@@ -79,6 +79,7 @@ export default class MenuLogin extends Component {
 
     baseUrl = scom.url;
     baseUrl+="/session";
+    
     a = new Sfetch(baseUrl);
 
     try{
@@ -87,6 +88,7 @@ export default class MenuLogin extends Component {
 
     }
     catch(error){
+      //Alert.alert(error)
       console.log(error);
     }
 

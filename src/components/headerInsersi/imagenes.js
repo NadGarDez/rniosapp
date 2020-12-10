@@ -90,10 +90,12 @@ export default class Imagenes extends Component {
         } else if (response.customButton) {
           console.log('User tapped custom button: ', response.customButton);
         } else {
+          const now = new Date();
+          var dif = now.getTime()
           user = this.getVariable("user").value.id;
           extension = response.fileName.split(".");
           this.state.imagenes[imagen].data = response.data;
-          this.state.imagenes[imagen].name =`${user}-${imagen}.${extension[1]}`;
+          this.state.imagenes[imagen].name =`${user}-${imagen}-${dif}.${extension[1]}`;
           this.state.imagenes[imagen].source={uri:response.uri};
 
           this.forceUpdate();

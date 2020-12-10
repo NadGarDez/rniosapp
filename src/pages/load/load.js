@@ -12,6 +12,7 @@ import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Sfetch from "../../services/fetchManager.js";
+import NetInfo from "@react-native-community/netinfo";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const scom = require("../../services/url.js");
@@ -43,6 +44,7 @@ export default class MenuLogin extends Component {
   //  console.log(this.querystring(this.state))
 
     //console.log(url());
+
     baseUrl = scom.url;
     baseUrl+="/session";
     a = new Sfetch(baseUrl);
@@ -53,6 +55,7 @@ export default class MenuLogin extends Component {
 
     }
     catch(error){
+      Alert.alert(error)
       console.log(error);
     }
 
@@ -62,6 +65,8 @@ export default class MenuLogin extends Component {
   }
 
   async verificarDatosGuardados(){
+
+
     correo = await AsyncStorage.getItem('email');
     contracena = await AsyncStorage.getItem('password');
 
@@ -71,7 +76,7 @@ export default class MenuLogin extends Component {
     }
 
     else{
-      this.props.navigation.navigate("MLogin")
+      this.props.navigation.navigate("Home")
     }
   }
 

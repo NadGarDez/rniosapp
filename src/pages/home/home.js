@@ -112,7 +112,7 @@ export default class Home extends Component {
     );
 */
     return (
-
+    <View>
     <ScrollView data-layer="ede4eb2b-5942-4ef0-bd02-40406020abba" style={styles.home}>
 
         <View data-layer="276ba31a-23aa-4bf7-bd73-79d4b0782908" style={styles.home_rettangolo11}>
@@ -497,6 +497,23 @@ de Nice La capitale de la gastronomie, à ....</Text>
             </View>
         </View>*/}
     </ScrollView>
+    <View data-layer="10e3e5e0-d684-4683-855a-adb2248fb403" style={styles.menu_rettangolo1}>
+      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white">
+
+            <Icon2 name="menu" size={30} />
+
+      </TouchableOpacity>
+
+      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white">
+        <Icon name="home" size={30}/>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white">
+        <Icon  name="left" size={30}/>
+      </TouchableOpacity>
+
+    </View>
+    </View>
     );
   }
 }
@@ -516,7 +533,7 @@ const styles = StyleSheet.create({
 
     "backgroundColor": "rgba(255, 255, 255, 1)",
 
-    "width": '100%',
+    "width": '90%',
 
 
   },
@@ -526,6 +543,16 @@ const styles = StyleSheet.create({
     "backgroundColor": "rgba(25, 25, 25, 1)",
     "width": '100%',
     "height": 600,
+
+  },
+  "menu_rettangolo1": {
+    "opacity": 1,
+    "backgroundColor": "rgba(220, 220, 220, 1)",
+    "display":"flex",
+    "flexDirection":"row",
+
+    "width": "100%",
+    "height": "10%",
 
   },
   "home_shpastapesto": {

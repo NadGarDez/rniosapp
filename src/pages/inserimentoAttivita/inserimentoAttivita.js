@@ -47,7 +47,7 @@ export default class InserimentoAttivita extends Component {
   }
 
   handleResponse(obj){
-    if(obj.status == "exitoso"){
+    if(obj.estatus == "exitoso"){
         Alert.alert("ingresado correctamente")
         this.props.navigation.navigate("Menu");
     }
