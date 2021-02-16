@@ -207,13 +207,13 @@ export default class Establecimiento extends Component {
 
     }
 
-
+    console.log(this.props.datos)
 
 
       return(
 
         <TouchableOpacity style={misEstilos.padre}
-          onPress={()=>this.props.navigation.navigate("Attivita",{objDat})}
+          onPress={()=>this.props.navigation.navigate("Attivita",{datos:this.props.datos})}
 
         >
           <View style={{width:"100%", height:"50%", display:"flex", flexDirection:"row"}}>
@@ -224,15 +224,15 @@ export default class Establecimiento extends Component {
               <View style={misEstilos.hijo2}>
                 <View style={misEstilos.imageLogo}>
 
-                  <Image source={{uri:this.props.datos.imagenLogo}} style={{width:"90%",height:"60%"}}></Image>
+                  <Image source={{uri:this.props.datos.imagine[0]}} style={{width:"90%",height:"60%"}}></Image>
 
                 </View>
                 <View style={misEstilos.info}>
                   <View style={misEstilos.infoName}>
-                    <Text data-layer="146451af-e4cd-4368-8dee-800e1f03355c" style={misEstilos.categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_cittaDiBraeacc8e89}>{this.props.datos.nombre}</Text>
+                    <Text data-layer="146451af-e4cd-4368-8dee-800e1f03355c" style={misEstilos.categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_cittaDiBraeacc8e89}>{this.props.datos.attivitaLuogo}</Text>
                   </View>
                   <View style={misEstilos.infoDescription}>
-                  <Text data-layer="52e9f297-f844-4c73-a68c-9dfc91caedf6" style={misEstilos.categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_laCapitaleDeLaGastronomieADeuxPasDeNiceLaCapitaleDeLaGastronomieAa88114dc}>{this.props.datos.descripcion}</Text>
+                  <Text data-layer="52e9f297-f844-4c73-a68c-9dfc91caedf6" style={misEstilos.categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_laCapitaleDeLaGastronomieADeuxPasDeNiceLaCapitaleDeLaGastronomieAa88114dc}>{this.props.datos.descrizione}</Text>
 
                   </View>
 
@@ -243,11 +243,11 @@ export default class Establecimiento extends Component {
               <View style={misEstilos.hijo2B}>
                 <View style={misEstilos.numeroCitat}>
                   <Icon name="phone" size={20} color="black" style={{marginLeft:"10%",marginRight:"10%"}}/>
-                  <Text style={misEstilos.phone}>{this.props.datos.numero}</Text>
+                  <Text style={misEstilos.phone}>{this.props.datos.telefono}</Text>
                 </View>
                 <View style={misEstilos.citat}>
                   <Icon2 name="direction" size={20} style={{marginRight:"10%", marginLeft:"10%"}} color="rgba(35, 171, 224, 1)" />
-                  <Text style={misEstilos.phone}>{this.props.datos.ciudad}</Text>
+                  <Text style={misEstilos.phone}>{this.props.datos.citta}</Text>
                 </View>
               </View>
 
@@ -256,7 +256,7 @@ export default class Establecimiento extends Component {
 
           <View style={misEstilos.hijo1}>
 
-            <Image source={{uri:this.props.datos.imagenGrande}} style={{width:"95%",height:"100%"}}></Image>
+            <Image source={{uri:this.props.datos.imagine[1]}} style={{width:"95%",height:"100%"}}></Image>
             <View style={{width:"5%", height:"100%", display:"flex", flexDirection:"row", backgroundColor:"black"}}></View>
           </View>
         </TouchableOpacity>

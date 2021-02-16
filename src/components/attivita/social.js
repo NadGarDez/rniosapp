@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from "react-native-vector-icons/Entypo";
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, Alert,ScrollView,TouchableOpacity,TouchableHighlight, ImageBackground, Dimensions, Image,Linking} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import Absolute from 'react-native-absolute';
+import { Platform } from 'react-native'
+
 export default class HeaderRecomendaciones extends Component {
 
   /*
@@ -33,9 +35,20 @@ export default class HeaderRecomendaciones extends Component {
         this.ancho = Dimensions.get('window').width,
         this.altoComponente = 30 * this.alto;
         this.altoComponente = this.altoComponente / 100;
+        this.actionPress = this.actionPress.bind(this);
 
+  }
 
+  async actionPress(url){
+    const canOpen = await Linking.canOpenURL(url);
+    if(canOpen){
+        await Linking.openURL(url);
     }
+    else{
+      Alert.alert("No se puede abrir url")
+    }
+
+  }
 
   render(){
 
@@ -99,6 +112,8 @@ export default class HeaderRecomendaciones extends Component {
 
     }
 
+    Alert.alert(typeof this.props.datos.social)
+    var url = "https://www.google.com/";
 
     return (
       <View style={misEstilos.padre}>
@@ -108,10 +123,36 @@ export default class HeaderRecomendaciones extends Component {
 
         </View>
         <View style={misEstilos.icons}>
+          <TouchableOpacity
+            onPress={
+              ()=>{
+                this.actionPress(this.props.datos.social.facebook);
+              }
+            }
+          >
+            <Icon name="facebook" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}}/>
 
-          <Icon name="facebook" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}}/>
-          <Icon2 name="tripadvisor" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}}/>
-          <Icon name="instagram" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={
+              ()=>{
+                this.actionPress(this.props.datos.social.instagram);
+              }
+            }
+          >
+            <Icon2 name="tripadvisor" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}}/>
+
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={
+              ()=>{
+                this.actionPress(this.props.datos.social.tripadvisor);
+              }
+            }
+          >
+            <Icon name="instagram" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}} />
+
+          </TouchableOpacity>
 
         </View>
       </View>

@@ -113,7 +113,42 @@ export default class Menu extends Component {
 
   render() {
 
+    objDat2={
+      nombre:"Città di Bra",
+      imagenLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU",
+      descripcion:"La capitale de la gastronomie, à deux pas de Nice La capitale de la gastronomie, à ....",
+      ciudad: "Bra (CN)",
+      numero: "0172 430185",
+      imagenGrande:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU"
 
+    }
+    objDat1={
+      tit:"Manger et deguster",
+      subtit:"Tu as cherché",
+      imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+      imagen2: require("./assets/shpastapesto.png")
+    }
+
+    objDat3={
+      tit:"Visiter ed découvrir",
+      subtit:"Tu as cherché",
+      imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+      imagen2: require("./assets/windsurfadobestock151590813.png")
+    }
+
+    objDat4={
+      tit:"S'amuser",
+      subtit:"Tu as cherché",
+      imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+      imagen2: require("./assets/cinqueTerre2.png")
+    }
+
+    objDat5={
+      tit:"Dormi Et Se Relaxer",
+      subtit:"Tu as cherché",
+      imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+      imagen2: require("./assets/cameraSuperior.png")
+    }
 
     return (
       <View>
@@ -169,39 +204,95 @@ export default class Menu extends Component {
                       <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_lesDestinations}>Les destinations</Text>
                     </View>
                     <View style={{width:"100%", height:"80%",display:"flex", flexDirection:"column"}}>
-                      <View style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}>
+                      <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
+                            onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2,categoria:"1"})}
+
+                      >
                         <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Manger</Text>
-                      </View>
-                      <View style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
+
+                        onPress={()=>this.props.navigation.navigate("Categoria", {objDat3,objDat2,categoria:"2"})}
+
+                      >
                         <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Visiter</Text>
-                      </View>
-                      <View style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
+
+                        onPress={()=>this.props.navigation.navigate("Categoria", {objDat4,objDat2,categoria:"3"})}
+
+                      >
                         <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>S'amuser</Text>
-                      </View>
-                      <View style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
+
+                        onPress={()=>this.props.navigation.navigate("Categoria", {objDat5,objDat2,categoria:"4"})}
+
+                      >
                         <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Dormir</Text>
-                      </View>
+                      </TouchableOpacity>
                     </View>
 
                 </View>
                 <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
 
-                  <View data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}>
-                      <Text data-layer="9860dbc4-fc0b-447d-81b5-fbf69fd44414" style={styles.menu_visitezLaCote}>Visitez la Cote</Text>
-                  </View>
+                  <TouchableOpacity data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}
+                    onPress={
+                      ()=>{
+                        if(this.props.variables.tokenLogin.value!==""){
+                          this.props.navigation.navigate("Panel");
+                        }
+                        else{
+                          Alert.alert("no ha hecho login o registrado")
+                        }
+                      }
+
+                    }
+
+                  >
+                      <Text data-layer="9860dbc4-fc0b-447d-81b5-fbf69fd44414" style={styles.menu_visitezLaCote}>Panel de control</Text>
+                  </TouchableOpacity>
 
                 </View>
 
                 <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
-                  <View data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}>
+                  <TouchableOpacity data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}
+                  onPress={
+                    ()=>{
+                      if(this.props.variables.tokenLogin.value!==""){
+                        this.props.navigation.navigate("InserimentoAttivita");
+                      }
+                      else{
+                        Alert.alert("no ha hecho login o registrado")
+                      }
+                    }
+
+                  }
+
+                  >
                     <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Adherer</Text>
-                  </View>
+                  </TouchableOpacity>
                 </View >
 
-                <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
-                  <View data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}>
-                    <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Contact</Text>
-                  </View>
+                <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}
+                >
+                  <TouchableOpacity data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}
+
+                  onPress={
+                    ()=>{
+                      if(this.props.variables.tokenLogin.value!==""){
+                        this.props.navigation.navigate("ChangeP1");
+                      }
+                      else{
+                        Alert.alert("no ha hecho login o registrado")
+                      }
+                    }
+
+                  }
+
+                  >
+                    <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>configuracion</Text>
+                  </TouchableOpacity>
                 </View>
                 <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
                   <Icon name="close" size={30} color="rgba(35, 171, 224, 1)" />

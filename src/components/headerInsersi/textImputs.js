@@ -6,12 +6,14 @@ import Icon3 from "react-native-vector-icons/Ionicons";
 import Icon4 from "react-native-vector-icons/MaterialIcons";
 import Icon5 from "react-native-vector-icons/Fontisto";
 import Icon6 from "react-native-vector-icons/AntDesign";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList,Alert, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
+import Prueba from "./prueba.js";
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 //import Absolute from 'react-native-absolute';
 export default class TextInputs extends Component {
 
@@ -28,7 +30,34 @@ export default class TextInputs extends Component {
   constructor(props) {
         super(props);
         this.state = {
+          inputs:{
+            input1:{
+              currentValue:"",
+              validateStatus:"default",
+              message:""
+            },
+            input2:{
+              currentValue:"",
+              validateStatus:"default",
+              message:""
+            },
+            input3:{
+              currentValue:"",
+              validateStatus:"default",
+              message:""
+            },
+            input4:{
+              currentValue:"",
+              validateStatus:"default",
+              message:""
+            },
+            input5:{
+              currentValue:"",
+              validateStatus:"default",
+              message:""
+            },
 
+          }
         };
 
         this.alto = Dimensions.get('window').height,
@@ -45,7 +74,21 @@ export default class TextInputs extends Component {
       this.forceUpdate();
     }
 
+    enviarValidacion(){
+      Alert.alert("validando")
+      if((this.state.inputs.input1.currentValue!="")&&(this.props.dataIndirizo!="")&&(this.props.dataCitta!="")&&(this.state.inputs.input4.currentValue!="")&&(this.state.inputs.input5.currentValue!="")){
+        this.props.saveValidacion(true, "inputText");
+      }
+      else{
+        this.props.saveValidacion(false, "inputText");
+      }
+
+    }
+
   render(){
+
+    var ref1 = React.createRef()
+    var ref2 = React.createRef()
 
     misEstilos ={
       padre:{
@@ -88,6 +131,7 @@ export default class TextInputs extends Component {
         "fontFamily": "Montserrat",
         "textAlign": "left",
         marginLeft:"5%",
+        marginRight:"5%"
       },
       "inserimentoAttivita_rettangolo4": {
         "opacity": 1,
@@ -129,94 +173,252 @@ export default class TextInputs extends Component {
 
     }
     value="";
-
+    const color1 = this.state.inputs.input1.validateStatus == "empty input" ? "red" : "white";
+    const color2 = this.state.inputs.input2.validateStatus == "empty input" ? "red" : "white";
+    const color3 = this.state.inputs.input3.validateStatus == "empty input" ? "red" : "white";
+    const color4 = this.state.inputs.input4.validateStatus == "empty input" ? "red" : "white";
+    const color5 = this.state.inputs.input5.validateStatus == "empty input" ? "red" : "white";
+    console.log(this.props.dataCitta)
     return (
       <View style={misEstilos.padre}>
 
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
             <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Attività/Luogo</Text>
+
           </View>
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
            <TextInput
-             style={{ height: "100%", width:"100%", backgroundColor:"white"}}
+             style={{ height: "100%", width:"100%", backgroundColor:"white", borderStyle:"solid",borderColor: color1, borderWidth:1}}
              onChangeText={
                (text)=>{
+                 this.state.inputs.input1.currentValue = text;
                  this.props.saveText(text,"attivitaLuogo")
+                 this.forceUpdate();
                }
              }
+
+             placeholder="Write Here"
+
+             onBlur={
+               ()=>{
+
+                 if(this.state.inputs.input1.currentValue == ""){
+                    this.state.inputs.input1.validateStatus = "empty input";
+                    this.state.inputs.input1.message = "this input cant't be empty"
+                    this.forceUpdate();
+
+                 }
+                this.enviarValidacion()
+               }
+             }
+
+             onFocus={
+               ()=>{
+
+                   if(this.state.inputs.input1.currentValue == ""){
+                      this.state.inputs.input1.validateStatus = "default";
+                      this.state.inputs.input1.message = ""
+                      this.forceUpdate();
+                   }
+                 //this.props.navigation.navigate("cittaI",{saveText:this.props.saveText})
+               }
+             }
+
+
            />
 
           </View>
-
+          <Text style={{color:"red"}}>{this.state.inputs.input1.message}</Text>
         </View>
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
             <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Indirizzo</Text>
+
           </View>
 
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
-            <TextInput
-             style={{ height: "100%", width:"100%", backgroundColor:"white"}}
-             onChangeText={
-               (text)=>{
-                 this.props.saveText(text,"indirizzo")
-               }
-             }
-            />
+          <TextInput
+            style={{ height: "100%", width:"100%", backgroundColor:"white",borderColor: color2, borderStyle:"solid", borderWidth:1}}
+            value={this.props.dataIndirizo}
+            onChangeText={
+              (text)=>{
+                Alert.alert(text)
+                this.props.saveText(text,"attivitaLuogo")
+                this.forceUpdate()
+              }
+            }
+            onFocus={
+              ()=>{
+
+                this.props.changeModal(1)
+                //this.props.navigation.navigate("indirizzoI",{saveText:this.props.saveText})
+                if(this.props.dataIndirizo == ""){
+                   this.state.inputs.input3.validateStatus = "default";
+                   this.state.inputs.input3.message = ""
+                   this.forceUpdate();
+                }
+              }
+            }
+
+            placeholder="Write Here"
+
+            onBlur={
+              ()=>{
+
+                if(this.props.dataIndirizo == ""){
+                   this.state.inputs.input2.validateStatus = "empty input";
+                   this.state.inputs.input2.message = "this input cant't be empty"
+                   this.forceUpdate();
+                }
+                  this.enviarValidacion()
+              }
+            }
+          />
 
           </View>
+          <Text style={{color:"red"}}>{this.state.inputs.input2.message}</Text>
         </View>
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
             <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Città</Text>
+
           </View>
 
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
-            <TextInput
-             style={{ height: "100%", width:"100%", backgroundColor:"white"}}
-             onChangeText={
-               (text)=>{
-                 this.props.saveText(text,"citta")
-               }
-             }
-            />
+          <TextInput
+            style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor:color3, borderStyle:"solid", borderWidth:1}}
+            value={this.props.dataCitta}
+            onChangeText={
+              (text)=>{
+                this.state.inputs.input3.currentValue = text;
+
+                this.props.saveText(text,"attivitaLuogo")
+                this.forceUpdate()
+              }
+            }
+            onFocus={
+              ()=>{
+                  this.props.changeModal(2)
+                  if(this.state.inputs.input3.currentValue == ""){
+                     this.state.inputs.input3.validateStatus = "default";
+                     this.state.inputs.input3.message = ""
+                     this.forceUpdate();
+                  }
+                //this.props.navigation.navigate("cittaI",{saveText:this.props.saveText})
+              }
+            }
+
+            placeholder="Write Here"
+
+            onBlur={
+              ()=>{
+                if(this.props.dataCitta == ""){
+                   this.state.inputs.input3.validateStatus = "empty input";
+                   this.state.inputs.input3.message = "this input cant't be empty"
+                   this.forceUpdate();
+
+                }
+                this.enviarValidacion()
+              }
+            }
+          />
+
           </View>
+          <Text style={{color:"red"}}>{this.state.inputs.input3.message}</Text>
         </View>
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
             <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Telefono</Text>
+
           </View>
 
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
             <TextInput
-             style={{ height: "100%", width:"100%", backgroundColor:"white"}}
+             keyboardType='numeric'
+             style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor: color4, borderStyle:"solid", borderWidth:1}}
              onChangeText={
                (text)=>{
+                 this.state.inputs.input4.currentValue = text;
                  this.props.saveText(text,"telefono")
+                 this.forceUpdate()
+               }
+             }
+             placeholder="Write Here"
+             onBlur={
+               ()=>{
+                 if(this.state.inputs.input4.currentValue == ""){
+                    this.state.inputs.input4.validateStatus = "empty input";
+                    this.state.inputs.input4.message = "this input cant't be empty"
+                    this.forceUpdate();
+
+                 }
+
+                   this.enviarValidacion()
+               }
+             }
+             onFocus={
+               ()=>{
+
+                   if(this.state.inputs.input4.currentValue == ""){
+                      this.state.inputs.input4.validateStatus = "default"
+                      this.state.inputs.input4.message = ""
+                      this.forceUpdate();
+                   }
+                 //this.props.navigation.navigate("cittaI",{saveText:this.props.saveText})
                }
              }
             />
           </View>
+          <Text style={{color:"red"}}>{this.state.inputs.input4.message}</Text>
         </View>
         <View style={misEstilos.SectionImputTextArea}>
           <View style={misEstilos.contenedorText2}>
             <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Descrizione (max 150 caratteri)</Text>
+
           </View>
 
           <View style={misEstilos.inserimentoAttivita_rettangolo42}>
             <TextInput
               multiline
               numberOfLines={10}
-              style={{ height: "100%", width:"100%", backgroundColor:"white"}}
+              style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor:color5, borderStyle:"solid", borderWidth:1}}
               onChangeText={
                 (text)=>{
+                  this.state.inputs.input5.currentValue = text;
                   this.props.saveText(text,"descrizione")
+                  this.forceUpdate()
+                }
+              }
+
+              placeholder="Write Here"
+
+              onBlur={
+                ()=>{
+                  if(this.state.inputs.input5.currentValue == ""){
+                     this.state.inputs.input5.validateStatus = "empty input";
+                     this.state.inputs.input5.message = "this input cant't be empty"
+                     this.forceUpdate();
+
+                  }
+                    this.enviarValidacion()
+                }
+              }
+              onFocus={
+                ()=>{
+                  //  this.props.changeModal(2)
+                    if(this.state.inputs.input5.currentValue == ""){
+                       this.state.inputs.input5.validateStatus = "default";
+                       this.state.inputs.input5.message = ""
+                       this.forceUpdate();
+                    }
+                  //this.props.navigation.navigate("cittaI",{saveText:this.props.saveText})
                 }
               }
             />
           </View>
+          <Text style={{color:"red"}}>{this.state.inputs.input5.message}</Text>
         </View>
 
 

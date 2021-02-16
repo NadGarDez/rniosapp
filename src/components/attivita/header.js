@@ -87,16 +87,16 @@ export default class Header extends Component {
 
     }
 
-  
+
     return (
       <View style={misEstilos.padre}>
         <View style={misEstilos.imageBckround}>
-        <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={{uri:this.props.datos.imagenGrande}}>
+        <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={{uri:this.props.datos.imagine[1]}}>
         </ImageBackground>
         </View>
         <View data-layer="853274a4-9d2a-42bc-a146-a7e83326ee0b" style={misEstilos.categoria_rettangolo10}>
 
-              <Text data-layer="29929bd1-7479-4975-b1f2-0874ed6959eb" style={misEstilos.categoria_mangerEtDeguster}>{this.props.datos.nombre}</Text>
+              <Text data-layer="29929bd1-7479-4975-b1f2-0874ed6959eb" style={misEstilos.categoria_mangerEtDeguster}>{this.props.datos.attivitaLuogo}</Text>
 
         </View>
       </View>

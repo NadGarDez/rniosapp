@@ -13,10 +13,10 @@ import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-co
 import CheckBox from '@react-native-community/checkbox';
 import Sfetch from "../../services/fetchManager.js";
 import NetInfo from "@react-native-community/netinfo";
-
+import BottonMenu from "../../components/menus/bottonMenu.js";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const scom = require("../../services/url.js");
-
+// android:usesCleartextTraffic="true" android:networkSecurityConfig="@xml/network_security_config"
 export default class MenuLogin extends Component {
 
   constructor(props) {
@@ -69,15 +69,23 @@ export default class MenuLogin extends Component {
 
     correo = await AsyncStorage.getItem('email');
     contracena = await AsyncStorage.getItem('password');
+    code =await AsyncStorage.getItem('code');
 
-
-    if((correo!=null)&&(contracena!=null)){
-      this.enviar(correo,contracena);
+    if(code!=null){
+      this.props.navigation.navigate("RememberPass",{estado:2})
     }
-
     else{
-      this.props.navigation.navigate("Home")
+      if((correo!=null)&&(contracena!=null)){
+        this.enviar(correo,contracena);
+      }
+
+      else{
+        this.props.navigation.navigate("Home")
+        //this.props.navigation.navigate("ChangeP1",{email:"iranad@hotmail.com"})
+      }
     }
+
+
   }
 
   handleResponse(response){
@@ -140,10 +148,12 @@ export default class MenuLogin extends Component {
   render() {
 
     return (
-      <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%"}}>
+      <View>
+        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%"}}>
 
-        <Text>Load...</Text>
+          <Text>Load...</Text>
 
+        </View>
       </View>
     );
   }

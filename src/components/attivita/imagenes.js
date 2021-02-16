@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from "react-native-vector-icons/Entypo";
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image, Alert} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -37,6 +37,8 @@ export default class HeaderRecomendaciones extends Component {
 
     }
 
+    img
+
   render(){
 
     misEstilos ={
@@ -60,7 +62,6 @@ export default class HeaderRecomendaciones extends Component {
       image:{
         height:"90%",
         width:"90%",
-        borderStyle:"solid",
         borderColor:"white",
         borderWidth:1
 
@@ -109,19 +110,41 @@ export default class HeaderRecomendaciones extends Component {
     }
 
 
+    sa = Array()
+
+    this.props.datos.imagine.forEach((item, i) => {
+      
+      if(item.indexOf("http://51.178.16.150:3333")!= -1 && i > 1){
+        sa.push(item)
+      }
+    });
+
+    im = sa.map(
+      (item)=>{
+        return(
+          <View style={misEstilos.contenedorImagen}>
+            <Image source={{uri:item}} style={misEstilos.image}/>
+          </View>
+        )
+      }
+    )
+
+
     return (
       <View style={misEstilos.padre}>
         {
-          this.props.datos.images.map(
-            (item)=>{
+          im
+        /*  this.props.datos.imagine.forEach((item, i) => {
+            Alert.alert(item);
+            //if(i>1){
               return(
                 <View style={misEstilos.contenedorImagen}>
                   <Image source={{uri:item}} style={misEstilos.image}/>
                 </View>
               )
-            }
-          )
-
+            //}
+          })
+*/
 
         }
       </View>

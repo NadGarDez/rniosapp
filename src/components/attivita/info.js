@@ -137,18 +137,18 @@ export default class Info extends Component {
         <View style={misEstilos.info}>
           <View style={misEstilos.item}>
             <Icon5 name="radio-btn-passive" color="rgba(35, 171, 224, 1)"/>
-            <Text style={misEstilos.attivita_ristorantePiemontese}>{this.props.datos.eslogan}</Text>
+            <Text style={misEstilos.attivita_ristorantePiemontese}>abc</Text>
           </View>
           <View style={misEstilos.item}>
             <Icon name="phone" color="black" size={20} />
-            <Text style={misEstilos.attivita_raggruppa37_viaBra30cherascoCn}>{this.props.datos.numero}</Text>
+            <Text style={misEstilos.attivita_raggruppa37_viaBra30cherascoCn}>{this.props.datos.telefono}</Text>
           </View>
           <View style={misEstilos.item}>
             <Icon name="map-marker" color="black" size={20} />
-            <Text style={misEstilos.attivita_raggruppa37_viaBra30cherascoCn}>{this.props.datos.direccion }</Text>
+            <Text style={misEstilos.attivita_raggruppa37_viaBra30cherascoCn}>{this.props.datos.citta}</Text>
           </View>
         </View>
-        <Image source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU"}}  style={{flex:1 , width: undefined, height: undefined}} />
+        <Image source={{uri:this.props.datos.imagine[0]}}  style={{flex:1 , width: undefined, height: undefined}} />
 
       </View>
     );

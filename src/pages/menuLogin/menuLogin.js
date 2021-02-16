@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity, Alert} from 'react-native';
+import {StyleSheet, Text, View, Modal,TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity, Alert} from 'react-native';
 import { Container, Header, Content, Accordion ,Button} from "native-base";
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
@@ -73,13 +73,14 @@ export default class MenuLogin extends Component {
   }
 
   async enviar(){
-  //  console.log(this.querystring(this.state))
+  //  console.log(this.querystring(this.state)) android:usesCleartextTraffic="true" android:networkSecurityConfig="@xml/network_security_config"
 
     //console.log(url());
+//// var ab= 0; this ñ.hola.dos= h;
 
     baseUrl = scom.url;
     baseUrl+="/session";
-    
+
     a = new Sfetch(baseUrl);
 
     try{
@@ -245,7 +246,16 @@ export default class MenuLogin extends Component {
                 />
 
                 <Text style={{color:"white"}}>Remember me</Text>
+                <TouchableOpacity
+                  onPress={
+                    ()=>{
+                      this.props.navigation.navigate("RememberPass",{estado:1})
+                    }
+                  }
+                >
+                  <Text style={{marginLeft:5, color:"white"}}>¿Olvido su contraceña?</Text>
 
+                </TouchableOpacity>
               </View>
 
             </View>
@@ -286,9 +296,23 @@ export default class MenuLogin extends Component {
                 </View>
 
                 <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
-                  <View data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}>
+                  <TouchableOpacity data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}
+                    onPress={
+                      ()=>{
+                        if(this.props.variables.tokenLogin.value!==""){
+                          this.props.navigation.navigate("InserimentoAttivita");
+                        }
+                        else{
+                          Alert.alert("no ha hecho login o registrado")
+                        }
+                      }
+
+                    }
+
+
+                  >
                     <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Adherer</Text>
-                  </View>
+                  </TouchableOpacity>
                 </View >
 
                 <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
@@ -303,7 +327,9 @@ export default class MenuLogin extends Component {
                     }
                   }
                 >
-                  <Icon name="close" size={30} color="rgba(35, 171, 224, 1)" />
+                <View data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17-2}>
+                  <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Registrati</Text>
+                </View>
                 </TouchableOpacity>
 
               </View>
@@ -463,7 +489,6 @@ MenuLogin.propTypes = {
 MenuLogin.defaultProps = {
 
 }
-
 
 const styles = StyleSheet.create({
   "home_rettangolo3": {

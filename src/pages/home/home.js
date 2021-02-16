@@ -1,21 +1,33 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon3 from 'react-native-vector-icons/AntDesign';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, Modal,View, TextInput, FlatList, ScrollView, TouchableHighlight, ImageBackground, TouchableOpacity,Button} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import Absolute from 'react-native-absolute';
+import Icon2 from 'react-native-vector-icons/Feather';
+import Prueba from "./mapAutocomplete.js";
+import {Picker} from '@react-native-picker/picker';
+import Sfetch from "../../services/fetchManager.js";
+const scom = require("../../services/url.js");
 export default class Home extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-
+        modalVisible:false,
+        textDove:"",
+        selectCategoria:"todas",
+        tercero:""
       };
       this.getVariable= this.getVariable.bind(this);
+      this.handleTextInput= this.handleTextInput.bind(this);
+      this.changeModal = this.changeModal.bind(this);
+      this.buscar= this.buscar.bind(this);
 
   }
 
@@ -24,7 +36,29 @@ export default class Home extends Component {
 
   }
 
+  buscar(){
 
+    var sobj={
+      textDove:this.state.textDove,
+      categoria:this.state.selectCategoria,
+      tercero:this.state.tercero
+    }
+    this.props.navigation.navigate("busqueda",{sobj})
+
+
+  }
+
+
+  handleTextInput(value, name){
+    this.state[name]= value;
+    this.forceUpdate()
+    console.log(this.state)
+  }
+
+  changeModal(){
+    this.state.modalVisible=!this.state.modalVisible;
+    this.forceUpdate();
+  }
 
   getVariable(name){
     superObj={};
@@ -42,69 +76,47 @@ export default class Home extends Component {
     return superObj
   }
 
-  handlePress(target, owner) {
-    if (this.props.onPress) {
-        let name;
-        let id;
-        let index = -1;
-        if (target.search("::") > -1) {
-            const varCount = target.split("::").length;
-            if (varCount === 2) {
-                name = target.split("::")[0];
-                id = target.split("::")[1];
-            } else if (varCount === 3) {
-                name = target.split("::")[0];
-                index = parseInt(target.split("::")[1]);
-                id = target.split("::")[2];
-            }
-        } else {
-            name = target;
-        }
-        this.props.onPress({ type: 'button', name: name, index: index, id: id, owner: owner });
-    }
-  }
-
-  handleChangeTextinput(name, value) {
-      let id;
-      let index = -1;
-      if (name.search('::') > -1) {
-          const varCount = name.split("::").length;
-          if (varCount === 2) {
-              name = name.split("::")[0];
-              id = name.split("::")[1];
-          } else if (varCount === 3) {
-              name = name.split("::")[0];
-              index = name.split("::")[1];
-              id = name.split("::")[2];
-          }
-      } else {
-          name = name;
-      }
-      let state = this.state;
-      state[name.split('::').join('')] = value;
-      this.setState(state, () => {
-          if (this.props.onChange) {
-              this.props.onChange({ type: 'textinput', name: name, value: value, index: index, id: id });
-          }
-      });
-  }
-
   render() {
 
-    objDat2={
-      nombre:"Città di Bra",
-      imagenLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU",
-      descripcion:"La capitale de la gastronomie, à deux pas de Nice La capitale de la gastronomie, à ....",
-      ciudad: "Bra (CN)",
-      numero: "0172 430185",
-      imagenGrande:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU"
+        objDat2={
+          nombre:"Città di Bra",
+          imagenLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU",
+          descripcion:"La capitale de la gastronomie, à deux pas de Nice La capitale de la gastronomie, à ....",
+          ciudad: "Bra (CN)",
+          numero: "0172 430185",
+          imagenGrande:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU"
 
-    }
-    objDat1={
-      tit:"Manger et deguster",
-      subtit:"Tu as cherché",
-      imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU"
-    }
+        }
+        objDat1={
+          tit:"Manger et deguster",
+          subtit:"Tu as cherché",
+          imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+          imagen2: require("./assets/shpastapesto.png")
+        }
+
+        objDat3={
+          tit:"Visiter ed découvrir",
+          subtit:"Tu as cherché",
+          imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+          imagen2: require("./assets/windsurfadobestock151590813.png")
+        }
+
+        objDat4={
+          tit:"S'amuser",
+          subtit:"Tu as cherché",
+          imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+          imagen2: require("./assets/cinqueTerre2.png")
+        }
+
+        objDat5={
+          tit:"Dormi Et Se Relaxer",
+          subtit:"Tu as cherché",
+          imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
+          imagen2: require("./assets/cameraSuperior.png")
+        }
+
+
+
   /*  let ref = Absolute.add(
       <View style={{position:'absolute', top:0, left:0, right:0, bottom:0}}>
         <Text>fdasfdsa</Text>
@@ -113,6 +125,24 @@ export default class Home extends Component {
 */
     return (
     <View>
+    <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.state.modalVisible}
+
+    >
+      <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
+        <Prueba saveText={this.handleTextInput} changeModal={this.changeModal}/>
+        <Button
+          onPress={()=>{
+              this.changeModal()
+          }}
+          title="Cancelar"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
+      </View>
+    </Modal>
     <ScrollView data-layer="ede4eb2b-5942-4ef0-bd02-40406020abba" style={styles.home}>
 
         <View data-layer="276ba31a-23aa-4bf7-bd73-79d4b0782908" style={styles.home_rettangolo11}>
@@ -137,9 +167,21 @@ export default class Home extends Component {
               <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"25%",alignItems:"center"}}>
                 <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
                   <View style={{width:"80%",height:"100%"}}>
+                    <TextInput
 
+                      value={this.state.textDove}
+
+
+                      onFocus={
+                        ()=>{
+                          this.changeModal()
+                        }
+                      }
+
+                    />
                   </View>
                   <View data-layer="e20134e4-2716-489e-8ac4-73b14507446f" style={styles.home_gps_raggruppa5}>
+
 
                       <View data-layer="adb6a889-73c3-498b-867d-f2c8a7393153" style={styles.home_gps_raggruppa5_raggruppa4}>
                           <Svg data-layer="f4aabe86-3d5c-4872-9f9b-a5588139c7a3" style={styles.home_gps_raggruppa5_raggruppa4_tracciato4} preserveAspectRatio="none" viewBox="0 0 15 15" fill="rgba(0, 0, 0, 1)"><SvgPath d="M 14.375 6.875 L 13.08812522888184 6.875 C 12.79874992370605 4.272187232971191 10.72781181335449 2.201250076293945 8.125 1.911875009536743 L 8.125 0.625 C 8.125 0.2800000011920929 7.845000267028809 0 7.5 0 C 7.154999732971191 0 6.875 0.2800000011920929 6.875 0.625 L 6.875 1.911875009536743 C 4.272187232971191 2.201250076293945 2.201250076293945 4.272187232971191 1.911875009536743 6.875 L 0.625 6.875 C 0.2800000011920929 6.875 0 7.154999732971191 0 7.5 C 0 7.845000267028809 0.2800000011920929 8.125 0.625 8.125 L 1.911875009536743 8.125 C 2.201250076293945 10.72781181335449 4.272187232971191 12.79874992370605 6.875 13.08812522888184 L 6.875 14.375 C 6.875 14.72000026702881 7.154999732971191 15 7.5 15 C 7.845000267028809 15 8.125 14.72000026702881 8.125 14.375 L 8.125 13.08812522888184 C 10.72781372070313 12.79874992370605 12.79874992370605 10.72781181335449 13.08812522888184 8.125 L 14.375 8.125 C 14.72000026702881 8.125 15 7.845000267028809 15 7.5 C 15 7.154999732971191 14.72000026702881 6.875 14.375 6.875 Z M 7.5 11.875 C 5.087500095367432 11.875 3.125 9.91249942779541 3.125 7.5 C 3.125 5.087500095367432 5.087500095367432 3.125 7.5 3.125 C 9.91249942779541 3.125 11.875 5.087500095367432 11.875 7.5 C 11.875 9.91249942779541 9.91249942779541 11.875 7.5 11.875 Z"  /></Svg>
@@ -150,26 +192,28 @@ export default class Home extends Component {
               <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"25%",alignItems:"center"}}>
                 <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
 
-
+                <Picker
+                  selectedValue={this.state.selectCategoria}
+                  style={{height: "100%", width: "100%"}}
+                  onValueChange={(itemValue, itemIndex) =>{
+                    this.state.selectCategoria= itemValue;
+                    this.forceUpdate()
+                  }}>
+                  <Picker.Item label="Todas las categorias" value="todas" />
+                  <Picker.Item label="Manger" value="manger" />
+                  <Picker.Item label="Visiter" value="visiter" />
+                  <Picker.Item label="S'amuser" value="s'amuser" />
+                  <Picker.Item label="dormir" value="dormir" />
+                </Picker>
 
 
                 </View>
               </View>
-              <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"25%",alignItems:"center"}}>
-                <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
 
-                  <View style={{width:"80%",height:"100%"}}>
-
-                  </View>
-                  <View data-layer="e20134e4-2716-489e-8ac4-73b14507446f" style={styles.home_gps_raggruppa5}>
-
-                        <Icon name="map-marker-outline" size={20}  />
-                  </View>
-
-                </View>
-              </View>
               <TouchableOpacity style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"25%",alignItems:"center"}}
-                onPress={()=>this.props.navigation.navigate("Recomendaciones")}
+                onPress={()=>{
+                  this.buscar();
+                }}
               >
                 <View data-layer="02f5db02-5a51-4d00-9a6f-0d6e25a81171" style={styles.home_rettangolo12}>
                   <Text data-layer="048aae7c-66f9-4afc-8adb-06b7220eabe1" style={styles.home_chercher}>Chercher</Text>
@@ -185,7 +229,7 @@ export default class Home extends Component {
 
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
 
-                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2})}
+                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2,categoria:"1"})}
                   >
                     <ImageBackground source={require('./assets/shpastapesto.png')} style={{width:'100%',height:'100%',justifyContent:"center",textAlign:'center'}}>
 
@@ -199,7 +243,7 @@ export default class Home extends Component {
               <View style={{width:'50%',height:"50%", display:'flex', justifyContent:'center', alignItems:'center',flexDirection:'column'}}>
 
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
-                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2})}
+                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat3,objDat2,categoria:"2"})}
                   >
                     <ImageBackground source={require('./assets/windsurfadobestock151590813.png')} style={{width:'100%',height:'100%',justifyContent:"center"}}>
                       <Text data-layer="13a6b2f7-8334-4a14-8a42-ae3388365e22" style={styles.home_manger}>Visiter</Text>
@@ -212,7 +256,7 @@ export default class Home extends Component {
 
 
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
-                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2})}
+                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat4,objDat2,categoria:"3"})}
                   >
                     <ImageBackground source={require('./assets/cameraSuperior.png')} style={{width:'100%',height:'100%',justifyContent:"center",display:"flex"}}>
                       <Text data-layer="74332546-75b5-4cec-b945-91ca32204059" style={styles.home_manger}>S'amuser</Text>
@@ -226,7 +270,7 @@ export default class Home extends Component {
               <View style={{width:'50%',height:"50%", display:'flex', justifyContent:'center', alignItems:'center',flexDirection:'column'}}>
 
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
-                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2})}
+                    onPress={()=>this.props.navigation.navigate("Categoria", {objDat5,objDat2,categoria:"4"})}
                   >
                     <ImageBackground source={require('./assets/cinqueTerre2.png')} style={{width:'100%',height:'100%',justifyContent:"center"}}>
                       <Text data-layer="13a6b2f7-8334-4a14-8a42-ae3388365e22" style={styles.home_manger}>Dormir</Text>
@@ -498,18 +542,41 @@ de Nice La capitale de la gastronomie, à ....</Text>
         </View>*/}
     </ScrollView>
     <View data-layer="10e3e5e0-d684-4683-855a-adb2248fb403" style={styles.menu_rettangolo1}>
-      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white">
+      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
+        onPress={
+          ()=>{
+            if(this.props.variables.tokenLogin.value!==""){
+              this.props.navigation.navigate("Menu");
+            }
+            else{
+              this.props.navigation.navigate("MLogin");
+            }
+          }
+        }
+      >
 
             <Icon2 name="menu" size={30} />
 
       </TouchableOpacity>
 
-      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white">
-        <Icon name="home" size={30}/>
+      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
+        onPress={
+          ()=>{
+
+          }
+        }
+      >
+        <Icon3 name="home" size={30}/>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white">
-        <Icon  name="left" size={30}/>
+      <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
+        onPress={
+          ()=>{
+
+          }
+        }
+      >
+        <Icon3  name="left" size={30}/>
       </TouchableOpacity>
 
     </View>
@@ -533,7 +600,8 @@ const styles = StyleSheet.create({
 
     "backgroundColor": "rgba(255, 255, 255, 1)",
 
-    "width": '90%',
+    "width": '100%',
+    height:"90%"
 
 
   },

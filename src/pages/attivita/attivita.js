@@ -10,10 +10,11 @@ import Header from '~/components/attivita/header.js';
 import Footer from '~/components/attivita/footer.js';
 import Social from '~/components/attivita/social.js';
 import Imagenes from '~/components/attivita/imagenes.js';
-import Content from '~/components/attivita/content.js';
+import Contenido from '~/components/attivita/content.js';
 import Bar from '~/components/attivita/bar.js';
 import Info from '~/components/attivita/info.js';
-
+import Map from '~/components/attivita/map.js';
+import BottonMenu from "../../components/menus/bottonMenu.js";
 export default class Attivita extends Component {
 
   constructor(props) {
@@ -21,6 +22,9 @@ export default class Attivita extends Component {
       this.state = {
 
       };
+      this.action1 = this.action1.bind(this)
+      this.action2 = this.action2.bind(this)
+      this.action3 = this.action3.bind(this)
   }
 
 
@@ -71,23 +75,38 @@ export default class Attivita extends Component {
       });
   }
 
+
+    action1(){
+      this.props.navigation.navigate("Menu")
+    }
+
+    action2(){
+      this.props.navigation.navigate("Home")
+    }
+
+    action3(){
+        this.props.navigation.navigate("Home")
+    }
+
   render() {
 
-    objDat = this.props.route.params.objDat;
+    objDat = this.props.route.params.datos;
 
 
 
     return (
+      <View>
     <ScrollView data-layer="072d1e5f-f691-44c8-92b4-2261f9c479bc" style={styles.attivita}>
       <View data-layer="b91dba1a-5782-44a5-bb17-12b9d70a3818" style={styles.attivita_rettangolo11}>
 
         <Header datos={objDat} />
         <Info datos={objDat} />
         <Bar datos={objDat} />
-        <Content datos={objDat}/>
+        <Contenido datos={objDat}/>
 
         <Imagenes datos={objDat} />
-        <Social />
+        <Map datos={objDat}/>
+        <Social datos={objDat}/>
         <Footer />
 
       </View>
@@ -227,6 +246,8 @@ nous</Text>
         */}
 
     </ScrollView>
+    <BottonMenu action1={this.action1} action2={this.action2} action3={this.action3}/>
+    </View>
     );
   }
 }
@@ -247,7 +268,7 @@ const styles = StyleSheet.create({
     "backgroundColor": "rgba(255, 255, 255, 1)",
 
     "width": "100%",
-    "height": "100%",
+    "height": "90%",
 
   },
   "attivita_rettangolo11": {

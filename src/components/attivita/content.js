@@ -29,7 +29,7 @@ export default class Content extends Component {
 
         this.alto = Dimensions.get('window').height,
         this.ancho = Dimensions.get('window').width,
-        this.altoComponente = 50 * this.alto;
+        this.altoComponente = 30 * this.alto;
         this.altoComponente = this.altoComponente / 100;
 
 
@@ -40,6 +40,7 @@ export default class Content extends Component {
     misEstilos ={
       padre:{
         "width":this.ancho,
+        height:this.altoComponente,
         "display":"flex",
         "flexDirection":"row",
         "flexWrap":"wrap",
@@ -52,7 +53,7 @@ export default class Content extends Component {
         "opacity": 1,
 
         "backgroundColor": "rgba(220, 220, 220, 1)",
-        "height":"auto",
+        "height":"100%",
         "width": "95%",
         "padding":10,
         "flexDirection":"row",
@@ -82,7 +83,7 @@ export default class Content extends Component {
     return (
       <View style={misEstilos.padre}>
         <View data-layer="61b17af9-c036-4d19-b685-d2682b567765" style={misEstilos.attivita_raggruppa38_rettangolo13}>
-          <Text>{this.props.datos.resena}</Text>
+          <Text>{this.props.datos.descrizione}</Text>
         </View>
       </View>
     );

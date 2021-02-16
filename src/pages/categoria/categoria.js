@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,Alert} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -8,16 +8,156 @@ import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import Establecimiento from '~/components/establecimiento/establecimiento.js';
 import HeaderCategoria from '~/components/headerCategoria/headerCategoria.js';
+import Sfetch from "../../services/fetchManager.js";
+const scom = require("../../services/url.js");
+import BottonMenu from "../../components/menus/bottonMenu.js";
 
 export default class Categoria extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-
+        paramHeader:{},
+        dataRender:{}
       };
+      this.getVariable = this.getVariable.bind(this);
+      this.handleResponse = this.handleResponse.bind(this);
+      this.action1 = this.action1.bind(this)
+      this.action2 = this.action2.bind(this)
+      this.action3 = this.action3.bind(this)
+      this.buscar();
+  }
+  action1(){
+    this.props.navigation.navigate("Menu")
   }
 
+  action2(){
+    this.props.navigation.navigate("Home")
+  }
+
+  action3(){
+      this.props.navigation.navigate("Home")
+  }
+
+  async buscar(){
+
+    var sobj = {}
+
+    switch(this.props.route.params.categoria){
+      case "1":
+        sobj.categoria1 = true;
+        this.state.paramHeader = this.props.route.params.objDat1
+        this.forceUpdate()
+      break;
+      case "2":
+        sobj.categoria2 = true;
+        this.state.paramHeader = this.props.route.params.objDat3;
+        this.forceUpdate()
+      break;
+      case "3":
+        sobj.categoria3 = true;
+        this.state.paramHeader = this.props.route.params.objDat4;
+        this.forceUpdate()
+      break;
+      case "4":
+        sobj.categoria4 = true;
+        this.state.paramHeader = this.props.route.params.objDat5;
+        this.forceUpdate()
+      break;
+    }
+
+    token = this.getVariable("tokenLogin");
+    baseUrl = scom.url;
+    baseUrl+="/busqueda_actividad";
+
+    a = new Sfetch(baseUrl);
+
+    try{
+      b = await a.postJson(sobj, token.value);
+      //console.log(b);
+      this.handleResponse(b);
+
+    }
+    catch(error){
+      //Alert.alert(error)
+      console.log(error)
+    }
+  }
+
+  handleResponse(array){
+    baseUrl = scom.url;
+    baseUrl+="/files/"
+    array.forEach(
+      (item,index,este)=>{
+
+        array[index].imagine= array[index].imagine.map(
+          (item,index)=>{
+
+              if(item == ""){
+
+                  return "https://lh3.googleusercontent.com/proxy/O-pQRoEXEGDY-PYA7jgqLqxT7bR0jdN_q3PT1h0RGR_cqm4-OLcN0sAc7EYENKKSnkG_7dv947IUmcoNENz5pzoLABFGcRWkMEaLR4nkZ9HGgFO4J9gBBaFGkWxCKryyvLidpRbTnFKAcWrsYO9yJhQOq_kT7ClTnabjvhdMAgFD4zWsA4YtlBXGiJNEe6aaV5CSOWj59lziAZwqVGPPo83Cv0bXx30YYy0NkqrV0BfNqFYa5zdD-2pZvtYW49-wvxOuMKwPO0aaJLwB_zQQ3HF0LIzdQ2R86Z3M38YDY47r1xIPfZlO2OdT0ckrCBOBBab7i6CWn2WXcwQcQmVPDXN48ajWvcU6ZyB0UFMZwFrsFhHHWBVcX2TTtCoa7eTihCuGdi0P_ev0gwLEaTufMEMNz44xNQeKAQwH5soFN4ON3XGJ22UZECjlaR6O26lqtaQJ4iGnEx8hF4f3JKqUW-GjvKuaXk4UWvPq62g7s4It_N4cgOg8OPlUHeiFiUZyK0ULgviJU92H8x4fJjDUj2sJ_aQBCEkwC3J0rhfmg5HTHomIhRBDdjvOLrZevlg3NbN0k64"
+
+
+              }
+              else{
+                return baseUrl+item;
+              }
+
+          }
+        )
+        array[index].services=[
+          [
+            "restaurant",
+            array[index].categoria1
+          ],
+          [
+            "room-service",
+            array[index].categoria2
+          ],
+          [
+            "sait-boat",
+            array[index].categoria3
+          ],
+          [
+            "bank",
+            array[index].categoria4
+          ]
+        ]
+
+        array[index].indirizzo =JSON.parse(array[index].indirizzo)
+        array[index].indirizzo.geocode.latitudeDelta= 0.0922;
+        array[index].indirizzo.geocode.longitudeDelta= 0.0421;
+        array[index].citta = array[index].citta.split(",")
+          array[index].citta = array[index].citta[0];
+      //  array[index].social = JSON.parse(array[index].social)
+
+      }
+    )
+
+    this.state.dataRender = array.map(
+      (item)=>{
+        return {key:item}
+      }
+    )
+    this.forceUpdate()
+  //  console.log(this.state.dataRender)
+
+
+  }
+
+  getVariable(name){
+    superObj={};
+    for(item in this.props.variables){
+
+      if(item == name){
+        superObj = this.props.variables[item]
+      }
+
+
+    }
+
+    return superObj
+  }
 
   handlePress(target, owner) {
     if (this.props.onPress) {
@@ -123,20 +263,15 @@ export default class Categoria extends Component {
 
     }
     return (
-    <ScrollView data-layer="a85cdb6f-2c4c-4c53-b9e5-785a51713227" style={styles.categoria}>
+      <View>
+      <ScrollView data-layer="a85cdb6f-2c4c-4c53-b9e5-785a51713227" style={styles.categoria}>
 
-        <HeaderCategoria datos={this.props.route.params.objDat1} />
-        <FlatList
-          data={
-            [
-              {key:this.props.route.params.objDat2},
-              {key:this.props.route.params.objDat2},
-              {key:this.props.route.params.objDat2}
-            ]
-          }
-          renderItem={({item})=><Establecimiento datos={item.key} navigation={this.props.navigation} />}
+          <HeaderCategoria datos={this.state.paramHeader} />
+          <FlatList
+            data={this.state.dataRender}
+            renderItem={({item})=><Establecimiento datos={item.key} navigation={this.props.navigation} />}
 
-      />
+          />
 
     {/*
         <View data-layer="eaff929c-e1c6-4621-b31b-eb5738de64b6" style={styles.categoria_rettangolo11}></View>
@@ -315,6 +450,8 @@ de Nice La capitale de la gastronomie, à ....</Text>
             <Svg data-layer="7d12f3e5-7a9f-4300-99c7-291a97adba27" style={styles.categoria_raggruppa35_tracciato29} preserveAspectRatio="none" viewBox="2136.537353515625 1363.255126953125 1.57470703125 1.6317138671875" fill="rgba(35, 171, 224, 1)"><SvgPath d="M 2137.287353515625 1364.005126953125 C 2137.368896484375 1364.016967773438 2137.362060546875 1364.078857421875 2137.36181640625 1364.136840820313 C 2137.3369140625 1364.093017578125 2137.312255859375 1364.049072265625 2137.287353515625 1364.005126953125 Z"  /></Svg>
         </View>*/}
     </ScrollView>
+      <BottonMenu action1={this.action1} action2={this.action2} action3={this.action3}/>
+    </View>
     );
   }
 }
@@ -334,7 +471,7 @@ const styles = StyleSheet.create({
     "backgroundColor": "rgba(25, 25, 25, 1)",
     padding:0,
     "width": "100%",
-    "height": "100%",
+    "height": "90%",
 
   },
   "categoria_rettangolo11": {

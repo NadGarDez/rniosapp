@@ -3,6 +3,7 @@ package com.modulo4;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.burnweb.rnsendintent.RNSendIntentPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.imagepicker.ImagePickerPackage;
@@ -21,6 +22,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.horcrux.svg.SvgPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +40,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSendIntentPackage(),
+	    new RNCWebViewPackage(),
             new NetInfoPackage(),
             new RNFetchBlobPackage(),
             new ImagePickerPackage(),
@@ -50,7 +55,8 @@ public class MainApplication extends Application implements ReactApplication {
             new AsyncStoragePackage(),
             new LinearGradientPackage(),
             new RNGestureHandlerPackage(),
-	    new SvgPackage()
+	    new SvgPackage(),
+	    new MapsPackage()
       );
     }
 

@@ -92,7 +92,7 @@ export default class HeaderCategoria extends Component {
     return (
       <View style={misEstilos.padre}>
         <View style={misEstilos.imageBckround}>
-        <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={{uri:this.props.datos.imagen}}>
+        <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={this.props.datos.imagen2}>
           <Text data-layer="912d89a8-160a-4969-b032-9c5695d47c39" style={misEstilos.categoria_tuAsCherche}>{this.props.datos.subtit}</Text>
         </ImageBackground>
         </View>
