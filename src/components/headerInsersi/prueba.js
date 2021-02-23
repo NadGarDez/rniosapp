@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image,Alert} from 'react-native';
 const GooglePlacesInput = (props) => {
   const ref = useRef();
-
+  useEffect(() => {
+   ref.current?.focus();
+ }, []);
   return (
 
       <GooglePlacesAutocomplete
+        autoFocus={true}
         ref={ref}
         placeholder='indirizzo'
         fetchDetails = {true}

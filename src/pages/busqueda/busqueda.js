@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,Alert} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -8,6 +8,7 @@ import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import Establecimiento from '~/components/establecimiento/establecimiento.js';
 import HeaderRecomendaciones from '~/components/headerRecomendaciones/headerBusqueda.js';
+import HeaderCategoria from '~/components/headerCategoria/headerCategoria.js';
 import Sfetch from "../../services/fetchManager.js";
 const scom = require("../../services/url.js");
 import BottonMenu from "../../components/menus/bottonMenu.js";
@@ -31,7 +32,6 @@ export default class Recomendaciones extends Component {
   async buscar(){
 
     var sobj = this.props.route.params.sobj;
-
 
 
     token = this.getVariable("tokenLogin");
@@ -156,17 +156,49 @@ export default class Recomendaciones extends Component {
       imagenGrande:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU"
 
     }
+
+    let categoria = ""
+    let image = ""
+    switch (this.props.route.params.sobj.categoria) {
+      case "todas":
+        categoria = "tutte"
+        image = this.props.route.params.sobj.imagenes[0]
+      break;
+
+      case "manger":
+          categoria = "Mangia e degusta"
+          image = this.props.route.params.sobj.imagenes[1]
+      break;
+
+      case "s'amuser":
+        categoria = "Divertiti"
+        image = this.props.route.params.sobj.imagenes[2]
+      break;
+
+      case "dormir":
+        categoria = "Dormi e rilassati"
+        image = this.props.route.params.sobj.imagenes[3]
+      break;
+
+      case "visiter":
+        categoria = "Visita e scopri"
+        image = this.props.route.params.sobj.imagenes[4]
+      break;
+
+
+    }
+
     objDatCategoria={
-      tit:"Manger et deguster",
-      subtit:"Tu as cherché",
-      imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU"
+      tit:"Ricerca",
+      subtit:`Categoria : ${categoria}\nCitta : ${this.props.route.params.sobj.textDove=="" ? "Non entrato" : this.props.route.params.sobj.textDove}`,
+      imagen2:image
     }
     return (
     <View>
     <ScrollView data-layer="a85cdb6f-2c4c-4c53-b9e5-785a51713227" style={styles.categoria}>
 
 
-      <HeaderRecomendaciones />
+      <HeaderCategoria datos={objDatCategoria}/>
       <FlatList
         data={this.state.dataRender}
         renderItem={({item})=><Establecimiento datos={item.key} navigation={this.props.navigation} />}
@@ -360,10 +392,10 @@ de Nice La capitale de la gastronomie, à ....</Text>
 const styles = StyleSheet.create({
   "categoria": {
     "opacity": 1,
-    "backgroundColor": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#F9F9F9",
     padding:0,
     "width": "100%",
-    "height": "10%",
+    "height": "90%",
 
   },
   "categoria_rettangolo11": {

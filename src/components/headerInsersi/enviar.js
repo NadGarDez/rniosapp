@@ -217,7 +217,7 @@ export default class Social extends Component {
 
       "inserimentoAttivita_raggruppa50_rettangolo122c2ea86a": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "50%",
         "height": "50%",
@@ -227,7 +227,7 @@ export default class Social extends Component {
       "inserimentoAttivita_raggruppa50_envoyer": {
         "opacity": 1,
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(25, 25, 25, 1)",
+        "color": "#F9F9F9",
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
@@ -273,7 +273,7 @@ export default class Social extends Component {
           <TouchableOpacity style={[misEstilos.flexPerfectCenter, misEstilos.inserimentoAttivita_raggruppa50_rettangolo122c2ea86a]}
             onPress={
               ()=>{
-                
+
                 this.props.enviar()
               }
             }

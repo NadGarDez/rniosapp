@@ -27,10 +27,14 @@ export default class InserimentoAttivita extends Component {
 
   constructor(props) {
       super(props);
-      const d = new Date(0)
+      let d = new Date()
+      console.log(d)
+      let v = d.getTime() + 31536000000;
+      console.log(new Date(v))
       this.state = {
         estado:"activo",
-        id:`${this.props.variables.user.value.id}-${d}`,
+        id:`${this.props.variables.user.value.id}-${d.getTime()}`,
+        idUsuario:this.props.variables.user.value.id,
         attivitaLuogo:"",
         indirizzo:{
           data:""
@@ -48,8 +52,8 @@ export default class InserimentoAttivita extends Component {
         social:"",
         pagado:false,
         fechaPago: "",
-        vencimiento: new Date(),
-        idUsuario:"",
+        vencimiento:new Date(v),
+        idUsuario:this.props.variables.user.value.id,
         modalVisible:false,
         modalVisible2:false,
         modalVisible3:false,
@@ -102,7 +106,7 @@ export default class InserimentoAttivita extends Component {
   handleResponse(obj){
 
     if(obj.estatus == "exitoso"){
-        Alert.alert("ingresado correctamente")
+        Alert.alert("Activité saisie correctement")
         this.props.navigation.navigate("Menu");
     }
 
@@ -131,7 +135,8 @@ export default class InserimentoAttivita extends Component {
     let v = true;
     for(let i in this.state.validaciones){
       if(this.state.validaciones[i] == false){
-        Alert.alert("hay campos no validos, porfavor revise con detenimiento y corrija")
+        Alert.alert("Ci sono campi non validi, si prega di controllare attentamente e correggere ")
+        v=false;
         break;
       }
     }
@@ -139,7 +144,7 @@ export default class InserimentoAttivita extends Component {
   }
 
   async enviar(){
-    if(this.validar == true){
+  //  if(this.validar() == true){
       this.state.idUsuario = this.props.variables.user.value.id;
       this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
       //this.state.citta= JSON.stringify(this.state.citta);
@@ -170,7 +175,7 @@ export default class InserimentoAttivita extends Component {
         console.log(error);
       }
 
-    }
+    //}
   }
 
   handleTextInput(value, name){
@@ -194,9 +199,11 @@ export default class InserimentoAttivita extends Component {
   }
 
   changeModalPaypal(){
-    this.state.modalVisible3=!this.state.modalVisible3;
-    this.preEnviar()
-    this.forceUpdate();
+   if(this.validar()==true){
+      this.preEnviar()
+      this.state.modalVisible3=!this.state.modalVisible3;
+      this.forceUpdate();
+    }
   }
 
 
@@ -245,8 +252,8 @@ export default class InserimentoAttivita extends Component {
             onPress={()=>{
                 this.changeModal(1)
             }}
-            title="Cancelar"
-            color="#841584"
+            title="supprimer"
+            color="#28337F"
 
           />
         </View>
@@ -263,8 +270,8 @@ export default class InserimentoAttivita extends Component {
             onPress={()=>{
                 this.changeModal(2)
             }}
-            title="Cancelar"
-            color="#841584"
+            title="supprimer"
+            color="#28337F"
 
           />
         </View>
@@ -278,6 +285,7 @@ export default class InserimentoAttivita extends Component {
           <Imagenes2 saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>
           <Social saveValidacion={this.saveValidacion} saveText={this.handleTextInput}/>
           <Enviar enviar={this.changeModalPaypal} />
+
 
         </View>
 
@@ -444,7 +452,7 @@ const styles = StyleSheet.create({
 
 
     "width": "100%",
-    "height": 2615,
+    "height": 2980,
 
   },
   "inserimentoAttivita_rettangolo4": {

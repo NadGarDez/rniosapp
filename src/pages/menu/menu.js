@@ -16,7 +16,7 @@ export default class Menu extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          colapse1:false,
+          colapse1:false,//
           colapse2:false
       };
 
@@ -123,32 +123,33 @@ export default class Menu extends Component {
 
     }
     objDat1={
-      tit:"Manger et deguster",
-      subtit:"Tu as cherché",
+      tit:"Degustare",
+      subtit:"Hai cercato",
       imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-      imagen2: require("./assets/shpastapesto.png")
+      imagen2: require("./assets/1.jpg")
     }
 
     objDat3={
-      tit:"Visiter ed découvrir",
-      subtit:"Tu as cherché",
+      tit:"Divertirsi",
+      subtit:"Hai cercato",
       imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-      imagen2: require("./assets/windsurfadobestock151590813.png")
+      imagen2: require("./assets/3..jpg")
     }
 
     objDat4={
-      tit:"S'amuser",
-      subtit:"Tu as cherché",
+      tit:"Rilassarsi",
+      subtit:"Hai cercato",
       imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-      imagen2: require("./assets/cinqueTerre2.png")
+      imagen2: require("./assets/4.jpeg")
     }
 
     objDat5={
-      tit:"Dormi Et Se Relaxer",
-      subtit:"Tu as cherché",
+      tit:"Rilassarsi",
+      subtit:"Hai cercato",
       imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-      imagen2: require("./assets/cameraSuperior.png")
+      imagen2: require("./assets/2.jpg")
     }
+
 
     return (
       <View>
@@ -175,16 +176,18 @@ export default class Menu extends Component {
               </View>
 
               <View style={{width:"100%", height:"20%",display:"flex", flexDirection:"row", alignItems:"center"}}>
-                <Icon name="user" size={20} color="white" style={{marginLeft:5}}/>
+                <View style={{width:"50%",display:"flex", flexDirection:"row", alignItems:"center"}}>
+                <Icon name="user" size={20} color="#28337F" style={{marginLeft:5}} />
                 <Text data-layer="6b4f094d-7a98-4f46-8168-114075edf8bc" style={styles.menu_login}>{this.props.variables.user.value.name}</Text>
-                <TouchableOpacity
+                </View>
+                <TouchableOpacity style={{width:"50%"}}
                   onPress={
                     ()=>{
                       this.logout()
                     }
                   }
                 >
-                  <Text data-layer="6b4f094d-7a98-4f46-8168-114075edf8bc" style={[styles.menu_login, {marginLeft:"55%"}]}>Cerrar sesion</Text>
+                  <Text data-layer="6b4f094d-7a98-4f46-8168-114075edf8bc" style={[styles.menu_login, {textAlign:"right", marginRight:3}]}>Cancella la sottoscrizione</Text>
 
                 </TouchableOpacity>
               </View>
@@ -193,43 +196,44 @@ export default class Menu extends Component {
             </View>
 
             <View style={{width:"100%", height:"70%",}}>
+
               <View style={{width:"100%", height:"20%",display:"flex", alignItems:"center", justifyContent:"center"}}>
-                <Text data-layer="bebb5481-53d2-47d9-8d38-a4a8401c7e01" style={styles.menu_accueil}>Accueil</Text>
+                {/*  <Text data-layer="bebb5481-53d2-47d9-8d38-a4a8401c7e01" style={styles.menu_accueil}>Accoglienza</Text>*/}
               </View>
               <View style={{width:"100%", height:"80%",display:"flex", flexDirection:"column"}}>
 
                 <View style={{width:"100%", height:"40%",display:"flex", flexDirection:"column"}}>
 
                     <View data-layer="4b22338e-7ec0-4335-b9e8-95894dd8dad2" style={styles.menu_rettangolo17}>
-                      <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_lesDestinations}>Les destinations</Text>
+                      <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_lesDestinations}>Categories</Text>
                     </View>
                     <View style={{width:"100%", height:"80%",display:"flex", flexDirection:"column"}}>
                       <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
                             onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2,categoria:"1"})}
 
                       >
-                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Manger</Text>
+                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Mangia e degusta</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
 
                         onPress={()=>this.props.navigation.navigate("Categoria", {objDat3,objDat2,categoria:"2"})}
 
                       >
-                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Visiter</Text>
+                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Divertiti</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
 
                         onPress={()=>this.props.navigation.navigate("Categoria", {objDat4,objDat2,categoria:"3"})}
 
                       >
-                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>S'amuser</Text>
+                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Dormi e rilassati</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={{width:"100%", height:"25%",display:"flex", alignItems:"center", justifyContent:"center"}}
 
                         onPress={()=>this.props.navigation.navigate("Categoria", {objDat5,objDat2,categoria:"4"})}
 
                       >
-                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Dormir</Text>
+                        <Text data-layer="136634cf-fb1c-4a78-9645-c35019a9c6bb" style={styles.menu_manger}>Visita e scopri</Text>
                       </TouchableOpacity>
                     </View>
 
@@ -243,14 +247,14 @@ export default class Menu extends Component {
                           this.props.navigation.navigate("Panel");
                         }
                         else{
-                          Alert.alert("no ha hecho login o registrado")
+                          Alert.alert("non sei loggato o registrato")
                         }
                       }
 
                     }
 
                   >
-                      <Text data-layer="9860dbc4-fc0b-447d-81b5-fbf69fd44414" style={styles.menu_visitezLaCote}>Panel de control</Text>
+                      <Text data-layer="9860dbc4-fc0b-447d-81b5-fbf69fd44414" style={styles.menu_visitezLaCote}>panneau de commande</Text>
                   </TouchableOpacity>
 
                 </View>
@@ -263,14 +267,14 @@ export default class Menu extends Component {
                         this.props.navigation.navigate("InserimentoAttivita");
                       }
                       else{
-                        Alert.alert("no ha hecho login o registrado")
+                        Alert.alert("non sei loggato o registrato")
                       }
                     }
 
                   }
 
                   >
-                    <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Adherer</Text>
+                    <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>Nouvelle entreprise</Text>
                   </TouchableOpacity>
                 </View >
 
@@ -284,18 +288,18 @@ export default class Menu extends Component {
                         this.props.navigation.navigate("ChangeP1");
                       }
                       else{
-                        Alert.alert("no ha hecho login o registrado")
+                        Alert.alert("non sei loggato o registrato")
                       }
                     }
 
                   }
 
                   >
-                    <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>configuracion</Text>
+                    <Text data-layer="182cd424-1749-4537-aa34-625797d50ddd" style={styles.menu_visitezLaCote}>changer le mot de passe</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{width:"100%", height:"15%",display:"flex", alignItems:"center", justifyContent:"center"}}>
-                  <Icon name="close" size={30} color="rgba(35, 171, 224, 1)" />
+                {/*  <Icon name="close" size={30} color="#28337F" />*/}
                 </View>
 
               </View>
@@ -434,7 +438,7 @@ export default class Menu extends Component {
           }
         >
 
-              <Icon2 name="menu" size={30} />
+              <Icon2 name="menu" size={30} color="#F9F9F9" />
 
         </TouchableOpacity>
 
@@ -443,15 +447,15 @@ export default class Menu extends Component {
             ()=>{this.props.navigation.navigate("Home")}
           }
         >
-          <Icon name="home" size={30}/>
+          <Icon name="home" size={30} color="#F9F9F9"/>
         </TouchableOpacity>
 
         <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
           onPress={
-            ()=>{this.props.navigation.navigate("InserimentoAttivita")}
+            ()=>{this.props.navigation.navigate("Home")}
           }
         >
-          <Icon  name="left" size={30}/>
+          <Icon  name="left" size={30} color="#F9F9F9"/>
         </TouchableOpacity>
 
       </View>
@@ -482,7 +486,7 @@ const styles = StyleSheet.create({
     "flexDirection":"column",
     "opacity": 1,
 
-    "backgroundColor": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#F9F9F9",
 
     "width": "100%",
     "height": 760,
@@ -954,7 +958,7 @@ const styles = StyleSheet.create({
   },
   "menu_rettangolo1": {
     "opacity": 1,
-    "backgroundColor": "rgba(220, 220, 220, 1)",
+    "backgroundColor": "#28337F",
     "display":"flex",
     "flexDirection":"row",
 
@@ -1483,19 +1487,21 @@ const styles = StyleSheet.create({
     "opacity": 1,
 
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(220, 220, 220, 1)",
+    "color": "#B8B8B8",
     "fontSize": 13,
     "fontWeight": "700",
     "fontStyle": "normal",
     "fontFamily": "Montserrat",
-    "textAlign": "center",
-    "marginLeft":3
+    marginLeft:3,
+    "textAlign": "left",
+
   },
+
   "menu_accueil": {
     "opacity": 1,
 
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(220, 220, 220, 1)",
+    "color": "#B8B8B8",
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
@@ -1505,8 +1511,8 @@ const styles = StyleSheet.create({
   },
   "menu_lesDestinations": {
     "opacity": 1,
-    "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#28337F",
+    "color": "#F9F9F9",
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
@@ -1518,7 +1524,7 @@ const styles = StyleSheet.create({
     "opacity": 1,
 
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(35, 171, 224, 1)",
+    "color": "#B8B8B8",
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
@@ -1598,11 +1604,11 @@ const styles = StyleSheet.create({
   "menu_visitezLaCote": {
     "opacity": 1,
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(220, 220, 220, 1)",
+    "color": "#B8B8B8",
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Dolce Vita Heavy",
     "textAlign": "center",
 
   },

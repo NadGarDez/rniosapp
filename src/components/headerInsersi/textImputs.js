@@ -75,7 +75,6 @@ export default class TextInputs extends Component {
     }
 
     enviarValidacion(){
-      Alert.alert("validando")
       if((this.state.inputs.input1.currentValue!="")&&(this.props.dataIndirizo!="")&&(this.props.dataCitta!="")&&(this.state.inputs.input4.currentValue!="")&&(this.state.inputs.input5.currentValue!="")){
         this.props.saveValidacion(true, "inputText");
       }
@@ -178,13 +177,14 @@ export default class TextInputs extends Component {
     const color3 = this.state.inputs.input3.validateStatus == "empty input" ? "red" : "white";
     const color4 = this.state.inputs.input4.validateStatus == "empty input" ? "red" : "white";
     const color5 = this.state.inputs.input5.validateStatus == "empty input" ? "red" : "white";
-    console.log(this.props.dataCitta)
+    let a = this.props.dataIndirizo.split(",")
+    console.log(a[0])
     return (
       <View style={misEstilos.padre}>
 
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
-            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Attività/Luogo</Text>
+            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Nom / titre / sujet</Text>
 
           </View>
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
@@ -199,16 +199,21 @@ export default class TextInputs extends Component {
                }
              }
 
-             placeholder="Write Here"
+             placeholder="Ecrire ici"
 
              onBlur={
                ()=>{
 
                  if(this.state.inputs.input1.currentValue == ""){
                     this.state.inputs.input1.validateStatus = "empty input";
-                    this.state.inputs.input1.message = "this input cant't be empty"
+                    this.state.inputs.input1.message = "Champ obligatoire"
                     this.forceUpdate();
 
+                 }
+                 else{
+                   this.state.inputs.input1.message = ""
+                   this.state.inputs.input1.validateStatus = "default";
+                    this.forceUpdate();
                  }
                 this.enviarValidacion()
                }
@@ -234,17 +239,17 @@ export default class TextInputs extends Component {
         </View>
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
-            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Indirizzo</Text>
+            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Adresse</Text>
 
           </View>
 
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
           <TextInput
             style={{ height: "100%", width:"100%", backgroundColor:"white",borderColor: color2, borderStyle:"solid", borderWidth:1}}
-            value={this.props.dataIndirizo}
+            value={a[0]}
             onChangeText={
               (text)=>{
-                Alert.alert(text)
+
                 this.props.saveText(text,"attivitaLuogo")
                 this.forceUpdate()
               }
@@ -262,15 +267,20 @@ export default class TextInputs extends Component {
               }
             }
 
-            placeholder="Write Here"
+            placeholder="Ecrire ici"
 
             onBlur={
               ()=>{
 
                 if(this.props.dataIndirizo == ""){
                    this.state.inputs.input2.validateStatus = "empty input";
-                   this.state.inputs.input2.message = "this input cant't be empty"
+                   this.state.inputs.input2.message = "Champ obligatoire"
                    this.forceUpdate();
+                }
+                else{
+                  this.state.inputs.input2.message = ""
+                   this.state.inputs.input2.validateStatus = "default";
+                    this.forceUpdate();
                 }
                   this.enviarValidacion()
               }
@@ -282,7 +292,7 @@ export default class TextInputs extends Component {
         </View>
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
-            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Città</Text>
+            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Ville</Text>
 
           </View>
 
@@ -310,15 +320,20 @@ export default class TextInputs extends Component {
               }
             }
 
-            placeholder="Write Here"
+            placeholder="Ecrire ici"
 
             onBlur={
               ()=>{
                 if(this.props.dataCitta == ""){
                    this.state.inputs.input3.validateStatus = "empty input";
-                   this.state.inputs.input3.message = "this input cant't be empty"
+                   this.state.inputs.input3.message = "Champ obligatoire"
                    this.forceUpdate();
 
+                }
+                else{
+                  this.state.inputs.input3.message = ""
+                  this.state.inputs.input3.validateStatus = "default";
+                   this.forceUpdate();
                 }
                 this.enviarValidacion()
               }
@@ -330,7 +345,7 @@ export default class TextInputs extends Component {
         </View>
         <View style={misEstilos.SectionImputText}>
           <View style={misEstilos.contenedorText}>
-            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Telefono</Text>
+            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Téléphone</Text>
 
           </View>
 
@@ -345,13 +360,20 @@ export default class TextInputs extends Component {
                  this.forceUpdate()
                }
              }
-             placeholder="Write Here"
+             placeholder="Ecrire ici"
              onBlur={
                ()=>{
                  if(this.state.inputs.input4.currentValue == ""){
                     this.state.inputs.input4.validateStatus = "empty input";
-                    this.state.inputs.input4.message = "this input cant't be empty"
+                    this.state.inputs.input4.message = "Champ obligatoire"
                     this.forceUpdate();
+
+                 }
+                 else{
+
+                     this.state.inputs.input4.message = ""
+                     this.state.inputs.input4.validateStatus = "default";
+                      this.forceUpdate();
 
                  }
 
@@ -375,7 +397,7 @@ export default class TextInputs extends Component {
         </View>
         <View style={misEstilos.SectionImputTextArea}>
           <View style={misEstilos.contenedorText2}>
-            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Descrizione (max 150 caratteri)</Text>
+            <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Description (max 150 caractères)</Text>
 
           </View>
 
@@ -392,15 +414,20 @@ export default class TextInputs extends Component {
                 }
               }
 
-              placeholder="Write Here"
+              placeholder="Ecrire ici"
 
               onBlur={
                 ()=>{
                   if(this.state.inputs.input5.currentValue == ""){
                      this.state.inputs.input5.validateStatus = "empty input";
-                     this.state.inputs.input5.message = "this input cant't be empty"
+                     this.state.inputs.input5.message = ""
                      this.forceUpdate();
 
+                  }
+                  else{
+                    this.state.inputs.input5.message = ""
+                    this.state.inputs.input5.validateStatus = "default";
+                     this.forceUpdate();
                   }
                     this.enviarValidacion()
                 }

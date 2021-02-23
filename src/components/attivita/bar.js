@@ -61,7 +61,7 @@ export default class Content extends Component {
       "attivita_raggruppa39_rettangolo12": {
         "opacity": 1,
 
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#E09423",
 
         "borderTopLeftRadius": 15,
         "borderTopRightRadius": 15,
@@ -79,7 +79,7 @@ export default class Content extends Component {
         "opacity": 1,
 
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(25, 25, 25, 1)",
+        "color": "#F9F9F9",
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
@@ -114,8 +114,8 @@ export default class Content extends Component {
       <View style={misEstilos.padre}>
         <View style={misEstilos.hijo}>
           <View data-layer="e75b63dd-cc5c-4763-9675-68dc0336f458" style={misEstilos.attivita_raggruppa39_rettangolo12}>
-            <Icon name="phone" color="black" size={20} style={{marginLeft:"5%",marginRight:"5%"}}/>
-            <Text style={misEstilos.attivita_raggruppa36_x0172430185}>Appelez{"\n"}Nous</Text>
+            <Icon name="phone" color="#F9F9F9" size={20} style={{marginLeft:"5%",marginRight:"5%"}}/>
+            <Text style={misEstilos.attivita_raggruppa36_x0172430185}>Chiamaci</Text>
           </View>
         </View>
         <View style={misEstilos.contenedorIconos}>
@@ -127,7 +127,7 @@ export default class Content extends Component {
 
                   return(
                     <View style={misEstilos.contenedorIcono}>
-                      <Icon4 name={item[0]} size={20} color={item[1] ? "rgba(35, 171, 224, 1)" : "grey" }/>
+                      <Icon4 name={item[0]} size={20} color={item[1] ? "#28337F" : "#DCDCDC" }/>
                     </View>
                   )
                 break;
@@ -135,7 +135,7 @@ export default class Content extends Component {
 
                   return(
                     <View style={misEstilos.contenedorIcono}>
-                      <Icon4 name={item[0]} size={20} color={item[1] ? "rgba(35, 171, 224, 1)" : "grey" }/>
+                      <Icon4 name={item[0]} size={20} color={item[1] ? "#28337F" : "#DCDCDC" }/>
                     </View>
                   )
 
@@ -145,7 +145,7 @@ export default class Content extends Component {
 
                   return(
                     <View style={misEstilos.contenedorIcono}>
-                      <Icon5 name={item[0]} size={20} color={item[1] ? "rgba(35, 171, 224, 1)" : "grey" }/>
+                      <Icon5 name={item[0]} size={20} color={item[1] ? "#28337F" : "#DCDCDC" }/>
                     </View>
                   )
 
@@ -155,7 +155,7 @@ export default class Content extends Component {
 
                   return(
                     <View style={misEstilos.contenedorIcono}>
-                      <Icon name={item[0]} size={20} color={item[1] ? "rgba(35, 171, 224, 1)" : "grey" }/>
+                      <Icon name={item[0]} size={20} color={item[1] ? "#28337F" : "#DCDCDC" }/>
                     </View>
                   )
 

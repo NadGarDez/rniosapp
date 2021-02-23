@@ -35,4 +35,4 @@ function url(){
   return url;
 }
 
-exports.url= data.localUrl;
+exports.url= data.publicUrl;

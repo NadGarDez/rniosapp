@@ -468,7 +468,7 @@ Categoria.defaultProps = {
 const styles = StyleSheet.create({
   "categoria": {
     "opacity": 1,
-    "backgroundColor": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#F9F9F9",
     padding:0,
     "width": "100%",
     "height": "90%",

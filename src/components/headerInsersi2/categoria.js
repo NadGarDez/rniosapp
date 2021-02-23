@@ -29,10 +29,10 @@ export default class Checks extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          categoria1:false,
-          categoria2:false,
-          categoria3:false,
-          categoria4:false,
+          categoria1:null,
+          categoria2:null,
+          categoria3:null,
+          categoria4:null,
           validate:"default",
           message:""
         };
@@ -52,14 +52,12 @@ export default class Checks extends Component {
     }
 
     validate(){
-      Alert.alert("JIO")
       this.state.validate = "no validate";
       this.props.saveValidacion(false, "checkbox")
       for(i in this.state){
        if(i != "validate" && i != "message"){
 
           if(this.state[i]==true){
-            Alert.alert("true")
             this.state.validate = "validate";
             this.forceUpdate();
             this.props.saveValidacion(true,"checkbox")
@@ -72,6 +70,29 @@ export default class Checks extends Component {
     }
 
   render(){
+
+    let v1 = ""
+    let v2 = ""
+    let v3 = ""
+    let v4 = ""
+    try{
+    //  console.log(this.props.b[0].social)
+      v1 = this.props.b[0].categoria1;
+      v2 = this.props.b[0].categoria2;
+      v3 = this.props.b[0].categoria3;
+      v4 = this.props.b[0].categoria4;
+      this.props.saveCheck(this.props.b[0].categoria1,"categoria1")
+      this.props.saveCheck(this.props.b[0].categoria2,"categoria2")
+      this.props.saveCheck(this.props.b[0].categoria3,"categoria3")
+      this.props.saveCheck(this.props.b[0].categoria4,"categoria4")
+    }
+    catch(e){
+
+      v1 = null
+      v2 = null
+      v3 = null
+      v4 = null
+    }
 
     misEstilos ={
       padre:{
@@ -159,7 +180,7 @@ export default class Checks extends Component {
           <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Categoria</Text>
         </View>
         <View style={misEstilos.contenedorText}>
-          <Text style={{color:"red", marginLeft:8}}>{this.state.validate == "no validate" ? "activate at least one check" : ""}</Text>
+          <Text style={{color:"red", marginLeft:8}}>{this.state.validate == "no validate" ? "attivare almeno un controllo" : ""}</Text>
         </View>
         <View style={misEstilos.contenedorCheck}>
           <View style={misEstilos.SectionImputCheck}>
@@ -175,7 +196,7 @@ export default class Checks extends Component {
 
               }}
 
-              value={this.state.categoria1}
+              value={this.state.categoria1 != null ? this.state.catergoria1 : v1}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
@@ -189,7 +210,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria2}
+              value={this.state.categoria2 != null ? this.state.catergoria2 : v2}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
@@ -203,7 +224,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria3}
+              value={this.state.categoria3 != null ? this.state.catergoria3 : v3}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
@@ -217,7 +238,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria4}
+              value={this.state.categoria4 != null ? this.state.catergoria4 : v4}
             />
           </View>
         </View>

@@ -113,7 +113,7 @@ export default class HeaderRecomendaciones extends Component {
     sa = Array()
 
     this.props.datos.imagine.forEach((item, i) => {
-      
+
       if(item.indexOf("http://51.178.16.150:3333")!= -1 && i > 1){
         sa.push(item)
       }

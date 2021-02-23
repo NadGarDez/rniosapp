@@ -87,7 +87,7 @@ export default class HeaderI extends Component {
         "opacity": 1,
 
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(25, 25, 25, 1)",
+        "color": "#F9F9F9",
         "fontSize": 22,
         "fontWeight": "700",
         "fontStyle": "normal",

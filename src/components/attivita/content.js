@@ -52,14 +52,14 @@ export default class Content extends Component {
       "attivita_raggruppa38_rettangolo13": {
         "opacity": 1,
 
-        "backgroundColor": "rgba(220, 220, 220, 1)",
+        "backgroundColor": "#B8B8B8",
         "height":"100%",
         "width": "95%",
         "padding":10,
         "flexDirection":"row",
         borderLeftSyle:"solid",
         borderLeftWidth:5,
-        borderLeftColor:"rgba(35, 171, 224, 1)"
+        borderLeftColor:"#E09423"
 
       },
 

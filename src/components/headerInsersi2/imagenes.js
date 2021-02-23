@@ -6,7 +6,7 @@ import Icon3 from "react-native-vector-icons/Ionicons";
 import Icon4 from "react-native-vector-icons/MaterialIcons";
 import Icon5 from "react-native-vector-icons/Fontisto";
 import Icon6 from "react-native-vector-icons/AntDesign";
-import {StyleSheet, Text, View, ActivityIndicator,TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, ActivityIndicator,TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image, TouchableOpacity,Alert} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -72,6 +72,10 @@ export default class Imagenes extends Component {
       }
 
       return superObj
+    }
+
+    componentWillUpdate(){
+
     }
 
   actionImage(titulo, imagen){
@@ -184,6 +188,26 @@ export default class Imagenes extends Component {
     }
   render(){
 
+    let v1 = ""
+    let v2 = ""
+
+    try{
+    //  console.log(this.props.b[0].social)
+    baseUrl = scom.url;
+    baseUrl+="/files/"
+
+      v1 = baseUrl+this.props.b[0].imagine[0];
+      v2 = baseUrl+this.props.b[0].imagine[1];
+
+    }
+    catch(e){
+
+      v1 = null
+      v2 = null
+    }
+
+
+
     misEstilos ={
       padre:{
         "width":this.ancho,
@@ -291,7 +315,7 @@ export default class Imagenes extends Component {
       },
       "inserimentoAttivita_raggruppa46_rettangolo12dccae145": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "80%",
         "height": "50%",
@@ -312,7 +336,7 @@ export default class Imagenes extends Component {
       "inserimentoAttivita_rettangolo35": {
         "opacity": 1,
         "position": "absolute",
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "100%",
         "height": "50%",
@@ -356,13 +380,13 @@ export default class Imagenes extends Component {
           }
 
           else{
-            component= <Image source={Object.entries(this.state.imagenes[item].source).length == 0 ? {uri:"https://lh3.googleusercontent.com/proxy/ivAXjdjgF0lEqRfz_v8I3xbqi6MhV8E8TPUOScyxF1WJxST6SmiBDyp53VDKqEupUAFtASa7VqZI-fIMM41n1y0pw1tXlK_zQDxaaatQqWJhQjOENUc4P_0jGnEGv5SvFIUhZNkZ6BFvXTiPnwF7EGbmlc_tCJNH8i_Hp2J8XvmPd2HwHad2GufyQE78SySzmHLkMs2u7vPwGRCmqJCeurp1KxSw59IzWsT7W9ZkB-AjsxA3WuF3dBgxUu1lYYdfbkR2d73qRXhYdEZSaBRRUfJryzlkyTdIhjPAGWg0g_0h81jCOoRw9zD5Kdl7OlGn1_a6oaUaUcGXH8Xxh8YtRxbZo-duUPwEJLYM0GhtoskUfNY4rl8eeeKgxw_UBW5F2bHsbRmKlSk52meoz7NtvMSMdGYdn3_CcdfShlfBaab6HenyCRBLqLo8LnYIrfaIopd8jEUHtbHMtJ9OE7UJTQTEW-3bp_Ln0W2C5HThgahtQuv-mdG0qvq_32l2uruoe5P788jeEW6CCsnVeIHaAKDNcDiy-ViFdv8_5BOAR9O6sPXol-e0kY7-rzmJOJfn7YtPWaU"} : this.state.imagenes[item].source } style={this.sizes("80%","80%")} />;
+            component= <Image source={Object.entries(this.state.imagenes[item].source).length == 0 ? {uri:v1} : this.state.imagenes[item].source } style={this.sizes("80%","80%")} />;
           }
           return component;
         }
       )
 
-    var section = <Image source={Object.entries(this.state.imagenes.profolio.source).length == 0 ? {uri:"https://lh3.googleusercontent.com/proxy/ivAXjdjgF0lEqRfz_v8I3xbqi6MhV8E8TPUOScyxF1WJxST6SmiBDyp53VDKqEupUAFtASa7VqZI-fIMM41n1y0pw1tXlK_zQDxaaatQqWJhQjOENUc4P_0jGnEGv5SvFIUhZNkZ6BFvXTiPnwF7EGbmlc_tCJNH8i_Hp2J8XvmPd2HwHad2GufyQE78SySzmHLkMs2u7vPwGRCmqJCeurp1KxSw59IzWsT7W9ZkB-AjsxA3WuF3dBgxUu1lYYdfbkR2d73qRXhYdEZSaBRRUfJryzlkyTdIhjPAGWg0g_0h81jCOoRw9zD5Kdl7OlGn1_a6oaUaUcGXH8Xxh8YtRxbZo-duUPwEJLYM0GhtoskUfNY4rl8eeeKgxw_UBW5F2bHsbRmKlSk52meoz7NtvMSMdGYdn3_CcdfShlfBaab6HenyCRBLqLo8LnYIrfaIopd8jEUHtbHMtJ9OE7UJTQTEW-3bp_Ln0W2C5HThgahtQuv-mdG0qvq_32l2uruoe5P788jeEW6CCsnVeIHaAKDNcDiy-ViFdv8_5BOAR9O6sPXol-e0kY7-rzmJOJfn7YtPWaU"} : this.state.imagenes.profolio.source } style={this.sizes("80%","80%")} />;
+    var section = <Image source={Object.entries(this.state.imagenes.profolio.source).length == 0 ? {uri:v2} : this.state.imagenes.profolio.source } style={this.sizes("80%","80%")} />;
 
     return (
       <View style={[misEstilos.flexColumn,this.sizes("100%")]}>
@@ -399,7 +423,7 @@ export default class Imagenes extends Component {
               }
             >
 
-              <Text>Charger</Text>
+              <Text style={{color:"#F9F9F9"}}>Charger</Text>
 
             </TouchableOpacity>
 
@@ -425,7 +449,7 @@ export default class Imagenes extends Component {
             }
             >
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </TouchableOpacity>
 

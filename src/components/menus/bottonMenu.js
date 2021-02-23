@@ -43,7 +43,7 @@ export default class MenuLogin extends Component {
       }
       >
 
-            <Icon2 name="menu" size={30} />
+            <Icon2 name="menu" size={30} color="#F9F9F9"/>
 
       </TouchableOpacity>
 
@@ -54,7 +54,7 @@ export default class MenuLogin extends Component {
           }
         }
       >
-        <Icon name="home" size={30}/>
+        <Icon name="home" size={30} color="#F9F9F9"/>
       </TouchableOpacity>
 
       <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
@@ -64,7 +64,7 @@ export default class MenuLogin extends Component {
           }
         }
       >
-        <Icon  name="left" size={30}/>
+        <Icon  name="left" size={30} color="#F9F9F9"/>
       </TouchableOpacity>
 
     </View>
@@ -77,7 +77,7 @@ export default class MenuLogin extends Component {
 const styles = StyleSheet.create({
   "menu_rettangolo1": {
     "opacity": 1,
-    "backgroundColor": "rgba(220, 220, 220, 1)",
+    "backgroundColor": "#28337F",
     "display":"flex",
     "flexDirection":"row",
 

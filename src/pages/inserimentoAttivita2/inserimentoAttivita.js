@@ -29,11 +29,9 @@ export default class InserimentoAttivita extends Component {
       super(props);
       const d = new Date(0)
       this.state = {
-        estado:"activo",
-        id:`${this.props.variables.user.value.id}-${d}`,
         attivitaLuogo:"",
         indirizzo:{
-          data:""
+          data:null
         },
         citta:null,
         telefono:"",
@@ -46,10 +44,6 @@ export default class InserimentoAttivita extends Component {
         imagine2:[],
         imagine:[],
         social:"",
-        pagado:false,
-        fechaPago: "",
-        vencimiento: new Date(),
-        idUsuario:this.props.variables.user.value.id,
         modalVisible:false,
         modalVisible2:false,
         modalVisible3:false,
@@ -77,6 +71,7 @@ export default class InserimentoAttivita extends Component {
       this.action2 = this.action2.bind(this)
       this.action3 = this.action3.bind(this)
       this.buscarAnuncio = this.buscarAnuncio.bind(this)
+      this.compareImagine = this.compareImagine.bind(this)
       var now = new Date();
       this.dif = now.getTime()
 
@@ -125,7 +120,7 @@ export default class InserimentoAttivita extends Component {
   handleResponse(obj){
 
     if(obj.estatus == "exitoso"){
-        Alert.alert("ingresado correctamente")
+        Alert.alert("inserito correttamente")
         this.props.navigation.navigate("Menu");
     }
 
@@ -153,11 +148,19 @@ export default class InserimentoAttivita extends Component {
     */
   }
 
+  compareImagine(antiguo,nuevo){
+    for(let i = 0; i<nuevo.length; i++){
+      if(antiguo[i]!="" && nuevo[i]==""){
+        nuevo[i] = antiguo[i]
+      }
+    }
+    return nuevo;
+  }
   validar(){
     let v = true;
     for(let i in this.state.validaciones){
       if(this.state.validaciones[i] == false){
-        Alert.alert("hay campos no validos, porfavor revise con detenimiento y corrija")
+        Alert.alert("ci sono campi non validi, si prega di controllare attentamente e correggere")
         break;
       }
     }
@@ -165,9 +168,10 @@ export default class InserimentoAttivita extends Component {
   }
 
   async enviar(){
-    if(this.validar() == true){
+    //if(this.validar() == true){
       this.state.idUsuario = this.props.variables.user.value.id;
       this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
+      this.state.imagine = this.compareImagine(this.state.b[0].imagine, this.state.imagine)
       //this.state.citta= JSON.stringify(this.state.citta);
       this.state.indirizzo=JSON.stringify(this.state.indirizzo);
 
@@ -178,9 +182,10 @@ export default class InserimentoAttivita extends Component {
           objE[i]= this.state[i];
         }
       }
-
+      console.log("aqui obj")
       console.log(objE);
 
+      /*
 
       baseUrl = scom.url;
       baseUrl+="/editar_actividad";
@@ -195,8 +200,9 @@ export default class InserimentoAttivita extends Component {
       catch(error){
         console.log(error);
       }
+      */
 
-    }
+  //  }
   }
 
   handleTextInput(value, name){
@@ -220,7 +226,7 @@ export default class InserimentoAttivita extends Component {
   }
 
   changeModalPaypal(){
-
+    this.enviar()
     /*
     this.state.modalVisible3=!this.state.modalVisible3;
     this.preEnviar()
@@ -468,7 +474,7 @@ const styles = StyleSheet.create({
   },
   "inserimentoAttivita_rettangolo11": {
     "opacity": 1,
-    "backgroundColor": "rgba(220, 220, 220, 1)",
+    "backgroundColor": "#F9F9F9",
 
 
     "width": "100%",

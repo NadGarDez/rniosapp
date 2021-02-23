@@ -291,7 +291,7 @@ export default class Imagenes extends Component {
       },
       "inserimentoAttivita_raggruppa46_rettangolo12dccae145": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "80%",
         "height": "50%",
@@ -312,7 +312,7 @@ export default class Imagenes extends Component {
       "inserimentoAttivita_rettangolo35": {
         "opacity": 1,
         "position": "absolute",
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "100%",
         "height": "50%",
@@ -371,7 +371,7 @@ export default class Imagenes extends Component {
 
           <View style={[misEstilos.inserimentoAttivita_rettangolo35, misEstilos.flexPerfectCenter]}>
 
-            <Text style={misEstilos.inserimentoAttivita_caricamentoImmagini}>Caricamento Immagini</Text>
+            <Text style={misEstilos.inserimentoAttivita_caricamentoImmagini}>Importer des images</Text>
 
           </View>
 
@@ -380,7 +380,7 @@ export default class Imagenes extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Profilo</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Profil photo</Text>
 
           </View>
 
@@ -399,7 +399,7 @@ export default class Imagenes extends Component {
               }
             >
 
-              <Text>Charger</Text>
+              <Text style={{color:"#F9F9F9"}}>Importe</Text>
 
             </TouchableOpacity>
 
@@ -407,7 +407,7 @@ export default class Imagenes extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Copertina</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image de couverture</Text>
 
           </View>
 
@@ -425,7 +425,7 @@ export default class Imagenes extends Component {
             }
             >
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importe</Text>
 
             </TouchableOpacity>
 

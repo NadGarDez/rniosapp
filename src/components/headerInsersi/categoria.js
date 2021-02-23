@@ -52,17 +52,16 @@ export default class Checks extends Component {
     }
 
     validate(){
-      Alert.alert("JIO")
       this.state.validate = "no validate";
       this.props.saveValidacion(false, "checkbox")
       for(i in this.state){
        if(i != "validate" && i != "message"){
 
           if(this.state[i]==true){
-            Alert.alert("true")
             this.state.validate = "validate";
             this.forceUpdate();
             this.props.saveValidacion(true,"checkbox")
+          
             break;
           }
 
@@ -159,11 +158,11 @@ export default class Checks extends Component {
           <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Categoria</Text>
         </View>
         <View style={misEstilos.contenedorText}>
-          <Text style={{color:"red", marginLeft:8}}>{this.state.validate == "no validate" ? "activate at least one check" : ""}</Text>
+          <Text style={{color:"red", marginLeft:8}}>{this.state.validate == "no validate" ? "attivare almeno un controllo" : ""}</Text>
         </View>
         <View style={misEstilos.contenedorCheck}>
           <View style={misEstilos.SectionImputCheck}>
-            <Text>Manger</Text>
+            <Text>Goûter</Text>
             <CheckBox
 
               onValueChange={(newValue) => {
@@ -179,7 +178,7 @@ export default class Checks extends Component {
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
-            <Text>Visiter</Text>
+            <Text>S'amuser</Text>
             <CheckBox
               onValueChange={(newValue) => {
                   this.state.categoria2=newValue;
@@ -193,7 +192,7 @@ export default class Checks extends Component {
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
-            <Text>S'amuser</Text>
+            <Text>Se détendre</Text>
             <CheckBox
               onValueChange={(newValue) => {
                   this.state.categoria3=newValue;
@@ -207,7 +206,7 @@ export default class Checks extends Component {
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
-            <Text>Dormir</Text>
+            <Text>Visite</Text>
             <CheckBox
               onValueChange={(newValue) => {
                   this.state.categoria4=newValue;

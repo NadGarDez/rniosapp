@@ -56,7 +56,7 @@ export default class HeaderCategoria extends Component {
       },
       "categoria_rettangolo10": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
         "width": "100%",
         "height": "20%",
         display:"flex",
@@ -65,8 +65,8 @@ export default class HeaderCategoria extends Component {
       },
       "categoria_mangerEtDeguster": {
         "opacity": 1,
-        "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(25, 25, 25, 1)",
+        "backgroundColor": "#28337F",
+        "color": "#F9F9F9",
         "fontSize": 22,
         "fontWeight": "700",
         "fontStyle": "normal",
@@ -77,13 +77,16 @@ export default class HeaderCategoria extends Component {
         "opacity": 1,
 
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(220, 220, 220, 1)",
+        "color": "#28337F",
         "fontSize": 20,
         "fontWeight": "700",
         "fontStyle": "normal",
         "fontFamily": "Montserrat",
         "textAlign": "left",
-        marginLeft:"5%"
+        marginLeft:"5%",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center"
       },
 
     }
@@ -93,7 +96,9 @@ export default class HeaderCategoria extends Component {
       <View style={misEstilos.padre}>
         <View style={misEstilos.imageBckround}>
         <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={this.props.datos.imagen2}>
+        <View style={{height:"25%",backgroundColor:"#F9F9F9",opacity:0.5}}>
           <Text data-layer="912d89a8-160a-4969-b032-9c5695d47c39" style={misEstilos.categoria_tuAsCherche}>{this.props.datos.subtit}</Text>
+          </View>
         </ImageBackground>
         </View>
         <View data-layer="853274a4-9d2a-42bc-a146-a7e83326ee0b" style={misEstilos.categoria_rettangolo10}>

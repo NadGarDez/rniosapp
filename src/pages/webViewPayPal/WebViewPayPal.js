@@ -50,7 +50,7 @@ export default class InserimentoAttivita extends Component {
       token = token[1];
       console.log(token)
       var a = new Date();
-      Alert.alert("pago exitoso");
+      Alert.alert("le paiement a réussi");
       this.props.saveText(true,"pagado");
       this.props.saveText(a,"fechaPago");
       this.props.enviar()
@@ -63,7 +63,7 @@ export default class InserimentoAttivita extends Component {
 
     if(webViewState.url.indexOf("http://51.178.16.150/maloso")==0){
 
-      Alert.alert("pago no realizado")
+      Alert.alert("le paiement a échoué")
       this.props.saveText(false,"pagado");
       this.state.payed= false;
       this.forceUpdate()
@@ -120,7 +120,7 @@ export default class InserimentoAttivita extends Component {
     return (
 
       <WebView
-        source={{ uri: this.state.payed == false ? this.props.urlAprove : "" }}
+        source={{ uri: this.state.payed == false ? this.props.urlAprove : "https://www.google.com/" }}
         style={{ marginTop: 20 , width:this.ancho, height:"100%"}}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         javaScriptEnabled = {true}

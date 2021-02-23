@@ -164,7 +164,7 @@ export default class Establecimiento extends Component {
       "home_grigliaDiRipetizione1_raggruppa27b4dd0fa1_raggruppa16ec058b81_rettangolo1302b2c573": {
         "opacity": 1,
         "backgroundColor": "rgba(220, 220, 220, 1)",
-        "width": "99%",
+        "width": "100%",
         "height": "100%",
 
       },
@@ -182,7 +182,7 @@ export default class Establecimiento extends Component {
       "menuLogin_rettangolo20": {
         "opacity": 1,
 
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "borderTopLeftRadius": 15,
         "borderTopRightRadius": 15,
@@ -195,7 +195,7 @@ export default class Establecimiento extends Component {
       phone:{
         "opacity": 1,
         marginLeft:"5%",
-
+//
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "color": "rgba(25, 25, 25, 1)",
         "fontSize": 15,
@@ -231,8 +231,7 @@ export default class Establecimiento extends Component {
 
         <View style={misEstilos.padre}>
           <View style={{width:"100%", height:"60%", display:"flex", flexDirection:"row"}}>
-            <View style={{backgroundColor:"black",width:"1%", height:"100%"}}>
-            </View>
+
             <View data-layer="a9e55bbf-06d2-4d63-af51-2f4433ab3ace" style={misEstilos.home_grigliaDiRipetizione1_raggruppa27b4dd0fa1_raggruppa16ec058b81_rettangolo1302b2c573}>
 
               <View style={misEstilos.hijo2}>
@@ -246,28 +245,28 @@ export default class Establecimiento extends Component {
                     <Text data-layer="146451af-e4cd-4368-8dee-800e1f03355c" style={misEstilos.categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_cittaDiBraeacc8e89}>{this.props.datos.attivitaLuogo}</Text>
                   </View>
                   <View style={{display:"flex", flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>Publicado por :</Text>
-                    <Text>{this.props.admin == true ? this.props.datos.nombreUser : "Mi"}</Text>
+                    <Text style={{fontWeight:"bold"}}>Pubblicato da:</Text>
+                    <Text>{this.props.admin == true ? this.props.datos.nombreUser : "Me"}</Text>
                   </View>
 
 
                 </View>
                 <View style={{width:"100%", height:"60%",display:"flex", flexWrap:"wrap"}}>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                  <Text style={{fontWeight:"bold"}}>Publicacion :</Text>
+                  <Text style={{fontWeight:"bold"}}>Pubblicazione:</Text>
                   <Text>{publicacion}</Text>
                   </View>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>Caducidad :</Text>
+                    <Text style={{fontWeight:"bold"}}>scadenza:</Text>
                     <Text>{caducidad}</Text>
                   </View>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>Activo :</Text>
-                    <Text>{this.props.datos.estado == "activo" ? "si" : "no" }</Text>
+                    <Text style={{fontWeight:"bold"}}>attivo:</Text>
+                    <Text>{this.props.datos.estado == "activo" ? "sí" : "non" }</Text>
                   </View>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center",flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>Pagado :</Text>
-                    <Text>{this.props.datos.pagado == true ? "si" : "no"}</Text>
+                    <Text style={{fontWeight:"bold"}}>pagato:</Text>
+                    <Text>{this.props.datos.pagado == true ? "sí" : "non"}</Text>
                   </View>
                 </View>
 
@@ -295,7 +294,7 @@ export default class Establecimiento extends Component {
                 }
               }
             >
-              <Text>{this.props.datos.estado == "activo" ? "Suspender" : "Activar"}</Text>
+              <Text style={{color:"#F9F9F9"}}>{this.props.datos.estado == "acttivo" ? "tempo di sosta" : "Acttivare"}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[misEstilos.menuLogin_rettangolo20,{marginLeft:"1.5%",marginRight:"1.5%",diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center"}]}
               onPress={
@@ -304,7 +303,7 @@ export default class Establecimiento extends Component {
                 }
               }
             >
-              <Text>Pagar</Text>
+              <Text style={{color:"#F9F9F9"}}>Pagare</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[misEstilos.menuLogin_rettangolo20,{marginLeft:"1.5%",marginRight:"1.5%",margmargdiaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center"}]}
               onPress={
@@ -313,7 +312,7 @@ export default class Establecimiento extends Component {
                 }
               }
             >
-              <Text>Editar</Text>
+              <Text style={{color:"#F9F9F9"}}>modificare</Text>
             </TouchableOpacity>
           </View>
         </View>

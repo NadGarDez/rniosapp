@@ -49,7 +49,9 @@ export default class Map extends Component {
         "flexDirection":"row",
         "flexWrap":"wrap",
         marginTop:10,
-        marginBottom:30
+        marginBottom:30,
+        justifyContent:"center",
+        alignItems:"center"
 
 
       },
@@ -124,7 +126,7 @@ export default class Map extends Component {
             longitudeDelta: 0.0421,
           }}
 
-          style={{width:200, height:300, backgroundColor:"white"}}
+          style={{width:this.altoComponente, height:this.ancho, backgroundColor:"white"}}
         >
         {/*
         <MapView.marker coordinate={this.props.datos.indirizzo.geocode}/>

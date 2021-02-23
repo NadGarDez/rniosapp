@@ -3,6 +3,9 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
 const GooglePlacesInput = (props) => {
     const ref = useRef();
+    useEffect(() => {
+   ref.current?.focus();
+ }, []);
   return (
       <GooglePlacesAutocomplete
         ref={ref}

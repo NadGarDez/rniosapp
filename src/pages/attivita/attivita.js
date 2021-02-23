@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   "attivita_rettangolo11": {
     "opacity": 1,
 
-    "backgroundColor": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#F9F9F9",
 
     "borderTopLeftRadius": 0,
     "borderTopRightRadius": 0,

@@ -121,7 +121,7 @@ export default class Imagenes2 extends Component {
           } else if (response.customButton) {
             console.log('User tapped custom button: ', response.customButton);
           } else {
-            
+
             extension = response.fileName.split(".");
             this.state.imagenes[imagen].loading = true;
             this.state.imagenes[imagen].data = response.data;
@@ -333,7 +333,7 @@ export default class Imagenes2 extends Component {
       },
       "inserimentoAttivita_raggruppa46_rettangolo12dccae145": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "80%",
         "height": "50%",
@@ -423,7 +423,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.inserimentoAttivita_rettangolo35, misEstilos.flexPerfectCenter]}>
 
-            <Text style={misEstilos.inserimentoAttivita_galleriaMax9Immagini}>Galleria (max 9 immagini)</Text>
+            <Text style={misEstilos.inserimentoAttivita_galleriaMax9Immagini}>Galerie (max 9 images)</Text>
 
           </View>
 
@@ -432,7 +432,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 1</Text>
 
           </View>
 
@@ -450,7 +450,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 
@@ -458,7 +458,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 2</Text>
 
           </View>
 
@@ -476,7 +476,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 
@@ -484,7 +484,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 3</Text>
 
           </View>
 
@@ -502,7 +502,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 
@@ -510,7 +510,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 4</Text>
 
           </View>
 
@@ -531,7 +531,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 
@@ -539,7 +539,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 5</Text>
 
           </View>
 
@@ -557,7 +557,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 
@@ -565,7 +565,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 6</Text>
 
           </View>
 
@@ -584,7 +584,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 
@@ -592,7 +592,7 @@ export default class Imagenes2 extends Component {
 
           <View style={[misEstilos.flexHorizontalCenter, this.sizes("50%","50%")]}>
 
-            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Immagine Galleria</Text>
+            <Text style={misEstilos.inserimentoAttivita_immagineProfilo}>Image 7</Text>
 
           </View>
 
@@ -612,7 +612,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Importer</Text>
 
             </View>
 

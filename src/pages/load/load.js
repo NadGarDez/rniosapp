@@ -72,7 +72,7 @@ export default class MenuLogin extends Component {
     code =await AsyncStorage.getItem('code');
 
     if(code!=null){
-      this.props.navigation.navigate("RememberPass",{estado:2})
+      this.props.navigation.navigate("Home")
     }
     else{
       if((correo!=null)&&(contracena!=null)){
@@ -96,7 +96,7 @@ export default class MenuLogin extends Component {
 
       user.action(response.user, user);
       token.action(response.token, token);
-      this.props.navigation.navigate("Menu");
+      this.props.navigation.navigate("Home");
 
       console.log(this.state.variables)
 
@@ -151,7 +151,7 @@ export default class MenuLogin extends Component {
       <View>
         <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%"}}>
 
-          <Text>Load...</Text>
+          <Text>Caricare...</Text>
 
         </View>
       </View>

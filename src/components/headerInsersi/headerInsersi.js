@@ -103,11 +103,11 @@ export default class HeaderI extends Component {
     return (
       <View style={misEstilos.padre}>
         <View style={misEstilos.userSection}>
-          <Icon6 name="user" color="rgba(35, 171, 224, 1)" size={20} />
+          <Icon6 name="user" color="#28337F" size={20} />
           <Text style={misEstilos.inserimentoAttivita_pincoPallino}>{this.props.datos.nameUser}</Text>
         </View>
         <View style={misEstilos.tittleSection}>
-          <Text style={misEstilos.inserimentoAttivita_inserimentoAttivita3378703d}>Inserimento Attività</Text>
+          <Text style={misEstilos.inserimentoAttivita_inserimentoAttivita3378703d}>nouvelle entreprise</Text>
         </View>
       </View>
     );

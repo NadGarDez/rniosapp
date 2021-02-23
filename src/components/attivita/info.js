@@ -79,7 +79,7 @@ export default class Info extends Component {
       info:{
         width:"60%",
         height:"100%",
-        "backgroundColor": "rgba(220, 220, 220, 1)",
+        "backgroundColor": "#B8B8B8",
         display:"flex",
         flexDirection:"column",
         padding:5
@@ -101,7 +101,7 @@ export default class Info extends Component {
         "opacity": 1,
 
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(35, 171, 224, 1)",
+        "color": "#28337F",
         "fontSize": 13,
         "fontWeight": "700",
         "fontStyle": "normal",
@@ -136,7 +136,7 @@ export default class Info extends Component {
       <View style={misEstilos.padre}>
         <View style={misEstilos.info}>
           <View style={misEstilos.item}>
-            <Icon5 name="radio-btn-passive" color="rgba(35, 171, 224, 1)"/>
+            <Icon5 name="radio-btn-passive" color="#28337F"/>
             <Text style={misEstilos.attivita_ristorantePiemontese}>abc</Text>
           </View>
           <View style={misEstilos.item}>

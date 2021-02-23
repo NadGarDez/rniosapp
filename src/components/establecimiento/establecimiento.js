@@ -217,7 +217,7 @@ export default class Establecimiento extends Component {
 
         >
           <View style={{width:"100%", height:"50%", display:"flex", flexDirection:"row"}}>
-            <View style={{backgroundColor:"black",width:"5%", height:"100%"}}>
+            <View style={{backgroundColor:"#F9F9F9",width:"5%", height:"100%"}}>
             </View>
             <View data-layer="a9e55bbf-06d2-4d63-af51-2f4433ab3ace" style={misEstilos.home_grigliaDiRipetizione1_raggruppa27b4dd0fa1_raggruppa16ec058b81_rettangolo1302b2c573}>
 
@@ -246,7 +246,7 @@ export default class Establecimiento extends Component {
                   <Text style={misEstilos.phone}>{this.props.datos.telefono}</Text>
                 </View>
                 <View style={misEstilos.citat}>
-                  <Icon2 name="direction" size={20} style={{marginRight:"10%", marginLeft:"10%"}} color="rgba(35, 171, 224, 1)" />
+                  <Icon2 name="direction" size={20} style={{marginRight:"10%", marginLeft:"10%"}} color="#28337F" />
                   <Text style={misEstilos.phone}>{this.props.datos.citta}</Text>
                 </View>
               </View>
@@ -257,7 +257,7 @@ export default class Establecimiento extends Component {
           <View style={misEstilos.hijo1}>
 
             <Image source={{uri:this.props.datos.imagine[1]}} style={{width:"95%",height:"100%"}}></Image>
-            <View style={{width:"5%", height:"100%", display:"flex", flexDirection:"row", backgroundColor:"black"}}></View>
+            <View style={{width:"5%", height:"100%", display:"flex", flexDirection:"row", backgroundColor:"#F9F9F9"}}></View>
           </View>
         </TouchableOpacity>
 

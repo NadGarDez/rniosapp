@@ -50,7 +50,7 @@ export default class MenuLogin extends Component {
   this.state.paso= 2;
   this.forceUpdate()
     //console.log(url());
-    Alert.alert("enviando")
+    Alert.alert("invio")
 
     baseUrl = scom.url;
     baseUrl+="/recuperacionP";
@@ -84,7 +84,7 @@ export default class MenuLogin extends Component {
     }
 
     else{
-      Alert.alert("Error al enviar el mensaje al correo registrado")
+      Alert.alert("Errore durante l'invio del messaggio alla posta registrata")
     }
 
   }
@@ -99,7 +99,7 @@ export default class MenuLogin extends Component {
       this.props.navigation.navigate("ChangeP2",{email:email})
     }
     else{
-      Alert.alert("Codigo invalido")
+      Alert.alert("Codice non VALIDO")
     }
   }
 
@@ -146,12 +146,12 @@ export default class MenuLogin extends Component {
 
     return (
       <View>
-        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%", backgroundColor:"black", color:"white"}}>
+        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%", backgroundColor:"#F9F9F9", color:"white"}}>
 
           <View style={{display:this.state.paso==1?"flex" : "none", flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',alignItems:"center"}}>
-            <Text size="15" style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center"}}>Ingrese el correo asociado a la cuenta de desea recuperar</Text>
+            <Text size="15" style={{color:"#28337F",fontSize:18,textAlign:"center",marginBottom:5}}>Inserisci l'email associata all'account che desideri recuperare</Text>
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50}}
+              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50, marginBottom:5}}
               onChangeText={
                 (text)=>{
                     this.setState({email:text})
@@ -167,13 +167,13 @@ export default class MenuLogin extends Component {
                 }
               }
             >
-              <Text style={{color:"white"}}>Enviar</Text>
+              <Text style={{color:"#F9F9F9"}}>Spedire</Text>
             </TouchableOpacity>
           </View>
 
 
           <View style={{display:this.state.paso == 3 ? "flex" : "none", flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',alignItems:"center"}}>
-          <Text size="15" style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center"}}>El mensaje ha sido enviado a su correo registrado. Porfavor copie el codigo y peguelo en el siguiente formulario</Text>
+          <Text size="15" style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center",marginBottom:5}}>Il messaggio è stato inviato alla tua email registrata. Copia il codice e incollalo nel seguente modulo</Text>
           <TextInput
             onChangeText={(text)=>{
               this.setState({code:text})
@@ -181,7 +181,7 @@ export default class MenuLogin extends Component {
 
 
 
-            style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50}}
+            style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
           />
 
 
@@ -194,7 +194,7 @@ export default class MenuLogin extends Component {
               }
             }
           >
-            <Text style={{color:"white"}}>Enviar</Text>
+            <Text style={{color:"white"}}>Spedire</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'50%',height:50,alignItems:"center"}]}
             onPress={
@@ -204,17 +204,14 @@ export default class MenuLogin extends Component {
               }
             }
           >
-            <Text style={{color:"white"}}>Volver a enviar</Text>
+            <Text style={{color:"white"}}>Invia di nuovo</Text>
           </TouchableOpacity>
           </View>
 
           <View style={{display:this.state.paso == 2 ? "flex" : "none"}}>
-          <Text style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center"}} size="20">Enviando codigo de recuperacion al correo</Text>
+          <Text style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center"}} size="20">Invio del codice di ripristino all'email</Text>
           <ActivityIndicator />
           </View>
-
-
-
 
         </View>
       </View>
@@ -404,7 +401,7 @@ const styles = StyleSheet.create({
   "menuLogin_rettangolo20": {
     "opacity": 1,
 
-    "backgroundColor": "rgba(35, 171, 224, 1)",
+    "backgroundColor": "#28337F",
 
     "borderTopLeftRadius": 15,
     "borderTopRightRadius": 15,

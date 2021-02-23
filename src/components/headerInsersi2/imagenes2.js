@@ -121,7 +121,7 @@ export default class Imagenes2 extends Component {
           } else if (response.customButton) {
             console.log('User tapped custom button: ', response.customButton);
           } else {
-            
+
             extension = response.fileName.split(".");
             this.state.imagenes[imagen].loading = true;
             this.state.imagenes[imagen].data = response.data;
@@ -225,6 +225,34 @@ export default class Imagenes2 extends Component {
     }
 
   render(){
+
+    let v1 = ""
+    let v2 = ""
+    let v3 = ""
+    let v4 = ""
+    let v5 = ""
+    let v6 = ""
+    let v8 = ""
+
+    try{
+    //  console.log(this.props.b[0].social)
+    baseUrl = scom.url;
+    baseUrl+="/files/"
+
+      v1 = baseUrl+this.props.b[0].imagine[2];
+      v2 = baseUrl+this.props.b[0].imagine[3];
+      v3 = baseUrl+this.props.b[0].imagine[4];
+      v4 = baseUrl+this.props.b[0].imagine[5];
+      v5 = baseUrl+this.props.b[0].imagine[6];
+      v6 = baseUrl+this.props.b[0].imagine[7];
+      v7 = baseUrl+this.props.b[0].imagine[8];
+
+    }
+    catch(e){
+      console.log(e)
+      v1 = null
+      v2 = null
+    }
 
     misEstilos ={
       padre:{
@@ -333,7 +361,7 @@ export default class Imagenes2 extends Component {
       },
       "inserimentoAttivita_raggruppa46_rettangolo12dccae145": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "80%",
         "height": "50%",
@@ -394,11 +422,19 @@ export default class Imagenes2 extends Component {
     value2 = this.altoComponente*8;
 
     var sections = new Array()
-
+    let count = 2
     keys = Object.keys(this.state.imagenes);
     sections = keys.map(
         (item)=>{
+          try {
+            baseUrl = scom.url;
+            baseUrl+="/files/"
 
+              v1 = baseUrl+this.props.b[0].imagine[count];
+          }
+          catch(e){
+
+          }
           var component ="";
 
           if(this.state.imagenes[item].loading==true){
@@ -410,8 +446,9 @@ export default class Imagenes2 extends Component {
           }
 
           else{
-            component= <Image source={Object.entries(this.state.imagenes[item].source).length == 0 ? {uri:"https://lh3.googleusercontent.com/proxy/ivAXjdjgF0lEqRfz_v8I3xbqi6MhV8E8TPUOScyxF1WJxST6SmiBDyp53VDKqEupUAFtASa7VqZI-fIMM41n1y0pw1tXlK_zQDxaaatQqWJhQjOENUc4P_0jGnEGv5SvFIUhZNkZ6BFvXTiPnwF7EGbmlc_tCJNH8i_Hp2J8XvmPd2HwHad2GufyQE78SySzmHLkMs2u7vPwGRCmqJCeurp1KxSw59IzWsT7W9ZkB-AjsxA3WuF3dBgxUu1lYYdfbkR2d73qRXhYdEZSaBRRUfJryzlkyTdIhjPAGWg0g_0h81jCOoRw9zD5Kdl7OlGn1_a6oaUaUcGXH8Xxh8YtRxbZo-duUPwEJLYM0GhtoskUfNY4rl8eeeKgxw_UBW5F2bHsbRmKlSk52meoz7NtvMSMdGYdn3_CcdfShlfBaab6HenyCRBLqLo8LnYIrfaIopd8jEUHtbHMtJ9OE7UJTQTEW-3bp_Ln0W2C5HThgahtQuv-mdG0qvq_32l2uruoe5P788jeEW6CCsnVeIHaAKDNcDiy-ViFdv8_5BOAR9O6sPXol-e0kY7-rzmJOJfn7YtPWaU"} : this.state.imagenes[item].source } style={this.sizes("80%","80%")} />;
+            component= <Image source={Object.entries(this.state.imagenes[item].source).length == 0 ? {uri:v1} : this.state.imagenes[item].source } style={this.sizes("80%","80%")} />;
           }
+          count++
           return component;
         }
       )
@@ -450,7 +487,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 
@@ -476,7 +513,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 
@@ -502,7 +539,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 
@@ -531,7 +568,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 
@@ -557,7 +594,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 
@@ -584,7 +621,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 
@@ -612,7 +649,7 @@ export default class Imagenes2 extends Component {
 
             <View style={[misEstilos.inserimentoAttivita_raggruppa46_rettangolo12dccae145, misEstilos.flexPerfectCenter]}>
 
-              <Text>Charger</Text>
+              <Text  style={{color:"#F9F9F9"}}>Charger</Text>
 
             </View>
 

@@ -83,6 +83,7 @@ export default class Social extends Component {
         }
       }
       this.props.saveValidacion(v,"social");
+  
     }
 
     color(a){
@@ -234,7 +235,7 @@ export default class Social extends Component {
       "inserimentoAttivita_rettangolo35": {
         "opacity": 1,
 
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "100%",
         "height": "50%",

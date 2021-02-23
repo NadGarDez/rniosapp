@@ -10,6 +10,7 @@ import EstablecimientoA from '~/components/panelControl/actividadA.js';
 import Establecimiento from '~/components/panelControl/actividadUP.js';
 import Header from '~/components/panelControl/header.js';
 import Sfetch from "../../services/fetchManager.js";
+import BottonMenu from "../../components/menus/bottonMenu.js";
 const scom = require("../../services/url.js");
 
 
@@ -25,6 +26,9 @@ export default class Recomendaciones extends Component {
       this.getVariable = this.getVariable.bind(this);
       this.activar = this.activar.bind(this)
       this.desactivar = this.desactivar.bind(this)
+      this.action1 = this.action1.bind(this)
+      this.action2 = this.action2.bind(this)
+      this.action3 = this.action3.bind(this)
       this.buscar()
   }
 
@@ -200,6 +204,17 @@ export default class Recomendaciones extends Component {
           }
       });
   }
+  action1(){
+    this.props.navigation.navigate("Menu")
+  }
+
+  action2(){
+    this.props.navigation.navigate("Home")
+  }
+
+  action3(){
+      this.props.navigation.navigate("Menu")
+  }
 
   render() {
     objDat={
@@ -217,6 +232,7 @@ export default class Recomendaciones extends Component {
       imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU"
     }
     return (
+    <View>
     <ScrollView data-layer="a85cdb6f-2c4c-4c53-b9e5-785a51713227" style={styles.categoria}>
 
 
@@ -405,6 +421,8 @@ de Nice La capitale de la gastronomie, à ....</Text>
             <Svg data-layer="7d12f3e5-7a9f-4300-99c7-291a97adba27" style={styles.categoria_raggruppa35_tracciato29} preserveAspectRatio="none" viewBox="2136.537353515625 1363.255126953125 1.57470703125 1.6317138671875" fill="rgba(35, 171, 224, 1)"><SvgPath d="M 2137.287353515625 1364.005126953125 C 2137.368896484375 1364.016967773438 2137.362060546875 1364.078857421875 2137.36181640625 1364.136840820313 C 2137.3369140625 1364.093017578125 2137.312255859375 1364.049072265625 2137.287353515625 1364.005126953125 Z"  /></Svg>
         </View>*/}
     </ScrollView>
+    <BottonMenu action1={this.action1} action2={this.action2} action3={this.action3}/>
+    </View>
     );
   }
 }
@@ -412,10 +430,10 @@ de Nice La capitale de la gastronomie, à ....</Text>
 const styles = StyleSheet.create({
   "categoria": {
     "opacity": 1,
-    "backgroundColor": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#F9F9F9",
     padding:0,
     "width": "100%",
-    "height": "100%",
+    "height": "90%",
 
   },
   "categoria_rettangolo11": {

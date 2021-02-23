@@ -22,7 +22,8 @@ export default class Home extends Component {
         modalVisible:false,
         textDove:"",
         selectCategoria:"todas",
-        tercero:""
+        tercero:"",
+        imagenes:[require("./assets/2.png"),require("./assets/1.jpg"),require("./assets/3..jpg"),require("./assets/4.jpeg"),require("./assets/2.jpg")]
       };
       this.getVariable= this.getVariable.bind(this);
       this.handleTextInput= this.handleTextInput.bind(this);
@@ -41,7 +42,8 @@ export default class Home extends Component {
     var sobj={
       textDove:this.state.textDove,
       categoria:this.state.selectCategoria,
-      tercero:this.state.tercero
+      tercero:this.state.tercero,
+      imagenes:this.state.imagenes
     }
     this.props.navigation.navigate("busqueda",{sobj})
 
@@ -88,31 +90,31 @@ export default class Home extends Component {
 
         }
         objDat1={
-          tit:"Manger et deguster",
-          subtit:"Tu as cherché",
+          tit:"Degustare",
+          subtit:"Hai cercato",
           imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-          imagen2: require("./assets/shpastapesto.png")
+          imagen2: require("./assets/1.jpg")
         }
 
         objDat3={
-          tit:"Visiter ed découvrir",
-          subtit:"Tu as cherché",
+          tit:"Divertirsi",
+          subtit:"Hai cercato",
           imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-          imagen2: require("./assets/windsurfadobestock151590813.png")
+          imagen2: require("./assets/3..jpg")
         }
 
         objDat4={
-          tit:"S'amuser",
-          subtit:"Tu as cherché",
+          tit:"Rilassarsi",
+          subtit:"Hai cercato",
           imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-          imagen2: require("./assets/cinqueTerre2.png")
+          imagen2: require("./assets/4.jpeg")
         }
 
         objDat5={
-          tit:"Dormi Et Se Relaxer",
-          subtit:"Tu as cherché",
+          tit:"Rilassarsi",
+          subtit:"Hai cercato",
           imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
-          imagen2: require("./assets/cameraSuperior.png")
+          imagen2: require("./assets/2.jpg")
         }
 
 
@@ -137,8 +139,8 @@ export default class Home extends Component {
           onPress={()=>{
               this.changeModal()
           }}
-          title="Cancelar"
-          color="#841584"
+          title="supprimer"
+          color="#28337F"
           accessibilityLabel="Learn more about this purple button"
         />
       </View>
@@ -168,7 +170,7 @@ export default class Home extends Component {
                 <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
                   <View style={{width:"80%",height:"100%"}}>
                     <TextInput
-
+                      placeholder="Cerca per località"
                       value={this.state.textDove}
 
 
@@ -199,11 +201,12 @@ export default class Home extends Component {
                     this.state.selectCategoria= itemValue;
                     this.forceUpdate()
                   }}>
-                  <Picker.Item label="Todas las categorias" value="todas" />
-                  <Picker.Item label="Manger" value="manger" />
-                  <Picker.Item label="Visiter" value="visiter" />
-                  <Picker.Item label="S'amuser" value="s'amuser" />
-                  <Picker.Item label="dormir" value="dormir" />
+                  <Picker.Item label="Cerca per categoria" value="todas" />
+                  <Picker.Item label="Mangia e degusta" value="manger" />
+                  <Picker.Item label="Divertiti" value="s'amuser" />
+                  <Picker.Item label="Dormi e rilassati" value="dormir" />
+                  <Picker.Item label="Visita e scopri" value="visiter" />
+
                 </Picker>
 
 
@@ -216,7 +219,7 @@ export default class Home extends Component {
                 }}
               >
                 <View data-layer="02f5db02-5a51-4d00-9a6f-0d6e25a81171" style={styles.home_rettangolo12}>
-                  <Text data-layer="048aae7c-66f9-4afc-8adb-06b7220eabe1" style={styles.home_chercher}>Chercher</Text>
+                  <Text data-layer="048aae7c-66f9-4afc-8adb-06b7220eabe1" style={styles.home_chercher}>Cerca</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -231,10 +234,10 @@ export default class Home extends Component {
 
                     onPress={()=>this.props.navigation.navigate("Categoria", {objDat1,objDat2,categoria:"1"})}
                   >
-                    <ImageBackground source={require('./assets/shpastapesto.png')} style={{width:'100%',height:'100%',justifyContent:"center",textAlign:'center'}}>
+                    <ImageBackground source={require('./assets/1.jpg')} style={{width:'100%',height:'100%',justifyContent:"center",textAlign:'center'}}>
 
-                      <Text data-layer="db3ab708-4e1d-43f2-85fb-d8e28d7bdb7d" style={styles.home_manger}>Manger</Text>
-                      <Text data-layer="99c36fc2-aae2-4e97-afea-2c10eb4ef680" style={styles.home_etDeguster}>et deguster</Text>
+                      <Text data-layer="db3ab708-4e1d-43f2-85fb-d8e28d7bdb7d" style={styles.home_manger}>Degustare</Text>
+                      {/*<Text data-layer="99c36fc2-aae2-4e97-afea-2c10eb4ef680" style={styles.home_etDeguster}>e degusta</Text>*/}
 
                     </ImageBackground>
 
@@ -245,9 +248,9 @@ export default class Home extends Component {
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
                     onPress={()=>this.props.navigation.navigate("Categoria", {objDat3,objDat2,categoria:"2"})}
                   >
-                    <ImageBackground source={require('./assets/windsurfadobestock151590813.png')} style={{width:'100%',height:'100%',justifyContent:"center"}}>
-                      <Text data-layer="13a6b2f7-8334-4a14-8a42-ae3388365e22" style={styles.home_manger}>Visiter</Text>
-                      <Text data-layer="569a9370-a81c-47af-9c12-5a7fc66c25f7" style={styles.home_etDeguster}>ed découvrir</Text>
+                    <ImageBackground source={require('./assets/3..jpg')} style={{width:'100%',height:'100%',justifyContent:"center"}}>
+                      <Text data-layer="13a6b2f7-8334-4a14-8a42-ae3388365e22" style={styles.home_manger}>Divertirsi</Text>
+
                     </ImageBackground>
 
                 </TouchableOpacity>
@@ -258,8 +261,9 @@ export default class Home extends Component {
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
                     onPress={()=>this.props.navigation.navigate("Categoria", {objDat4,objDat2,categoria:"3"})}
                   >
-                    <ImageBackground source={require('./assets/cameraSuperior.png')} style={{width:'100%',height:'100%',justifyContent:"center",display:"flex"}}>
-                      <Text data-layer="74332546-75b5-4cec-b945-91ca32204059" style={styles.home_manger}>S'amuser</Text>
+                    <ImageBackground source={require('./assets/4.jpeg')} style={{width:'100%',height:'100%',justifyContent:"center",display:"flex"}}>
+                      <Text data-layer="74332546-75b5-4cec-b945-91ca32204059" style={styles.home_manger}>Rilassarsi</Text>
+                    {/*  <Text data-layer="569a9370-a81c-47af-9c12-5a7fc66c25f7" style={styles.home_etDeguster}>e rilassati</Text>*/}
                     </ImageBackground>
 
 
@@ -272,9 +276,9 @@ export default class Home extends Component {
                   <TouchableOpacity data-layer="c23fd2ba-7f51-442a-b5b5-2c26293f2f8d" style={styles.home_rettangolo6}
                     onPress={()=>this.props.navigation.navigate("Categoria", {objDat5,objDat2,categoria:"4"})}
                   >
-                    <ImageBackground source={require('./assets/cinqueTerre2.png')} style={{width:'100%',height:'100%',justifyContent:"center"}}>
-                      <Text data-layer="13a6b2f7-8334-4a14-8a42-ae3388365e22" style={styles.home_manger}>Dormir</Text>
-                      <Text data-layer="569a9370-a81c-47af-9c12-5a7fc66c25f7" style={styles.home_etDeguster}>Et Se Relaxer</Text>
+                    <ImageBackground source={require('./assets/2.jpg')} style={{width:'100%',height:'100%',justifyContent:"center"}}>
+                      <Text data-layer="13a6b2f7-8334-4a14-8a42-ae3388365e22" style={styles.home_manger}>Visitare</Text>
+                      {/*<Text data-layer="569a9370-a81c-47af-9c12-5a7fc66c25f7" style={styles.home_etDeguster}>e scopri</Text>*/}
                     </ImageBackground>
                   </TouchableOpacity>
                 </View>
@@ -555,7 +559,7 @@ de Nice La capitale de la gastronomie, à ....</Text>
         }
       >
 
-            <Icon2 name="menu" size={30} />
+            <Icon2 name="menu" size={30} color="#F9F9F9"/>
 
       </TouchableOpacity>
 
@@ -566,7 +570,7 @@ de Nice La capitale de la gastronomie, à ....</Text>
           }
         }
       >
-        <Icon3 name="home" size={30}/>
+        <Icon3 name="home" size={30} color="#F9F9F9"/>
       </TouchableOpacity>
 
       <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
@@ -576,7 +580,7 @@ de Nice La capitale de la gastronomie, à ....</Text>
           }
         }
       >
-        <Icon3  name="left" size={30}/>
+        <Icon3  name="left" size={30} color="#F9F9F9"/>
       </TouchableOpacity>
 
     </View>
@@ -608,17 +612,16 @@ const styles = StyleSheet.create({
   "home_rettangolo11": {
     "opacity": 1,
     "display":"flex",
-    "backgroundColor": "rgba(25, 25, 25, 1)",
+    "backgroundColor": "#F9F9F9",
     "width": '100%',
     "height": 600,
 
   },
   "menu_rettangolo1": {
     "opacity": 1,
-    "backgroundColor": "rgba(220, 220, 220, 1)",
+    "backgroundColor": "#28337F",
     "display":"flex",
     "flexDirection":"row",
-
     "width": "100%",
     "height": "10%",
 
@@ -779,7 +782,7 @@ const styles = StyleSheet.create({
     "opacity": 1,
     "textAlign":"center",
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(220, 220, 220, 1)",
+    "color": "#F9F9F9",
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
@@ -834,7 +837,7 @@ const styles = StyleSheet.create({
   "home_manger": {
     "opacity": 1,
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(220, 220, 220, 1)",
+    "color": "#F9F9F9",
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
@@ -1305,7 +1308,7 @@ const styles = StyleSheet.create({
     "flexDirection":"row",
     "opacity": 1,
 
-    "backgroundColor": "rgba(220, 220, 220, 1)",
+    "backgroundColor": "#B8B8B8",
 
     "borderTopLeftRadius": 15,
     "borderTopRightRadius": 15,
@@ -1362,7 +1365,7 @@ const styles = StyleSheet.create({
     "display":"flex",
     "alignItems":"center",
     "justifyContent":"center",
-    "backgroundColor": "rgba(35, 171, 224, 1)",
+    "backgroundColor": "#28337F",
 
     "borderTopLeftRadius": 15,
     "borderTopRightRadius": 15,
@@ -1592,7 +1595,7 @@ const styles = StyleSheet.create({
   "home_chercher": {
     "opacity": 1,
     "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(25, 25, 25, 1)",
+    "color": "#F9F9F9",
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",

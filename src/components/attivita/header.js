@@ -51,11 +51,11 @@ export default class Header extends Component {
         width:"100%",
         display:"flex",
         flexDirection:"column-reverse",
-        backgroundColor:"red"
+        backgroundColor:"grey"
       },
       "categoria_rettangolo10": {
         "opacity": 1,
-        "backgroundColor": "rgba(25, 25, 25, 1)",
+        "backgroundColor": "#F9F9F9",
         "width": "100%",
         "height": "20%",
         display:"flex",
@@ -65,7 +65,7 @@ export default class Header extends Component {
       "categoria_mangerEtDeguster": {
         "opacity": 1,
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "white",
+        "color": "#28337F",
         "fontSize": 22,
         "fontWeight": "700",
         "fontStyle": "normal",

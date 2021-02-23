@@ -17,7 +17,7 @@ import BottonMenu from "../../components/menus/bottonMenu.js";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const scom = require("../../services/url.js");
 
-// android:usesCleartextTraffic="true" android:networkSecurityConfig="@xml/network_security_config" f
+// android:usesCleartextTraffic="true" android:networkSecurityConfig="@xml/network_security_config"
 export default class changePassword extends Component {
 
   constructor(props) {
@@ -34,22 +34,19 @@ export default class changePassword extends Component {
       this.eviar = this.enviar.bind(this);
 
       this.handleResponse = this.handleResponse.bind(this);
-      this.accidente()
+
 
     //  this.verificarDatosGuardados= this.verificarDatosGuardados.bind(this);
     //this.enviar("iranad@hotmail.com")
       //this.verificarDatosGuardados()
   }
-  async accidente(){
-    Alert.alert("accidente")
-    await AsyncStorage.setItem('password', "1234")
-  }
+
   async enviar(obj){
   //  console.log(this.querystring(this.state))
   this.state.paso= 2;
   this.forceUpdate()
     //console.log(url());
-    Alert.alert("enviando")
+    Alert.alert("invio")
 
     baseUrl = scom.url;
     baseUrl+="/changeP1";
@@ -75,7 +72,7 @@ export default class changePassword extends Component {
   async handleResponse(response){
     console.log(response)
     if(!response.error){
-      Alert.alert("contraceña cambiada exitosamente")
+      Alert.alert("password cambiata con successo")
 
       contracena = await AsyncStorage.getItem('password');
 
@@ -90,7 +87,7 @@ export default class changePassword extends Component {
     }
 
     else{
-      Alert.alert("Error")
+      Alert.alert("Errore")
     }
 
   }
@@ -100,33 +97,33 @@ export default class changePassword extends Component {
 
     return (
       <View>
-        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%", backgroundColor:"black", color:"white"}}>
+        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%", backgroundColor:"#F9F9F9", color:"white"}}>
 
           <View style={{diaplay:'flex', flexDirection:"column", flexWrap:'wrap', justifyContent:'center',width:'100%',alignItems:"center"}}>
-            <Text size="15" style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center",marginBottom:5}}>Cambio de contraceña</Text>
+            <Text size="15" style={{color:"#28337F",fontSize:18,textAlign:"center",marginBottom:5}}>Changer le mot de passe</Text>
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
+              style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
               onChangeText={
                 (text)=>{
                     this.setState({oldPass:text})
                 }
               }
               value={this.state.email}
-              placeholder="Contraceña actual"
+              placeholder="Mot de passe actuel"
               secureTextEntry={true}
             />
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
+              style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
               onChangeText={
                 (text)=>{
                     this.setState({newPass1:text})
                 }
               }
-              placeholder="ingrese la contraceña nueva"
+              placeholder="Nouveau mot de passe"
               value={this.state.email}
             />
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
+              style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
               onChangeText={
                 (text)=>{
                     this.setState({newPass2:text})
@@ -134,7 +131,7 @@ export default class changePassword extends Component {
                 }
               }
               value={this.state.email}
-              placeholder="confime la contraceña"
+              placeholder="Confirmez le nouveau mot de passe"
             />
             <Text style={{color:"red"}}>{this.state.message}</Text>
 
@@ -159,7 +156,7 @@ export default class changePassword extends Component {
                 }
               }
             >
-              <Text style={{color:"white"}}>Enviar</Text>
+              <Text style={{color:"#F9F9F9"}}>Changer</Text>
             </TouchableOpacity>
           </View>
 
@@ -341,7 +338,7 @@ const styles = StyleSheet.create({
   "menuLogin_rettangolo20": {
     "opacity": 1,
 
-    "backgroundColor": "rgba(35, 171, 224, 1)",
+    "backgroundColor": "#28337F",
 
     "borderTopLeftRadius": 15,
     "borderTopRightRadius": 15,

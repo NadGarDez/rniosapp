@@ -44,7 +44,7 @@ export default class changePassword extends Component {
   this.state.paso= 2;
   this.forceUpdate()
     //console.log(url());
-    Alert.alert("enviando")
+    Alert.alert("invio")
 
     baseUrl = scom.url;
     baseUrl+="/changeP2";
@@ -70,12 +70,12 @@ export default class changePassword extends Component {
   async handleResponse(response){
     console.log(response)
     if(!response.error){
-      Alert.alert("contraceña cambiada exitosamente")
+      Alert.alert("password cambiata con successo")
       this.props.navigation.navigate("Home")
     }
 
     else{
-      Alert.alert("Error")
+      Alert.alert("Errore")
     }
 
   }
@@ -85,13 +85,13 @@ export default class changePassword extends Component {
 
     return (
       <View>
-        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%", backgroundColor:"black", color:"white"}}>
+        <View style={{display:"flex",justifyContent:"center", alignItems:"center", width:"100%", height:"100%", backgroundColor:"#F9F9F9", color:"white"}}>
 
           <View style={{diaplay:'flex', flexDirection:"column", flexWrap:'wrap', justifyContent:'center',width:'100%',alignItems:"center"}}>
-            <Text size="15" style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center",marginBottom:5}}>Ingrese la nueva contraceña</Text>
+            <Text size="15" style={{color:"#28337F",fontSize:18,textAlign:"center",marginBottom:5}}>Immettere la nuova password</Text>
 
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
+              style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
               onChangeText={
                 (text)=>{
                     this.setState({pass1:text})
@@ -102,7 +102,7 @@ export default class changePassword extends Component {
               placeholder="contraceña nueva"
             />
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
+              style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
               onChangeText={
                 (text)=>{
                     this.setState({pass2:text})
@@ -129,7 +129,7 @@ export default class changePassword extends Component {
                 }
               }
             >
-              <Text style={{color:"white"}}>Enviar</Text>
+              <Text style={{color:"#F9F9F9"}}>Spedire</Text>
             </TouchableOpacity>
           </View>
 
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
   "menuLogin_rettangolo20": {
     "opacity": 1,
 
-    "backgroundColor": "rgba(35, 171, 224, 1)",
+    "backgroundColor": "#28337F",
 
     "borderTopLeftRadius": 15,
     "borderTopRightRadius": 15,

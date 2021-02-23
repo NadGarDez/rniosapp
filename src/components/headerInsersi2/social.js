@@ -19,7 +19,7 @@ export default class Social extends Component {
   /*
     props:
       objDat={
-        resena
+        resena//
 
       }
 
@@ -30,9 +30,9 @@ export default class Social extends Component {
         super(props);
         this.state = {
           social:{
-            facebook:"",
-            instagram:"",
-            tripadvisor:""
+            facebook:"https://www.youtube.com/watch?v=rsMVS_CglL8",
+            instagram:"https://www.youtube.com/watch?v=rsMVS_CglL8",
+            tripadvisor:"https://www.youtube.com/watch?v=rsMVS_CglL8"
           },
           inputs:{
             input1:{
@@ -106,6 +106,25 @@ export default class Social extends Component {
 
 
   render(){
+
+    let v1 = ""
+    let v2 = ""
+    let v3 = ""
+    try{
+
+      v1 = this.props.b[0].social.facebook;
+      v2 = this.props.b[0].social.instagram;
+      v3 = this.props.b[0].social.tripadvisor;
+
+      this.props.saveText(this.props.b[0].social,"social")
+    }
+    catch(e){
+
+
+      v1 = null
+      v2 = null
+      v3 = null
+    }
 
     misEstilos ={
       padre:{
@@ -234,7 +253,7 @@ export default class Social extends Component {
       "inserimentoAttivita_rettangolo35": {
         "opacity": 1,
 
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
 
         "width": "100%",
         "height": "50%",
@@ -244,7 +263,7 @@ export default class Social extends Component {
       "inserimentoAttivita_caricamentoImmagini": {
         "opacity": 1,
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(220, 220, 220, 1)",
+        "color": "#F9F9F9",
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
@@ -280,7 +299,7 @@ export default class Social extends Component {
 
           <View style={[misEstilos.inserimentoAttivita_rettangolo35, misEstilos.flexPerfectCenter]}>
 
-            <Text style={misEstilos.inserimentoAttivita_caricamentoImmagini}>social</Text>
+            <Text style={misEstilos.inserimentoAttivita_caricamentoImmagini}>sociale</Text>
 
           </View>
 
@@ -294,6 +313,7 @@ export default class Social extends Component {
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
              <TextInput style={{backgroundColor:"white", borderStyle:"solid",borderColor: color1, borderWidth:1}}
+                value={this.state.social.facebook!= null? this.state.social.facebook : v1}
                onChangeText={
                  (text)=>{
                    this.state.social.facebook = text;
@@ -308,7 +328,7 @@ export default class Social extends Component {
 
                    if(this.state.social.facebook ==""){
                      this.state.inputs.input1.validateStatus = "empty input"
-                     this.state.inputs.input1.message = "this input can't be empty"
+                     this.state.inputs.input1.message = "questo ingresso non può essere vuoto"
                      this.forceUpdate()
                    }
                    else{
@@ -360,6 +380,7 @@ export default class Social extends Component {
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
              <TextInput style={{backgroundColor:"white", borderStyle:"solid",borderColor: color2, borderWidth:1}}
+             value={this.state.social.instagram!= null? this.state.social.instagram : v2}
                onChangeText={
                  (text)=>{
                    this.state.social.instagram = text;
@@ -374,7 +395,7 @@ export default class Social extends Component {
 
                     if(this.state.social.instagram ==""){
                       this.state.inputs.input2.validateStatus = "empty input"
-                      this.state.inputs.input2.message = "this input can't be empty"
+                      this.state.inputs.input2.message = "questo ingresso non può essere vuoto"
                       this.forceUpdate()
                     }
                     else{
@@ -422,6 +443,7 @@ export default class Social extends Component {
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
              <TextInput style={{backgroundColor:"white", borderStyle:"solid",borderColor: color3, borderWidth:1}}
+             value={this.state.social.tripadvisor!= null? this.state.social.tripadvisor : v3}
                onChangeText={
                  (text)=>{
                    this.state.social.tripadvisor = text;
@@ -436,7 +458,7 @@ export default class Social extends Component {
 
                     if(this.state.social.tripadvisor ==""){
                       this.state.inputs.input3.validateStatus = "empty input"
-                      this.state.inputs.input3.message = "this input can't be empty"
+                      this.state.inputs.input3.message = "questo ingresso non può essere vuoto"
                       this.forceUpdate()
                     }
                     else{

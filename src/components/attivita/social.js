@@ -71,7 +71,7 @@ export default class HeaderRecomendaciones extends Component {
       },
       "categoria_rettangolo10": {
         "opacity": 1,
-        "backgroundColor": "rgba(35, 171, 224, 1)",
+        "backgroundColor": "#28337F",
         "width": "100%",
         "height": "40%",
         display:"flex",
@@ -81,7 +81,7 @@ export default class HeaderRecomendaciones extends Component {
       "categoria_mangerEtDeguster": {
         "opacity": 1,
         "backgroundColor": "rgba(255, 255, 255, 0)",
-        "color": "rgba(25, 25, 25, 1)",
+        "color": "#F9F9F9",
         "fontSize": 22,
         "fontWeight": "700",
         "fontStyle": "normal",
@@ -112,14 +112,14 @@ export default class HeaderRecomendaciones extends Component {
 
     }
 
-    Alert.alert(typeof this.props.datos.social)
+
     var url = "https://www.google.com/";
 
     return (
       <View style={misEstilos.padre}>
         <View data-layer="853274a4-9d2a-42bc-a146-a7e83326ee0b" style={misEstilos.categoria_rettangolo10}>
 
-              <Text data-layer="29929bd1-7479-4975-b1f2-0874ed6959eb" style={misEstilos.categoria_mangerEtDeguster}>Follow us</Text>
+              <Text data-layer="29929bd1-7479-4975-b1f2-0874ed6959eb" style={misEstilos.categoria_mangerEtDeguster}>Seguici</Text>
 
         </View>
         <View style={misEstilos.icons}>
@@ -130,7 +130,7 @@ export default class HeaderRecomendaciones extends Component {
               }
             }
           >
-            <Icon name="facebook" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}}/>
+            <Icon name="facebook" color="rgba(35, 171, 224, 1)" size={50} color="#28337F" style={{marginRight:"5%",marginLeft:"5%"}}/>
 
           </TouchableOpacity>
           <TouchableOpacity
@@ -140,7 +140,7 @@ export default class HeaderRecomendaciones extends Component {
               }
             }
           >
-            <Icon2 name="tripadvisor" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}}/>
+            <Icon2 name="tripadvisor" color="rgba(35, 171, 224, 1)" size={50} color="#28337F" style={{marginRight:"5%",marginLeft:"5%"}}/>
 
           </TouchableOpacity>
           <TouchableOpacity
@@ -150,7 +150,7 @@ export default class HeaderRecomendaciones extends Component {
               }
             }
           >
-            <Icon name="instagram" color="rgba(35, 171, 224, 1)" size={50} style={{marginRight:"5%",marginLeft:"5%"}} />
+            <Icon name="instagram" color="rgba(35, 171, 224, 1)" size={50} color="#28337F" style={{marginRight:"5%",marginLeft:"5%"}} />
 
           </TouchableOpacity>
 
