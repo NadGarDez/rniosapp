@@ -5,7 +5,7 @@ import Icon3 from "react-native-vector-icons/Ionicons";
 import Icon4 from "react-native-vector-icons/MaterialIcons";
 import Icon5 from "react-native-vector-icons/Fontisto";
 import PropTypes from "prop-types";
-import {Alert,StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image} from 'react-native';
+import {Alert,StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, ImageBackground, Dimensions, Image,Linking,TouchableOpacity,Platform} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -113,10 +113,35 @@ export default class Content extends Component {
     return (
       <View style={misEstilos.padre}>
         <View style={misEstilos.hijo}>
-          <View data-layer="e75b63dd-cc5c-4763-9675-68dc0336f458" style={misEstilos.attivita_raggruppa39_rettangolo12}>
+          <TouchableOpacity data-layer="e75b63dd-cc5c-4763-9675-68dc0336f458" style={misEstilos.attivita_raggruppa39_rettangolo12}
+            onPress={
+              ()=>{
+                let phone =this.props.datos.telefono
+                let phoneNumber = phone//this.props.datos.telefono;
+                if (Platform.OS !== 'android') {
+                phoneNumber = `telprompt:${phone}`;
+                }
+                else  {
+                phoneNumber = `tel:${phone}`;
+                }
+
+                Linking.canOpenURL(phoneNumber)
+                .then(supported => {
+                  if (!supported) {
+                      Alert.alert('Phone number is not available');
+                  }
+                  else {
+                      return Linking.openURL(phoneNumber);
+                  }
+                })
+                .catch(err => console.log(err));
+
+              }
+            }
+          >
             <Icon name="phone" color="#F9F9F9" size={20} style={{marginLeft:"5%",marginRight:"5%"}}/>
             <Text style={misEstilos.attivita_raggruppa36_x0172430185}>Chiamaci</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={misEstilos.contenedorIconos}>
         {

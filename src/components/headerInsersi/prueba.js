@@ -26,7 +26,7 @@ const GooglePlacesInput = (props) => {
 
         }}
         query={{
-          key: 'AIzaSyBv2vDbJlYGLqHoa0NC-sg1dVkfZJ0AXaQ',
+          key: 'AIzaSyAbKkSvFU5HqUOlDyKd4QZWs-PwFUovizQ',
           language: 'en',
           type:"address"
         }}

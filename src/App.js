@@ -79,7 +79,12 @@ export default class App extends Component {
               obj.value = value;
               this.forceUpdate();
 
+          },
+          noAction:(value, obj)=>{
+            obj.value={}
+            this.forceUpdate();
           }
+
         },
 
       }
@@ -245,7 +250,7 @@ export default class App extends Component {
             props=><MLogin {...props} variables={this.state.variables} />
           }
         </Stack.Screen>
-          <Stack.Screen name="Home" >
+          <Stack.Screen name="Home" options={{headerLeft: null,gesturesEnabled: false}}>
             {
               props=><Home {...props} variables={this.state.variables} />
             }
@@ -256,7 +261,7 @@ export default class App extends Component {
               props=><SignIn {...props} variables={this.state.variables} />
             }
           </Stack.Screen>
-          <Stack.Screen name="Menu"  >
+          <Stack.Screen name="Menu"  options={{headerLeft: null,gesturesEnabled: false}}>
             {
               props=><Menu {...props} variables={this.state.variables} />
             }

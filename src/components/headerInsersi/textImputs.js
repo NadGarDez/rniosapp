@@ -177,7 +177,14 @@ export default class TextInputs extends Component {
     const color3 = this.state.inputs.input3.validateStatus == "empty input" ? "red" : "white";
     const color4 = this.state.inputs.input4.validateStatus == "empty input" ? "red" : "white";
     const color5 = this.state.inputs.input5.validateStatus == "empty input" ? "red" : "white";
-    let a = this.props.dataIndirizo.split(",")
+    let a = ""
+    try{
+       a = this.props.dataIndirizo.split(",")
+    }
+    catch(e){
+        a = ""
+    }
+
     console.log(a[0])
     return (
       <View style={misEstilos.padre}>

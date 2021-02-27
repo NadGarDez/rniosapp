@@ -27,7 +27,7 @@ export default class Info extends Component {
   constructor(props) {
         super(props);
         this.state = {
-
+          apendice: `?${new Date().getTime()}`
         };
 
         this.alto = Dimensions.get('window').height,
@@ -135,10 +135,7 @@ export default class Info extends Component {
     return (
       <View style={misEstilos.padre}>
         <View style={misEstilos.info}>
-          <View style={misEstilos.item}>
-            <Icon5 name="radio-btn-passive" color="#28337F"/>
-            <Text style={misEstilos.attivita_ristorantePiemontese}>abc</Text>
-          </View>
+
           <View style={misEstilos.item}>
             <Icon name="phone" color="black" size={20} />
             <Text style={misEstilos.attivita_raggruppa37_viaBra30cherascoCn}>{this.props.datos.telefono}</Text>
@@ -148,7 +145,7 @@ export default class Info extends Component {
             <Text style={misEstilos.attivita_raggruppa37_viaBra30cherascoCn}>{this.props.datos.citta}</Text>
           </View>
         </View>
-        <Image source={{uri:this.props.datos.imagine[0]}}  style={{flex:1 , width: undefined, height: undefined}} />
+        <Image source={{uri:this.props.datos.imagine[0]+this.state.apendice}}  style={{flex:1 , width: undefined, height: undefined}} />
 
       </View>
     );

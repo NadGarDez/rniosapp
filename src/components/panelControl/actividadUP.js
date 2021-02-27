@@ -29,7 +29,7 @@ export default class Establecimiento extends Component {
   constructor(props) {
         super(props);
         this.state = {
-
+            apendice: `?${new Date().getTime()}`
         };
 
         this.alto = Dimensions.get('window').height,
@@ -226,7 +226,7 @@ export default class Establecimiento extends Component {
 
     let publicacion = new Date(this.props.datos.created_at).toLocaleDateString();
     let caducidad = new Date(this.props.datos.vencimiento).toLocaleDateString();
-    console.log(this.props.datos.nombreUser);
+    //console.log(this.props.datos.imagine[0]+"?"+new Date().getTime());
       return(
 
         <View style={misEstilos.padre}>
@@ -237,7 +237,7 @@ export default class Establecimiento extends Component {
               <View style={misEstilos.hijo2}>
                 <View style={misEstilos.imageLogo}>
 
-                  <Image source={{uri:this.props.datos.imagine[0]}} style={{width:"90%",height:"100%"}}></Image>
+                  <Image source={{uri:this.props.datos.imagine[0]+this.state.apendice}} style={{width:"90%",height:"100%"}}></Image>
 
                 </View>
                 <View style={misEstilos.info}>
@@ -245,7 +245,7 @@ export default class Establecimiento extends Component {
                     <Text data-layer="146451af-e4cd-4368-8dee-800e1f03355c" style={misEstilos.categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_cittaDiBraeacc8e89}>{this.props.datos.attivitaLuogo}</Text>
                   </View>
                   <View style={{display:"flex", flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>Pubblicato da:</Text>
+                    <Text style={{fontWeight:"bold"}}>Publié par:</Text>
                     <Text>{this.props.admin == true ? this.props.datos.nombreUser : "Me"}</Text>
                   </View>
 
@@ -253,19 +253,19 @@ export default class Establecimiento extends Component {
                 </View>
                 <View style={{width:"100%", height:"60%",display:"flex", flexWrap:"wrap"}}>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                  <Text style={{fontWeight:"bold"}}>Pubblicazione:</Text>
+                  <Text style={{fontWeight:"bold"}}>Publication:</Text>
                   <Text>{publicacion}</Text>
                   </View>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>scadenza:</Text>
+                    <Text style={{fontWeight:"bold"}}>Expiration:</Text>
                     <Text>{caducidad}</Text>
                   </View>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>attivo:</Text>
+                    <Text style={{fontWeight:"bold"}}>Actif:</Text>
                     <Text>{this.props.datos.estado == "activo" ? "sí" : "non" }</Text>
                   </View>
                   <View style={{width:"50%", height:"50%",display:"flex", alignItems:"center", justifyContent:"center",flexDirection:"row"}}>
-                    <Text style={{fontWeight:"bold"}}>pagato:</Text>
+                    <Text style={{fontWeight:"bold"}}>Payé:</Text>
                     <Text>{this.props.datos.pagado == true ? "sí" : "non"}</Text>
                   </View>
                 </View>
@@ -281,29 +281,31 @@ export default class Establecimiento extends Component {
 
             <TouchableOpacity style={[misEstilos.menuLogin_rettangolo20,{marginLeft:"1.5%",marginRight:"1.5%",diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center"}]}
               onPress={
-                ()=>{
+                async ()=>{
                   if(this.props.datos.estado == "activo"){
-                    this.props.desactivar(this.props.datos.id)
-                    this.props.buscar()
+                    await this.props.desactivar(this.props.datos.id)
+
                   }
 
                   else{
-                    this.props.activar(this.props.datos.id)
-                    this.props.buscar()
+                    await this.props.activar(this.props.datos.id,this.props.datos.estado.pagado)
+
                   }
                 }
               }
             >
-              <Text style={{color:"#F9F9F9"}}>{this.props.datos.estado == "acttivo" ? "tempo di sosta" : "Acttivare"}</Text>
+              <Text style={{color:"#F9F9F9"}}>{this.props.datos.estado == "activo" ? "Désactiver" : "Activer"}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[misEstilos.menuLogin_rettangolo20,{marginLeft:"1.5%",marginRight:"1.5%",diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center"}]}
               onPress={
-                ()=>{
+              async ()=>{
+                  await this.props.preEnviar(this.props.datos.vencimiento,this.props.datos.id)
+                  this.props.changeModalPaypal()
 
                 }
               }
             >
-              <Text style={{color:"#F9F9F9"}}>Pagare</Text>
+              <Text style={{color:"#F9F9F9"}}>Payer</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[misEstilos.menuLogin_rettangolo20,{marginLeft:"1.5%",marginRight:"1.5%",margmargdiaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center"}]}
               onPress={
@@ -312,7 +314,7 @@ export default class Establecimiento extends Component {
                 }
               }
             >
-              <Text style={{color:"#F9F9F9"}}>modificare</Text>
+              <Text style={{color:"#F9F9F9"}}>Modifier</Text>
             </TouchableOpacity>
           </View>
         </View>

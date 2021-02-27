@@ -30,9 +30,9 @@ export default class Social extends Component {
         super(props);
         this.state = {
           social:{
-            facebook:"https://www.youtube.com/watch?v=rsMVS_CglL8",
-            instagram:"https://www.youtube.com/watch?v=rsMVS_CglL8",
-            tripadvisor:"https://www.youtube.com/watch?v=rsMVS_CglL8"
+            facebook:null,
+            instagram:null,
+            tripadvisor:null
           },
           inputs:{
             input1:{
@@ -55,6 +55,7 @@ export default class Social extends Component {
         this.ancho = Dimensions.get('window').width,
         this.altoComponente =  15 * this.alto;
         this.altoComponente = this.altoComponente / 100;
+        this.updateValues = this.updateValues.bind(this)
 
 
     }
@@ -73,6 +74,26 @@ export default class Social extends Component {
       this.state.value=value;
       this.forceUpdate();
     }
+
+    componentWillReceiveProps(nextProps){
+
+
+      if(this.state.social.facebook==null){
+        this.updateValues(nextProps.b)
+
+      }
+
+    }
+
+    updateValues(a){
+      this.state.social.facebook = a[0].social.facebook
+        this.state.social.instagram = a[0].social.instagram
+          this.state.social.tripadvisor = a[0].social.tripadvisor
+              this.props.saveText(this.state.social,"social")
+
+      this.forceUpdate()
+    }
+
 
     enviarValidacion(){
       let v = true;
@@ -112,11 +133,14 @@ export default class Social extends Component {
     let v3 = ""
     try{
 
-      v1 = this.props.b[0].social.facebook;
-      v2 = this.props.b[0].social.instagram;
-      v3 = this.props.b[0].social.tripadvisor;
+        v1 = this.props.b[0].social.facebook;
 
-      this.props.saveText(this.props.b[0].social,"social")
+        v2 = this.props.b[0].social.instagram;
+
+        v3 = this.props.b[0].social.tripadvisor;
+
+
+
     }
     catch(e){
 
@@ -313,7 +337,7 @@ export default class Social extends Component {
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
              <TextInput style={{backgroundColor:"white", borderStyle:"solid",borderColor: color1, borderWidth:1}}
-                value={this.state.social.facebook!= null? this.state.social.facebook : v1}
+                value={this.state.social.facebook}
                onChangeText={
                  (text)=>{
                    this.state.social.facebook = text;
@@ -380,7 +404,7 @@ export default class Social extends Component {
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
              <TextInput style={{backgroundColor:"white", borderStyle:"solid",borderColor: color2, borderWidth:1}}
-             value={this.state.social.instagram!= null? this.state.social.instagram : v2}
+             value={this.state.social.instagram}
                onChangeText={
                  (text)=>{
                    this.state.social.instagram = text;
@@ -443,7 +467,7 @@ export default class Social extends Component {
             <View style={misEstilos.inserimentoAttivita_rettangolo4}>
 
              <TextInput style={{backgroundColor:"white", borderStyle:"solid",borderColor: color3, borderWidth:1}}
-             value={this.state.social.tripadvisor!= null? this.state.social.tripadvisor : v3}
+             value={this.state.social.tripadvisor}
                onChangeText={
                  (text)=>{
                    this.state.social.tripadvisor = text;

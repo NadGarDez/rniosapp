@@ -365,7 +365,6 @@ export default class TextInputs extends Component {
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
             <TextInput
             value={this.state.inputs.input4.currentValue}
-             keyboardType='numeric'
              style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor: color4, borderStyle:"solid", borderWidth:1}}
              onChangeText={
                (text)=>{

@@ -57,8 +57,10 @@ export default class InserimentoAttivita extends Component {
       }
       catch(e){
 
-        
+
       }
+
+      console.log(this.props)
       this.props.enviar()
       this.props.changeModalPaypal()
       this.state.payed= true;

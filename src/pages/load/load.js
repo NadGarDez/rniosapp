@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity, Alert} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,TouchableOpacity, Alert,BackHandler,} from 'react-native';
 import { Container, Header, Content, Accordion ,Button} from "native-base";
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
@@ -35,10 +35,23 @@ export default class MenuLogin extends Component {
       this.verificarDatosGuardados()
   }
 
-  componentDidlMount(){
+  componentDidMount(){
+    //this.props.navigation.pop();
+    BackHandler.addEventListener(
+      "hardwareBackPress",
+      ()=>{
 
+        if(this.props.navigation.getCurrentRoutes().length > 1){
+           this.navigator.pop();
+           return true;
+        }
+      }
+    );
 
   }
+
+
+
 
   async enviar(correo,contracena){
   //  console.log(this.querystring(this.state))

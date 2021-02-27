@@ -86,7 +86,8 @@ export default class Imagenes2 extends Component {
             },
 
 
-          }
+          },
+          apendice: `?${new Date().getTime()}`
         };
 
         this.alto = Dimensions.get('window').height,
@@ -113,6 +114,7 @@ export default class Imagenes2 extends Component {
 
         ImagePicker.showImagePicker(options, (response) => {
           console.log('Response = ', response);
+          let id = this.props.b[0].id
 
           if (response.didCancel) {
             console.log('User cancelled image picker');
@@ -125,7 +127,7 @@ export default class Imagenes2 extends Component {
             extension = response.fileName.split(".");
             this.state.imagenes[imagen].loading = true;
             this.state.imagenes[imagen].data = response.data;
-            this.state.imagenes[imagen].name =`${this.props.id}-${imagen}.${extension[1]}`;
+            this.state.imagenes[imagen].name =`${id}-${imagen}.${extension[1]}`;
             this.state.imagenes[imagen].source={uri:response.uri};
 
             this.forceUpdate();
@@ -142,6 +144,7 @@ export default class Imagenes2 extends Component {
             this.validate();
 
             this.guardarImagenes(imagen)
+            this.props.enviar2()
             //this.props.saveImages(this.state.imagenes, "imagine2")
           }
         });
@@ -239,13 +242,13 @@ export default class Imagenes2 extends Component {
     baseUrl = scom.url;
     baseUrl+="/files/"
 
-      v1 = baseUrl+this.props.b[0].imagine[2];
-      v2 = baseUrl+this.props.b[0].imagine[3];
-      v3 = baseUrl+this.props.b[0].imagine[4];
-      v4 = baseUrl+this.props.b[0].imagine[5];
-      v5 = baseUrl+this.props.b[0].imagine[6];
-      v6 = baseUrl+this.props.b[0].imagine[7];
-      v7 = baseUrl+this.props.b[0].imagine[8];
+      v1 = baseUrl+this.props.b[0].imagine[2]+this.state.apendice;
+      v2 = baseUrl+this.props.b[0].imagine[3]+this.state.apendice;
+      v3 = baseUrl+this.props.b[0].imagine[4]+this.state.apendice;
+      v4 = baseUrl+this.props.b[0].imagine[5]+this.state.apendice;
+      v5 = baseUrl+this.props.b[0].imagine[6]+this.state.apendice;
+      v6 = baseUrl+this.props.b[0].imagine[7]+this.state.apendice;
+      v7 = baseUrl+this.props.b[0].imagine[8]+this.state.apendice;
 
     }
     catch(e){

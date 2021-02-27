@@ -25,7 +25,7 @@ export default class Header extends Component {
   constructor(props) {
         super(props);
         this.state = {
-
+          apendice: `?${new Date().getTime()}`
         };
 
         this.alto = Dimensions.get('window').height,
@@ -91,7 +91,7 @@ export default class Header extends Component {
     return (
       <View style={misEstilos.padre}>
         <View style={misEstilos.imageBckround}>
-        <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={{uri:this.props.datos.imagine[1]}}>
+        <ImageBackground  style={{width:"100%", height:"100%",  display:"flex",flexDirection:"column-reverse"}} source={{uri:this.props.datos.imagine[1]+this.state.apendice}}>
         </ImageBackground>
         </View>
         <View data-layer="853274a4-9d2a-42bc-a146-a7e83326ee0b" style={misEstilos.categoria_rettangolo10}>

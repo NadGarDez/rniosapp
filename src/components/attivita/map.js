@@ -12,7 +12,7 @@ import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import Absolute from 'react-native-absolute';
-import MapView from 'react-native-maps';
+import  MapView, {Marker} from 'react-native-maps';
 export default class Map extends Component {
 
   /*
@@ -51,8 +51,8 @@ export default class Map extends Component {
         marginTop:10,
         marginBottom:30,
         justifyContent:"center",
-        alignItems:"center"
-
+        alignItems:"center",
+        padding:2
 
       },
       "hijo":{
@@ -114,23 +114,34 @@ export default class Map extends Component {
 
     }
 
-
+  console.log(this.props.datos.indirizzo.geocode.lat)
     return (
+
       <View style={misEstilos.padre}>
 
         <MapView
           region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitude:this.props.datos.indirizzo.geocode.lat,
+            longitude:this.props.datos.indirizzo.geocode.lng,
+            latitudeDelta: 0.004,
+            longitudeDelta: 0.004,
           }}
 
-          style={{width:this.altoComponente, height:this.ancho, backgroundColor:"white"}}
+          style={{width:this.ancho-20, height:this.altoComponente, backgroundColor:"white"}}
         >
-        {/*
-        <MapView.marker coordinate={this.props.datos.indirizzo.geocode}/>
-        */}
+
+        <Marker
+          coordinate={
+            {
+              latitude:this.props.datos.indirizzo.geocode.lat,
+              longitude:this.props.datos.indirizzo.geocode.lng,
+            }
+          }
+          title={this.props.datos.indirizzo.data}
+        />
+
+
+
         </MapView>
 
       </View>

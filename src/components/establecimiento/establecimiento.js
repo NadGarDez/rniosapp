@@ -224,7 +224,7 @@ export default class Establecimiento extends Component {
               <View style={misEstilos.hijo2}>
                 <View style={misEstilos.imageLogo}>
 
-                  <Image source={{uri:this.props.datos.imagine[0]}} style={{width:"90%",height:"60%"}}></Image>
+                  <Image source={{uri:this.props.datos.imagine[0]+"?"+new Date().getTime()}} style={{width:"90%",height:"60%"}}></Image>
 
                 </View>
                 <View style={misEstilos.info}>
@@ -256,7 +256,7 @@ export default class Establecimiento extends Component {
 
           <View style={misEstilos.hijo1}>
 
-            <Image source={{uri:this.props.datos.imagine[1]}} style={{width:"95%",height:"100%"}}></Image>
+            <Image source={{uri:this.props.datos.imagine[1]+"?"+new Date().getTime()}} style={{width:"95%",height:"100%"}}></Image>
             <View style={{width:"5%", height:"100%", display:"flex", flexDirection:"row", backgroundColor:"#F9F9F9"}}></View>
           </View>
         </TouchableOpacity>

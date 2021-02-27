@@ -48,6 +48,8 @@ export default class Imagenes extends Component {
             }
           },
 
+          apendice: `?${new Date().getTime()}`
+
         };
 
         this.alto = Dimensions.get('window').height,
@@ -86,7 +88,7 @@ export default class Imagenes extends Component {
           path: 'images',
         },
       };
-
+      let id = this.props.b[0].id
 
       ImagePicker.showImagePicker(options, (response) => {
         console.log('Response = ', response);
@@ -101,7 +103,7 @@ export default class Imagenes extends Component {
           extension = response.fileName.split(".");
           this.state.imagenes[imagen].loading = true;
           this.state.imagenes[imagen].data = response.data;
-          this.state.imagenes[imagen].name =`${this.props.id}-${imagen}.${extension[1]}`;
+          this.state.imagenes[imagen].name =`${id}-${imagen}.${extension[1]}`;
           this.state.imagenes[imagen].source={uri:response.uri};
 
           this.forceUpdate();
@@ -120,6 +122,7 @@ export default class Imagenes extends Component {
           this.props.saveImages(arrayI, "imagine1")
           this.validate();
           this.guardarImagenes(imagen)
+          this.props.enviar2()
           //this.props.saveImages(this.state.imagenes, "imagine1")
         }
       });
@@ -196,9 +199,9 @@ export default class Imagenes extends Component {
     baseUrl = scom.url;
     baseUrl+="/files/"
 
-      v1 = baseUrl+this.props.b[0].imagine[0];
-      v2 = baseUrl+this.props.b[0].imagine[1];
-
+      v1 = baseUrl+this.props.b[0].imagine[0]+this.state.apendice;
+      v2 = baseUrl+this.props.b[0].imagine[1]+this.state.apendice;
+      v3 = this.props.b[0].id
     }
     catch(e){
 
@@ -368,7 +371,7 @@ export default class Imagenes extends Component {
     keys = Object.keys(this.state.imagenes);
     sections = keys.map(
         (item)=>{
-
+          let h = item=="profolio"?v1 : v2
           var component ="";
 
           if(this.state.imagenes[item].loading==true){
@@ -380,7 +383,7 @@ export default class Imagenes extends Component {
           }
 
           else{
-            component= <Image source={Object.entries(this.state.imagenes[item].source).length == 0 ? {uri:v1} : this.state.imagenes[item].source } style={this.sizes("80%","80%")} />;
+            component= <Image source={Object.entries(this.state.imagenes[item].source).length == 0 ? {uri:h} : this.state.imagenes[item].source } style={this.sizes("80%","80%")} />;
           }
           return component;
         }

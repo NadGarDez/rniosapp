@@ -11,8 +11,8 @@
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
+      android:icon="@mipmap/ic"
+      android:roundIcon="@mipmap/ic"
       android:allowBackup="false"
       android:theme="@style/AppTheme"
       android:usesCleartextTraffic="true"
@@ -20,7 +20,7 @@
     >
       <meta-data
 	     android:name="com.google.android.geo.API_KEY"
-	     android:value="AIzaSyBv2vDbJlYGLqHoa0NC-sg1dVkfZJ0AXaQ"
+	     android:value="AIzaSyAbKkSvFU5HqUOlDyKd4QZWs-PwFUovizQ"
       />
       <activity
         android:name=".MainActivity"

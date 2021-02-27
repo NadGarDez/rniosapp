@@ -72,6 +72,7 @@ export default class InserimentoAttivita extends Component {
       this.enviar = this.enviar.bind(this)
       this.handleResponse = this.handleResponse.bind(this);
       this.changeModalPaypal = this.changeModalPaypal.bind(this);
+      this.changeModalPaypal2 = this.changeModalPaypal2.bind(this);
       this.validar = this.validar.bind(this);
       this.saveValidacion = this.saveValidacion.bind(this)
       this.urlAprove = "";
@@ -201,9 +202,14 @@ export default class InserimentoAttivita extends Component {
   changeModalPaypal(){
    if(this.validar()==true){
       this.preEnviar()
-      this.state.modalVisible3=!this.state.modalVisible3;
+      this.state.modalVisible3=!this.state.modalVisible3;//
       this.forceUpdate();
     }
+  }
+  changeModalPaypal2(){
+
+      this.state.modalVisible3=!this.state.modalVisible3;//
+
   }
 
 
@@ -236,7 +242,7 @@ export default class InserimentoAttivita extends Component {
 
       >
         <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
-          <Paypal saveText={this.handleTextInput} changeModalPaypal={this.changeModalPaypal} enviar={this.enviar} urlAprove={this.state.urlAprove}/>
+          <Paypal saveText={this.handleTextInput} changeModalPaypal={this.changeModalPaypal2} enviar={this.enviar} urlAprove={this.state.urlAprove}/>
 
         </View>
       </Modal>

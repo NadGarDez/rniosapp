@@ -30,6 +30,7 @@ export default class InserimentoAttivita extends Component {
       const d = new Date(0)
       this.state = {
         attivitaLuogo:"",
+
         indirizzo:{
           data:null
         },
@@ -40,23 +41,23 @@ export default class InserimentoAttivita extends Component {
         categoria2:false,
         categoria3:false,
         categoria4:false,
-        imagine1:[],
-        imagine2:[],
+        imagine1: ["",""],
+        imagine2:["","","","","","",""],
         imagine:[],
         social:"",
         modalVisible:false,
         modalVisible2:false,
         modalVisible3:false,
         validaciones:{
-          inputText:false,
-          checkbox:false,
-          images:false,
-          images2:false,
-          social:false
+          inputText:true,
+          checkbox:true,
+          images:true,
+          images2:true,
+          social:true
         },
-        urlAprove:"",
         b:{}
       };
+      this.enviar2 = this.enviar2.bind(this)
       this.changeModal = this.changeModal.bind(this);
       this.handleTextInput = this.handleTextInput.bind(this);
       this.getVariable = this.getVariable.bind(this);
@@ -72,8 +73,6 @@ export default class InserimentoAttivita extends Component {
       this.action3 = this.action3.bind(this)
       this.buscarAnuncio = this.buscarAnuncio.bind(this)
       this.compareImagine = this.compareImagine.bind(this)
-      var now = new Date();
-      this.dif = now.getTime()
 
       this.buscarAnuncio(this.props.route.params.id)
   }
@@ -84,7 +83,7 @@ export default class InserimentoAttivita extends Component {
 
         this.state.validaciones[i]= value;
         this.forceUpdate()
-        console.log(this.state)
+
       }
     }
   }
@@ -98,8 +97,16 @@ export default class InserimentoAttivita extends Component {
       b = await a.postJson({id:id});
       //console.log(b)
       //this.handleResponse(b);
-
+      this.state.imagine = b[0].imagine
+      this.state.categoria1 = b[0].catergoria1
+      this.state.categoria2 = b[0].catergoria2
+      this.state.categoria3 = b[0].catergoria3
+      this.state.categoria4 = b[0].catergoria4
+      this.state.social = b[0].social
+      this.state.indirizzo=b[0].indirizzo
+        this.state.citta=b[0].citta
       this.state.b = b;
+
       this.forceUpdate()
     }
     catch(error){
@@ -118,10 +125,10 @@ export default class InserimentoAttivita extends Component {
   }
 
   handleResponse(obj){
-
-    if(obj.estatus == "exitoso"){
+    console.log(obj.resultado==0)
+    if(obj.resultado == 1){
         Alert.alert("inserito correttamente")
-        this.props.navigation.navigate("Menu");
+        this.props.navigation.navigate("Panel");
     }
 
   }
@@ -153,6 +160,8 @@ export default class InserimentoAttivita extends Component {
       if(antiguo[i]!="" && nuevo[i]==""){
         nuevo[i] = antiguo[i]
       }
+
+
     }
     return nuevo;
   }
@@ -173,34 +182,89 @@ export default class InserimentoAttivita extends Component {
       this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
       this.state.imagine = this.compareImagine(this.state.b[0].imagine, this.state.imagine)
       //this.state.citta= JSON.stringify(this.state.citta);
-      this.state.indirizzo=JSON.stringify(this.state.indirizzo);
+      if(typeof this.state.indirizzo == "object" ){
+          this.state.indirizzo=JSON.stringify(this.state.indirizzo);
+      }
+
+
 
       objE = {}
 
       for(let i in this.state){
-        if((i!=="imagine1") && (i!=="imagine2")){
+        if((i!=="imagine1") && (i!=="imagine2") && (i!=="b") && (i!=="validaciones") && (i!=="modalVisible") && (i!=="modalVisible2") && (i!=="modalVisible3")){
           objE[i]= this.state[i];
         }
       }
-      console.log("aqui obj")
-      console.log(objE);
 
-      /*
+      up ={
+        obj:objE,
+        con:this.state.b[0].id
+      }
+
+
+
 
       baseUrl = scom.url;
-      baseUrl+="/editar_actividad";
+      baseUrl+="/updateA";
       a = new Sfetch(baseUrl);
 
       try{
-        b = await a.postJson(objE);
+        b = await a.postJson(up);
         console.log(b)
-        this.handleResponse(b);
+        if(b.resultado==1){
+          Alert.alert("Editado correctamente")
+          this.props.navigation.navigate("Panel",{reload:true})
+        }
 
       }
       catch(error){
         console.log(error);
       }
-      */
+
+
+  //  }
+  }
+  async enviar2(){
+    //if(this.validar() == true){
+      this.state.idUsuario = this.props.variables.user.value.id;
+      this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
+      this.state.imagine = this.compareImagine(this.state.b[0].imagine, this.state.imagine)
+      //this.state.citta= JSON.stringify(this.state.citta);
+      if(typeof this.state.indirizzo == "object" ){
+          this.state.indirizzo=JSON.stringify(this.state.indirizzo);
+      }
+
+
+
+      objE = {}
+
+      for(let i in this.state){
+        if((i!=="imagine1") && (i!=="imagine2") && (i!=="b") && (i!=="validaciones") && (i!=="modalVisible") && (i!=="modalVisible2") && (i!=="modalVisible3")){
+          objE[i]= this.state[i];
+        }
+      }
+
+      up ={
+        obj:objE,
+        con:this.state.b[0].id
+      }
+
+
+
+
+      baseUrl = scom.url;
+      baseUrl+="/updateA";
+      a = new Sfetch(baseUrl);
+
+      try{
+        b = await a.postJson(up);
+
+
+      }
+      catch(error){
+        console.log(error);
+      }
+
 
   //  }
   }
@@ -208,7 +272,7 @@ export default class InserimentoAttivita extends Component {
   handleTextInput(value, name){
     this.state[name]= value;
     this.forceUpdate()
-    console.log(this.state)
+
   }
 
   getVariable(name){
@@ -280,7 +344,7 @@ export default class InserimentoAttivita extends Component {
                 this.changeModal(1)
             }}
             title="Cancelar"
-            color="#841584"
+            color="#28337F"
 
           />
         </View>
@@ -298,7 +362,7 @@ export default class InserimentoAttivita extends Component {
                 this.changeModal(2)
             }}
             title="Cancelar"
-            color="#841584"
+            color="#28337F"
 
           />
         </View>
@@ -308,8 +372,8 @@ export default class InserimentoAttivita extends Component {
           <HeaderI datos={objDat} />
           <TextInputs b={this.state.b} saveValidacion={this.saveValidacion} saveText={this.handleTextInput} navigation={this.props.navigation} changeModal={this.changeModal} dataCitta={this.state.citta} dataIndirizo={this.state.indirizzo.data}/>
           <Checks b={this.state.b} saveValidacion={this.saveValidacion} saveCheck={this.handleTextInput} />
-          <Imagenes1 b={this.state.b} saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>
-          <Imagenes2 b={this.state.b} saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>
+          <Imagenes1 enviar2={this.enviar2} b={this.state.b} saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>
+          <Imagenes2 enviar2={this.enviar2} b={this.state.b} saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>
           <Social b={this.state.b} saveValidacion={this.saveValidacion} saveText={this.handleTextInput}/>
           <Enviar enviar={this.changeModalPaypal} />
 

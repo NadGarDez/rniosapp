@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,Modal,TouchableOpacity,Image} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -15,18 +15,32 @@ import Bar from '~/components/attivita/bar.js';
 import Info from '~/components/attivita/info.js';
 import Map from '~/components/attivita/map.js';
 import BottonMenu from "../../components/menus/bottonMenu.js";
+import Icon from 'react-native-vector-icons/AntDesign';
 export default class Attivita extends Component {
 
   constructor(props) {
       super(props);
       this.state = {
-
+        image:"",
+        modalVisible:false
       };
       this.action1 = this.action1.bind(this)
       this.action2 = this.action2.bind(this)
       this.action3 = this.action3.bind(this)
+      this.open = this.open.bind(this)
+      this.close = this.close.bind(this)
   }
 
+  open(url){
+    this.state.modalVisible = !this.state.modalVisible;
+    this.state.image = url
+    this.forceUpdate()
+  }
+  close(){
+    this.state.modalVisible = !this.state.modalVisible;
+    this.state.image = ""
+    this.forceUpdate()
+  }
 
   handlePress(target, owner) {
     if (this.props.onPress) {
@@ -96,6 +110,34 @@ export default class Attivita extends Component {
 
     return (
       <View>
+      <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.modalVisible}
+
+      >
+        <View style={{width:"100%", height:"100%", backgroundColor:"transparent", display:"flex", justifyContent:"center",alignItems:"center"}}>
+          <View style={{display:"flex",flexDirection:"column",width:"80%", height:"60%", borderStyle:"solid", borderWidth:2,borderColor:"#28337F"}}>
+            <View style={{display:"flex", flexDirection:"row-reverse",width:"100%",height:"10%", backgroundColor:"#28337F", alignItems:"center"}}>
+                <TouchableOpacity
+                  onPress={
+                    ()=>{
+                      this.close()
+                    }
+                  }
+                >
+                  <Icon name="close" size={20} color="white" style={{marginRight:5}}/>
+                </TouchableOpacity>
+            </View>
+            <View style={{width:"100%",height:"90%", backgroundColor:"white", display:"flex", alignItems:"center", justifyContent:"center"}}>
+
+              <Image source={{uri:this.state.image+"?"+new Date().getTime()}} style={{width:"80%", height:"60%"}}/>
+
+            </View>
+          </View>
+
+        </View>
+      </Modal>
     <ScrollView data-layer="072d1e5f-f691-44c8-92b4-2261f9c479bc" style={styles.attivita}>
       <View data-layer="b91dba1a-5782-44a5-bb17-12b9d70a3818" style={styles.attivita_rettangolo11}>
 
@@ -104,7 +146,7 @@ export default class Attivita extends Component {
         <Bar datos={objDat} />
         <Contenido datos={objDat}/>
 
-        <Imagenes datos={objDat} />
+        <Imagenes datos={objDat} open={this.open} close={this.close}/>
         <Map datos={objDat}/>
         <Social datos={objDat}/>
         <Footer />
@@ -281,7 +323,7 @@ const styles = StyleSheet.create({
     "borderBottomLeftRadius": 0,
     "borderBottomRightRadius": 0,
     "width": "100%",
-    "height": 2615,
+    "height": 1700,
 
   },
   "attivita_linea6d1eb21a6": {

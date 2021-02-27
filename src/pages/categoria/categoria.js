@@ -65,7 +65,7 @@ export default class Categoria extends Component {
         this.forceUpdate()
       break;
     }
-
+    sobj.estado="activo"
     token = this.getVariable("tokenLogin");
     baseUrl = scom.url;
     baseUrl+="/busqueda_actividad";

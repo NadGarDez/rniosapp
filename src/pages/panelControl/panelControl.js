@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,Modal,Alert,ActivityIndicator} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -11,15 +11,20 @@ import Establecimiento from '~/components/panelControl/actividadUP.js';
 import Header from '~/components/panelControl/header.js';
 import Sfetch from "../../services/fetchManager.js";
 import BottonMenu from "../../components/menus/bottonMenu.js";
+import Paypal from "./../webViewPayPal/WebViewPayPal2.js";
 const scom = require("../../services/url.js");
 
 
 export default class Recomendaciones extends Component {
-
+//  let v = d.getTime() + 31536000000;
   constructor(props) {
       super(props);
       this.state = {
-        dataRender:{}
+        dataRender:"",
+        urlAprove:"",
+        modalVisible3:false,
+        conPaypal:"",
+        caducidad:""
       };
       this.buscar = this.buscar.bind(this)
       this.handleResponse = this.handleResponse.bind(this)
@@ -29,9 +34,97 @@ export default class Recomendaciones extends Component {
       this.action1 = this.action1.bind(this)
       this.action2 = this.action2.bind(this)
       this.action3 = this.action3.bind(this)
-      this.buscar()
+      this.preEnviar = this.preEnviar.bind(this)
+      this.changeModalPaypal2= this.changeModalPaypal2.bind(this)
+      this.enviar = this.enviar.bind(this)
+      this.reload = this.reload.bind(this)
+      this.reload()
   }
 
+  changeModalPaypal2(){
+
+      this.state.modalVisible3=!this.state.modalVisible3;//
+      this.forceUpdate()
+
+  }
+
+  componentWillReceiveProps(nextProps){
+      console.log(nextProps)
+      if(nextProps.route.params.reload==true){
+        this.reload()
+      }
+
+  }
+
+  async enviar(){
+  //  if(this.validar() == true){
+  console.log(`caducidad ${this.state.caducidad}`)
+      let vencimiento = ""
+      let cad = new Date(this.state.caducidad)
+      let hoy = new Date()
+      if(cad.getTime() > hoy.getTime() ){
+        vencimiento = cad.getTime()+ 31536000000
+        console.log(vencimiento)
+      }
+      else{
+        vencimiento = hoy.getTime()+ 31536000000
+        console.log(vencimiento)
+      }
+
+      objE = {
+        pagado:true,
+        vencimiento: new Date(vencimiento),
+        estado:"activo",
+        fechaPago:hoy,
+      }
+
+      mensaje={
+        obj:objE,
+        con:this.state.conPaypal
+      }
+
+      console.log(mensaje);
+
+
+      baseUrl = scom.url;
+      baseUrl+="/updateA";
+      a = new Sfetch(baseUrl);
+
+      try{
+        b = await a.postJson(mensaje);
+        console.log(b)
+        if(b.resultado==1){
+            this.reload()
+        }
+
+      //  this.handleResponse(b);
+
+      }
+      catch(error){
+        console.log(error);
+      }
+
+    //}
+  }
+
+  async preEnviar(caducidad, id){
+    baseUrl = scom.url;
+    baseUrl+="/paypal";
+    a = new Sfetch(baseUrl);
+    let obj=1
+
+    try{
+      b = await a.getJson(obj,token.value);
+      console.log(b.links[1].href)
+      this.state.urlAprove = b.links[1].href;
+      this.state.conPaypal= id;
+      this.state.caducidad=caducidad
+      this.forceUpdate()
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
   getVariable(name){
     superObj={};
     for(item in this.props.variables){
@@ -46,26 +139,42 @@ export default class Recomendaciones extends Component {
     return superObj
   }
 
-  async activar(id){
+  reload(){
+    this.state.dataRender=""
+    this.forceUpdate()
+    this.buscar()
+  }
+
+
+  async activar(id, con){
     var sobj = {id:id}
 
+    if(con== true){
+      token = this.getVariable("tokenLogin");
+      baseUrl = scom.url;
+      baseUrl+="/activarA";
 
-    token = this.getVariable("tokenLogin");
-    baseUrl = scom.url;
-    baseUrl+="/activarA";
+      a = new Sfetch(baseUrl);
 
-    a = new Sfetch(baseUrl);
+      try{
+        b = await a.postJson(sobj, token.value);
+        console.log(b);
+        if(b.resultado==1){
+          Alert.alert("Activé")
+          this.reload()
+        }
+        //this.handleResponse(b);
 
-    try{
-      b = await a.postJson(sobj, token.value);
-      console.log(b);
-      //this.handleResponse(b);
-
+      }
+      catch(error){
+        //Alert.alert(error)
+        console.log(error)
+      }
     }
-    catch(error){
-      //Alert.alert(error)
-      console.log(error)
+    else{
+      Alert.alert("Procéder au paiement avant l'activation ")
     }
+
   }
 
   async desactivar(id){
@@ -81,6 +190,10 @@ export default class Recomendaciones extends Component {
     try{
       b = await a.postJson(sobj, token.value);
       console.log(b);
+      if(b.resultado==1){
+        Alert.alert("Désactivée")
+        this.reload()
+      }
       //this.handleResponse(b);
 
     }
@@ -217,6 +330,18 @@ export default class Recomendaciones extends Component {
   }
 
   render() {
+    let l
+    if(this.state.dataRender==""){
+        l=<ActivityIndicator/>
+    }
+    else{
+      l = <FlatList
+        data={this.state.dataRender}
+        renderItem={({item})=><Establecimiento datos={item.key} buscar={this.buscar} navigation={this.props.navigation} admin={this.props.variables.user.value.admin} activar={this.activar} desactivar={this.desactivar} enviar={this.enviar} changeModalPaypal={this.changeModalPaypal2} preEnviar={this.preEnviar} urlAprove={this.state.urlAprove} reload={this.reload}/>}
+
+      />
+    }
+
     objDat={
       nombre:"Città di Bra",
       imagenLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU",
@@ -233,16 +358,38 @@ export default class Recomendaciones extends Component {
     }
     return (
     <View>
+    <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.state.modalVisible3}
+    >
+      <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
+        <Paypal saveText={this.handleTextInput} changeModalPaypal={this.changeModalPaypal2} enviar={this.enviar} urlAprove={this.state.urlAprove} caducidad={this.state.caducidad} conPaypal={this.state.conPaypal}/>
+
+      </View>
+    </Modal>
     <ScrollView data-layer="a85cdb6f-2c4c-4c53-b9e5-785a51713227" style={styles.categoria}>
 
 
       <Header/>
 
-      <FlatList
-        data={this.state.dataRender}
-        renderItem={({item})=><Establecimiento datos={item.key} buscar={this.buscar}navigation={this.props.navigation} admin={this.props.variables.user.value.admin} activar={this.activar} desactivar={this.desactivar}/>}
+      {
+        l
+          //}
+          //else{
+            /*return(
+              <FlatList
+                data={this.state.dataRender}
+                renderItem={({item})=><Establecimiento datos={item.key} buscar={this.buscar} navigation={this.props.navigation} admin={this.props.variables.user.value.admin} activar={this.activar} desactivar={this.desactivar} enviar={this.enviar} changeModalPaypal={this.changeModalPaypal2} preEnviar={this.preEnviar} urlAprove={this.state.urlAprove} reload={this.reload}/>}
 
-      />
+              />
+            )*/
+          //}
+
+
+      }
+
+
 
     {/*
         <View data-layer="eaff929c-e1c6-4621-b31b-eb5738de64b6" style={styles.categoria_rettangolo11}></View>

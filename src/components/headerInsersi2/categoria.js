@@ -34,7 +34,8 @@ export default class Checks extends Component {
           categoria3:null,
           categoria4:null,
           validate:"default",
-          message:""
+          message:"",
+          num:0
         };
 
         this.alto = Dimensions.get('window').height,
@@ -42,6 +43,7 @@ export default class Checks extends Component {
         this.altoComponente =  30 * this.alto;
         this.altoComponente = this.altoComponente / 100;
         this.validate = this.validate.bind(this);
+        this.updateValues = this.updateValues.bind(this)
 
     }
 
@@ -68,6 +70,28 @@ export default class Checks extends Component {
       }
 
     }
+    updateValues(a){
+      this.state.categoria1 = a[0].categoria1
+        this.state.categoria2 = a[0].categoria2
+          this.state.categoria3 = a[0].categoria3
+            this.state.categoria4 = a[0].categoria4
+              this.props.saveCheck(this.state.categoria1,"categoria1")
+                this.props.saveCheck(this.state.categoria2,"categoria2")
+                  this.props.saveCheck(this.state.categoria3,"categoria3")
+                    this.props.saveCheck(this.state.categoria4,"categoria4")
+      this.forceUpdate()
+    }
+
+    componentWillReceiveProps(nextProps){
+
+      if(this.state.categoria1==null){
+        this.updateValues(nextProps.b)
+        
+      }
+
+    }
+
+
 
   render(){
 
@@ -75,16 +99,28 @@ export default class Checks extends Component {
     let v2 = ""
     let v3 = ""
     let v4 = ""
+
     try{
     //  console.log(this.props.b[0].social)
-      v1 = this.props.b[0].categoria1;
-      v2 = this.props.b[0].categoria2;
-      v3 = this.props.b[0].categoria3;
-      v4 = this.props.b[0].categoria4;
-      this.props.saveCheck(this.props.b[0].categoria1,"categoria1")
-      this.props.saveCheck(this.props.b[0].categoria2,"categoria2")
-      this.props.saveCheck(this.props.b[0].categoria3,"categoria3")
-      this.props.saveCheck(this.props.b[0].categoria4,"categoria4")
+
+      /*  if(this.state.categoria1==null && this.state.categoria2==null && this.state.categoria3==null && this.state.categoria4==null && this.props.b!={}){
+            this.setState({categoria1:this.props.b[0].categoria1})
+              this.setState({categoria2:this.props.b[0].categoria2})
+              this.setState({categoria3:this.props.b[0].categoria3})
+              this.setState({categoria4:this.props.b[0].categoria4})
+        }*/
+
+
+        v1 = this.props.b[0].categoria1;
+
+        v2 = this.props.b[0].categoria2;
+
+        v3 = this.props.b[0].categoria3;
+
+        v4 = this.props.b[0].categoria4;
+
+
+
     }
     catch(e){
 
@@ -196,7 +232,7 @@ export default class Checks extends Component {
 
               }}
 
-              value={this.state.categoria1 != null ? this.state.catergoria1 : v1}
+              value={this.state.categoria1}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
@@ -210,7 +246,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria2 != null ? this.state.catergoria2 : v2}
+              value={this.state.categoria2}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
@@ -224,7 +260,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria3 != null ? this.state.catergoria3 : v3}
+              value={this.state.categoria3}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
@@ -238,7 +274,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria4 != null ? this.state.catergoria4 : v4}
+              value={this.state.categoria4}
             />
           </View>
         </View>

@@ -161,7 +161,7 @@ export default class Recomendaciones extends Component {
     let image = ""
     switch (this.props.route.params.sobj.categoria) {
       case "todas":
-        categoria = "tutte"
+        categoria = "Tutte"
         image = this.props.route.params.sobj.imagenes[0]
       break;
 
@@ -189,8 +189,8 @@ export default class Recomendaciones extends Component {
     }
 
     objDatCategoria={
-      tit:"Ricerca",
-      subtit:`Categoria : ${categoria}\nCitta : ${this.props.route.params.sobj.textDove=="" ? "Non entrato" : this.props.route.params.sobj.textDove}`,
+      tit:this.props.route.params.sobj.textDove=="" ? categoria : this.props.route.params.sobj.textDove,
+      subtit:"Hai cercato",
       imagen2:image
     }
     return (
