@@ -377,13 +377,6 @@
 			remoteGlobalIDString = 64AA15081EF7F30100718508;
 			remoteInfo = "BVLinearGradient-tvOS";
 		};
-		CC87BFE725EE70570047011A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNCCheckbox;
-		};
 		CC87BFEA25EE70570047011A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5699C0782C324F8D92105D9B /* RNCMaskedView.xcodeproj */;
@@ -535,7 +528,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = modulo4/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = modulo4/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCCheckbox.xcodeproj; path = "../node_modules/@react-native-community/checkbox/ios/RNCCheckbox.xcodeproj"; sourceTree = "<group>"; };
 		149DACDD9E2140ABA976DC92 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		1CFBAADE380947F385237725 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		1F48293F630F0DA9E234CE7C /* Pods-modulo4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modulo4.debug.xcconfig"; path = "Target Support Files/Pods-modulo4/Pods-modulo4.debug.xcconfig"; sourceTree = "<group>"; };
@@ -837,7 +829,6 @@
 				2EFB7270D199C1F298EBBB61 /* Pods-modulo4Tests.debug.xcconfig */,
 				9865E88876F63859C6721652 /* Pods-modulo4Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -871,7 +862,6 @@
 				68D3F8EB2FF345A78C47E266 /* RNCPicker.xcodeproj */,
 				67D2F848E6D64DF0B53F81CA /* RNSVG.xcodeproj */,
 				8F7D41E8797347F69AEEDC2B /* RNScreens.xcodeproj */,
-				147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */,
 				519BCCA9CCD24D358218AB8A /* SafeAreaView.xcodeproj */,
 				5699C0782C324F8D92105D9B /* RNCMaskedView.xcodeproj */,
 				417D84B0846D4F3783DD3CBE /* RNFS.xcodeproj */,
@@ -1074,14 +1064,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CC87BFD525EE70570047011A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CC87BFE825EE70570047011A /* libRNCCheckbox.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CC87BFD725EE70570047011A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,10 +1260,6 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-				},
-				{
-					ProductGroup = CC87BFD525EE70570047011A /* Products */;
-					ProjectRef = 147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */;
 				},
 				{
 					ProductGroup = CC87BFBF25EE70570047011A /* Products */;
@@ -1621,13 +1599,6 @@
 			fileType = archive.ar;
 			path = libBVLinearGradient.a;
 			remoteRef = CC87BFE425EE70570047011A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CC87BFE825EE70570047011A /* libRNCCheckbox.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCCheckbox.a;
-			remoteRef = CC87BFE725EE70570047011A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CC87BFEB25EE70570047011A /* libRNCMaskedView.a */ = {
