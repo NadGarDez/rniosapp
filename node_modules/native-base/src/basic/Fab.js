@@ -353,8 +353,7 @@ class Fab extends Component {
         active: false
       });
       Animated.spring(this.containerHeight, {
-        toValue: variables.fabWidth,
-        useNativeDriver: false
+        toValue: variables.fabWidth
       }).start();
       Animated.spring(this.buttonScale, {
         toValue: 0,
@@ -463,7 +462,7 @@ class Fab extends Component {
     return (
       <Animated.View style={this.getContainerStyle()}>
         {this.renderButtons()}
-        {Platform.OS !== PLATFORM.ANDROID ||
+        {Platform.OS === PLATFORM.IOS ||
         variables.androidRipple === false ||
         Platform.Version <= 21 ? (
           <TouchableOpacity
