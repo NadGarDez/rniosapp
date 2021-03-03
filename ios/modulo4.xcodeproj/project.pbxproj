@@ -76,7 +76,6 @@
 		D77E440EA4DD416DB8C0F7B2 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCC579CAE1C74FE7989606AB /* MaterialCommunityIcons.ttf */; };
 		DABD18CA490D44439587B2EA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A5887788C04967A5ED2F3F /* FontAwesome5_Brands.ttf */; };
 		E418E6E15C5A4269885BE92C /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B1A8B4339546FABA47B0CA /* libRNCSafeAreaContext.a */; };
-		EC7FE05010334A62B7C250AD /* libRNCCheckbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D68DB70873F459FBEC225C5 /* libRNCCheckbox.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		ED3DB091A38449D683799BB7 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63FC7FE230574A9BA019BD6A /* Ionicons.ttf */; };
@@ -377,13 +376,6 @@
 			remoteGlobalIDString = 64AA15081EF7F30100718508;
 			remoteInfo = "BVLinearGradient-tvOS";
 		};
-		CC87BFE725EE70570047011A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNCCheckbox;
-		};
 		CC87BFEA25EE70570047011A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5699C0782C324F8D92105D9B /* RNCMaskedView.xcodeproj */;
@@ -535,7 +527,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = modulo4/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = modulo4/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCCheckbox.xcodeproj; path = "../node_modules/@react-native-community/checkbox/ios/RNCCheckbox.xcodeproj"; sourceTree = "<group>"; };
 		149DACDD9E2140ABA976DC92 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		1CFBAADE380947F385237725 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		1F48293F630F0DA9E234CE7C /* Pods-modulo4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modulo4.debug.xcconfig"; path = "Target Support Files/Pods-modulo4/Pods-modulo4.debug.xcconfig"; sourceTree = "<group>"; };
@@ -639,7 +630,6 @@
 				4D9E46E77D1B4EAD9F45C579 /* libRNCPicker.a in Frameworks */,
 				792E00EB1EA8407EA4C74B34 /* libRNSVG.a in Frameworks */,
 				C530C5E7CE144E0DA7513433 /* libRNScreens.a in Frameworks */,
-				EC7FE05010334A62B7C250AD /* libRNCCheckbox.a in Frameworks */,
 				E418E6E15C5A4269885BE92C /* libRNCSafeAreaContext.a in Frameworks */,
 				ADF0784D71844F96BD57F827 /* libRNCMaskedView.a in Frameworks */,
 				68D756F1008B498CAEBA0A73 /* libRNFS.a in Frameworks */,
@@ -837,7 +827,6 @@
 				2EFB7270D199C1F298EBBB61 /* Pods-modulo4Tests.debug.xcconfig */,
 				9865E88876F63859C6721652 /* Pods-modulo4Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -871,7 +860,6 @@
 				68D3F8EB2FF345A78C47E266 /* RNCPicker.xcodeproj */,
 				67D2F848E6D64DF0B53F81CA /* RNSVG.xcodeproj */,
 				8F7D41E8797347F69AEEDC2B /* RNScreens.xcodeproj */,
-				147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */,
 				519BCCA9CCD24D358218AB8A /* SafeAreaView.xcodeproj */,
 				5699C0782C324F8D92105D9B /* RNCMaskedView.xcodeproj */,
 				417D84B0846D4F3783DD3CBE /* RNFS.xcodeproj */,
@@ -1074,14 +1062,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CC87BFD525EE70570047011A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CC87BFE825EE70570047011A /* libRNCCheckbox.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CC87BFD725EE70570047011A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,10 +1258,6 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-				},
-				{
-					ProductGroup = CC87BFD525EE70570047011A /* Products */;
-					ProjectRef = 147F8850F4B14981932C35AE /* RNCCheckbox.xcodeproj */;
 				},
 				{
 					ProductGroup = CC87BFBF25EE70570047011A /* Products */;
@@ -1621,13 +1597,6 @@
 			fileType = archive.ar;
 			path = libBVLinearGradient.a;
 			remoteRef = CC87BFE425EE70570047011A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CC87BFE825EE70570047011A /* libRNCCheckbox.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCCheckbox.a;
-			remoteRef = CC87BFE725EE70570047011A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		CC87BFEB25EE70570047011A /* libRNCMaskedView.a */ = {
@@ -2114,10 +2083,11 @@
 					"$(SRCROOT)/../node_modules/react-native-webview/apple/**",
 				);
 				INFOPLIST_FILE = modulo4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
+					"$(inherited)",
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2152,10 +2122,11 @@
 					"$(SRCROOT)/../node_modules/react-native-webview/apple/**",
 				);
 				INFOPLIST_FILE = modulo4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
+					"$(inherited)",
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2428,7 +2399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2474,7 +2445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
