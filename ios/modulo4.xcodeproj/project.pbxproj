@@ -73,9 +73,9 @@
 		BBA5766017F44326BEEE442B /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A47A276B6EF44E8FA1CD4658 /* libRNCNetInfo-tvOS.a */; };
 		BD4F0C0DB1A54C7E8D3155A0 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E15469BEE8B469CB3694FC8 /* libRNGestureHandler-tvOS.a */; };
 		C530C5E7CE144E0DA7513433 /* libRNScreens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6453D79A7D9B40D4BAFA18A7 /* libRNScreens.a */; };
+		CC60751825EFD917001C45BF /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF0FFE72056DD460020B375 /* libdouble-conversion.a */; };
 		D77E440EA4DD416DB8C0F7B2 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCC579CAE1C74FE7989606AB /* MaterialCommunityIcons.ttf */; };
 		DABD18CA490D44439587B2EA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A5887788C04967A5ED2F3F /* FontAwesome5_Brands.ttf */; };
-		E418E6E15C5A4269885BE92C /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B1A8B4339546FABA47B0CA /* libRNCSafeAreaContext.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		ED3DB091A38449D683799BB7 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63FC7FE230574A9BA019BD6A /* Ionicons.ttf */; };
@@ -327,6 +327,20 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		CC7308B925EFE3BE0031C0F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 83CBBA2D1A601D0E00E9B192;
+			remoteInfo = React;
+		};
+		CC7308F525EFE3D50031C0F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D3C04B91DE3340900C268FA;
+			remoteInfo = yoga;
+		};
 		CC87BFB725EE70560047011A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -577,6 +591,7 @@
 		C3497FFE2AF84032B06DAB63 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		C487F0EDB4AE41949ABC58AD /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		C849C44F5E7FFA201571AC5E /* Pods-modulo4-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modulo4-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-modulo4-tvOSTests/Pods-modulo4-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		CC6074D925EFD4F3001C45BF /* double-conversion-1.1.6 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "double-conversion-1.1.6"; path = "../node_modules/react-native/third-party/double-conversion-1.1.6"; sourceTree = "<group>"; };
 		CCC579CAE1C74FE7989606AB /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		CFF670B696F2127E43AF863F /* Pods-modulo4-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modulo4-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-modulo4-tvOS/Pods-modulo4-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D04CB7A2577C4191BDB007D9 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
@@ -611,6 +626,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC60751825EFD917001C45BF /* libdouble-conversion.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -630,7 +646,6 @@
 				4D9E46E77D1B4EAD9F45C579 /* libRNCPicker.a in Frameworks */,
 				792E00EB1EA8407EA4C74B34 /* libRNSVG.a in Frameworks */,
 				C530C5E7CE144E0DA7513433 /* libRNScreens.a in Frameworks */,
-				E418E6E15C5A4269885BE92C /* libRNCSafeAreaContext.a in Frameworks */,
 				ADF0784D71844F96BD57F827 /* libRNCMaskedView.a in Frameworks */,
 				68D756F1008B498CAEBA0A73 /* libRNFS.a in Frameworks */,
 				65199C0CADA644A4B6418516 /* libRNImagePicker.a in Frameworks */,
@@ -842,6 +857,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				CC6074D925EFD4F3001C45BF /* double-conversion-1.1.6 */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -1122,6 +1138,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				CC7308F625EFE3D50031C0F6 /* PBXTargetDependency */,
+				CC7308BA25EFE3BE0031C0F6 /* PBXTargetDependency */,
 			);
 			name = modulo4;
 			productName = "Hello World";
@@ -1944,6 +1962,16 @@
 			target = 2D02E47A1E0B4A5D006451C7 /* modulo4-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
+		CC7308BA25EFE3BE0031C0F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = React;
+			targetProxy = CC7308B925EFE3BE0031C0F6 /* PBXContainerItemProxy */;
+		};
+		CC7308F625EFE3D50031C0F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = yoga;
+			targetProxy = CC7308F525EFE3D50031C0F6 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -2063,6 +2091,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -2086,9 +2115,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"$(inherited)",
+					"-l\"Folly\"",
+					"-l\"React\"",
+					"-l\"glog\"",
+					"-l\"react-native-maps\"",
+					"-l\"stdc++\"",
+					"-l\"yoga\"",
+					"-framework",
+					"-JavaScriptCore",
 					"-lc++",
+					"-l\"DoubleConversion\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = modulo4;
@@ -2102,6 +2138,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -2125,9 +2162,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"$(inherited)",
+					"-l\"Folly\"",
+					"-l\"React\"",
+					"-l\"glog\"",
+					"-l\"react-native-maps\"",
+					"-l\"stdc++\"",
+					"-l\"yoga\"",
+					"-framework",
+					"-JavaScriptCore",
 					"-lc++",
+					"-l\"DoubleConversion\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = modulo4;
