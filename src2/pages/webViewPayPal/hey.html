@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="https://www.paypal.com/sdk/js?client-id=ARw0lsACrOMxcXz3vtahagV6o6OhqVxZrFdU0SJaw1LJKNyzSlLZ5-MRS8OGaIbfiVs8cGiik622sfP_"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+    </script>
+
+    <div id="paypal-button-container"></div>
+
+    <script>
+      paypal.Buttons(
+      {
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+          }
+        }]
+      });
+    }
+  }
+      ).render('#paypal-button-container');
+      // This function displays Smart Payment Buttons on your web page.
+    </script>
+
+  </body>
+</html>
