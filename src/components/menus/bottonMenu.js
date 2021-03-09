@@ -9,7 +9,7 @@ import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
-import CheckBox from '@react-native-community/checkbox';
+import { CheckBox } from 'react-native-elements';
 import Sfetch from "../../services/fetchManager.js";
 const scom = require("../../services/url.js");
 import AsyncStorage from '@react-native-async-storage/async-storage';

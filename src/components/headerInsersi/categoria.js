@@ -12,7 +12,7 @@ import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
-import CheckBox from '@react-native-community/checkbox';
+import { CheckBox } from 'react-native-elements';
 //import Absolute from 'react-native-absolute';
 export default class Checks extends Component {
 
@@ -61,7 +61,7 @@ export default class Checks extends Component {
             this.state.validate = "validate";
             this.forceUpdate();
             this.props.saveValidacion(true,"checkbox")
-          
+
             break;
           }
 
@@ -165,7 +165,7 @@ export default class Checks extends Component {
             <Text>Goûter</Text>
             <CheckBox
 
-              onValueChange={(newValue) => {
+              onPress={(newValue) => {
 
                   this.state.categoria1=newValue;
                   this.forceUpdate()
@@ -174,13 +174,13 @@ export default class Checks extends Component {
 
               }}
 
-              value={this.state.categoria1}
+              checked={this.state.categoria1}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
             <CheckBox
-              onValueChange={(newValue) => {
+              onPress={(newValue) => {
                   this.state.categoria2=newValue;
                   this.forceUpdate()
                   this.props.saveCheck(newValue,"categoria2")
@@ -188,13 +188,13 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria2}
+              checked={this.state.categoria2}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Se détendre</Text>
             <CheckBox
-              onValueChange={(newValue) => {
+              onPress={(newValue) => {
                   this.state.categoria3=newValue;
                   this.forceUpdate()
                   this.props.saveCheck(newValue,"categoria3")
@@ -202,13 +202,13 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria3}
+              checked={this.state.categoria3}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Visite</Text>
             <CheckBox
-              onValueChange={(newValue) => {
+              onPress={(newValue) => {
                   this.state.categoria4=newValue;
                   this.forceUpdate()
                   this.props.saveCheck(newValue,"categoria4")
@@ -216,7 +216,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              value={this.state.categoria4}
+              checked={this.state.categoria4}
             />
           </View>
         </View>
