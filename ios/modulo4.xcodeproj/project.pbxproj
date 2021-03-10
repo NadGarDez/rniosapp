@@ -75,6 +75,7 @@
 		C530C5E7CE144E0DA7513433 /* libRNScreens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6453D79A7D9B40D4BAFA18A7 /* libRNScreens.a */; };
 		CC60751825EFD917001C45BF /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF0FFE72056DD460020B375 /* libdouble-conversion.a */; };
 		CCFBF46725F878990047D8FB /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFBF46625F878710047D8FB /* libRNCAsyncStorage.a */; };
+		CCFBF46825F879940047D8FB /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC87C01E25EE70570047011A /* libRNCSafeAreaContext.a */; };
 		D77E440EA4DD416DB8C0F7B2 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCC579CAE1C74FE7989606AB /* MaterialCommunityIcons.ttf */; };
 		DABD18CA490D44439587B2EA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7A5887788C04967A5ED2F3F /* FontAwesome5_Brands.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -628,6 +629,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFBF46825F879940047D8FB /* libRNCSafeAreaContext.a in Frameworks */,
 				CCFBF46725F878990047D8FB /* libRNCAsyncStorage.a in Frameworks */,
 				CC60751825EFD917001C45BF /* libdouble-conversion.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
