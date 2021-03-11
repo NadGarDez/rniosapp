@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, Modal,View, TextInput, FlatList, ScrollView, TouchableHighlight, ImageBackground, Alert,TouchableOpacity,Button,Image,Dimensions,BackHandler} from 'react-native';
+import {Picker,StyleSheet, Text, Modal,View, TextInput, FlatList, ScrollView, TouchableHighlight, ImageBackground, Alert,TouchableOpacity,Button,Image,Dimensions,BackHandler} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -11,8 +11,10 @@ import {Image as SvgImage} from 'react-native-svg';
 import Absolute from 'react-native-absolute';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Prueba from "./mapAutocomplete.js";
-import {Picker} from '@react-native-picker/picker';
+import RNPickerSelect from 'react-native-picker-select';
+//import {Picker} from '@react-native-picker/picker';
 import Sfetch from "../../services/fetchManager.js";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 const scom = require("../../services/url.js");
 export default class Home extends Component {
 
@@ -200,7 +202,7 @@ export default class Home extends Component {
               </View>
               <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"25%",alignItems:"center"}}>
                 <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
-
+                {/*
                 <Picker
                   selectedValue={this.state.selectCategoria}
                   style={{height: "100%", width: "100%"}}
@@ -214,7 +216,16 @@ export default class Home extends Component {
                   <Picker.Item label="Rilassarti" value="dormir" />
                   <Picker.Item label="Visitare" value="visiter" />
 
-                </Picker>
+                </Picker>*/}
+
+                <RNPickerSelect
+            onValueChange={(value) => console.log(value)}
+            items={[
+                { label: 'Football', value: 'football' },
+                { label: 'Baseball', value: 'baseball' },
+                { label: 'Hockey', value: 'hockey' },
+            ]}
+        />
 
 
                 </View>

@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
 import { CheckBox } from 'react-native-elements';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Sfetch from "../../services/fetchManager.js";
 const scom = require("../../services/url.js");
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -273,7 +274,7 @@ export default class MenuLogin extends Component {
 
               </View>
               <View style={{width:"100%", height:"20%",display:"flex", flexDirection:"row", alignItems:"center"}}>
-                <CheckBox
+                {/*<CheckBox
 
                  checked={this.state.mantenerIniciada}
                  onPress={(newValue) => {
@@ -281,7 +282,17 @@ export default class MenuLogin extends Component {
                    this.forceUpdate();
                  }}
                  color="blue"
-                />
+                />*/}
+
+  <BouncyCheckbox
+  isChecked
+  fillColor="blue"
+  onPress={(newValue) => {
+        this.state.mantenerIniciada = newValue;
+                   this.forceUpdate();
+
+  }
+/>
 
                 <Text style={{color:"#28337F"}}>Restez connecté</Text>
                 <TouchableOpacity
