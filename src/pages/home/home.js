@@ -219,12 +219,20 @@ export default class Home extends Component {
                 </Picker>*/}
 
                 <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={(value) => {
+              this.state.selectCategoria= value;
+              this.forceUpdate()
+            }
+            placeholder={{ label: "Cerca per categoria", value: "todas" }}
+
             items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
+                /*{ label: 'Cerca per categoria', value: 'todas' },*/
+                { label: 'Degustare', value: 'manger' },
+                { label: 'Divertisi', value: "s'amuser" },
+                { label: 'Rilassarti', value: "dormir" },
+                  { label: 'Visitare', value: "visiter" },
             ]}
+
         />
 
 

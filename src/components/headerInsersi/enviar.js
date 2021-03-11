@@ -12,7 +12,7 @@ import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
-import { CheckBox } from 'react-native-elements';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 //import Absolute from 'react-native-absolute';
 
 export default class Social extends Component {
@@ -267,7 +267,7 @@ export default class Social extends Component {
 
         <View style={[misEstilos.flexPerfectCenter, misEstilos.flexRow, this.sizes("100%","50%")]}>
           <Text style={misEstilos.inserimentoAttivita_homePage}>Home Page</Text>
-          <CheckBox style={{marginLeft:"5%"}} />
+          BouncyCheckbox style={{marginLeft:"5%"}} />
         </View>
         <View style={[misEstilos.flexPerfectCenter, this.sizes("100%","50%")]}>
           <TouchableOpacity style={[misEstilos.flexPerfectCenter, misEstilos.inserimentoAttivita_raggruppa50_rettangolo122c2ea86a]}

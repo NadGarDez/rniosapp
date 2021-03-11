@@ -10,7 +10,7 @@ import {Image as SvgImage} from 'react-native-svg';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
-import { CheckBox } from 'react-native-elements';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Sfetch from "../../services/fetchManager.js";
 const scom = require("../../services/url.js");
@@ -274,9 +274,9 @@ export default class MenuLogin extends Component {
 
               </View>
               <View style={{width:"100%", height:"20%",display:"flex", flexDirection:"row", alignItems:"center"}}>
-                {/*<CheckBox
+                {/*BouncyCheckbox
 
-                 checked={this.state.mantenerIniciada}
+                 isChecked={this.state.mantenerIniciada}
                  onPress={(newValue) => {
                    this.state.mantenerIniciada = newValue;
                    this.forceUpdate();
@@ -285,7 +285,7 @@ export default class MenuLogin extends Component {
                 />*/}
 
   <BouncyCheckbox
-  isChecked
+  isChecked={this.state.mantenerIniciada}
   fillColor="blue"
   onPress={(newValue) => {
         this.state.mantenerIniciada = newValue;
