@@ -12,7 +12,7 @@ import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
-import { CheckBox } from 'react-native-elements';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 //import Absolute from 'react-native-absolute';
 export default class Checks extends Component {
 
@@ -130,7 +130,7 @@ export default class Checks extends Component {
         "fontSize": 12,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
         marginLeft:"5%"
       },
@@ -163,8 +163,8 @@ export default class Checks extends Component {
         <View style={misEstilos.contenedorCheck}>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Goûter</Text>
-            <CheckBox
-
+            <BouncyCheckbox
+              fillColor="blue"
               onPress={(newValue) => {
 
                   this.state.categoria1=newValue;
@@ -174,12 +174,13 @@ export default class Checks extends Component {
 
               }}
 
-              checked={this.state.categoria1}
+              isChecked={this.state.categoria1}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
-            <CheckBox
+            <BouncyCheckbox
+              fillColor="blue"
               onPress={(newValue) => {
                   this.state.categoria2=newValue;
                   this.forceUpdate()
@@ -188,12 +189,13 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              checked={this.state.categoria2}
+              isChecked={this.state.categoria2}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Se détendre</Text>
-            <CheckBox
+            <BouncyCheckbox
+            fillColor="blue"
               onPress={(newValue) => {
                   this.state.categoria3=newValue;
                   this.forceUpdate()
@@ -202,12 +204,13 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              checked={this.state.categoria3}
+              isChecked={this.state.categoria3}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Visite</Text>
-            <CheckBox
+            <BouncyCheckbox
+              fillColor="blue"
               onPress={(newValue) => {
                   this.state.categoria4=newValue;
                   this.forceUpdate()
@@ -216,7 +219,7 @@ export default class Checks extends Component {
                   this.validate();
               }}
 
-              checked={this.state.categoria4}
+              isChecked={this.state.categoria4}
             />
           </View>
         </View>

@@ -174,7 +174,7 @@ export default class Establecimiento extends Component {
         "fontSize": 20,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
 
       },
       phone:{
@@ -186,7 +186,7 @@ export default class Establecimiento extends Component {
         "fontSize": 15,
         "fontWeight": "bold",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
       },
 
       "categoria_grigliaDiRipetizione1_raggruppa272e2a4d1d_raggruppa168e69a9b1_laCapitaleDeLaGastronomieADeuxPasDeNiceLaCapitaleDeLaGastronomieAa88114dc": {
@@ -197,7 +197,7 @@ export default class Establecimiento extends Component {
         "fontSize": 12,
         "fontWeight": "300",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
 
         "width": "90%",

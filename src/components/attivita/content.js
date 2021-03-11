@@ -71,7 +71,7 @@ export default class Content extends Component {
         "fontSize": 13,
         "fontWeight": "300",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
 
       }

@@ -10,7 +10,7 @@ import {Image as SvgImage} from 'react-native-svg';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
-import { CheckBox } from 'react-native-elements';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Sfetch from "../../services/fetchManager.js";
 import NetInfo from "@react-native-community/netinfo";
 import BottonMenu from "../../components/menus/bottonMenu.js";
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
 
@@ -428,7 +428,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -474,7 +474,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -496,7 +496,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
   },
@@ -508,7 +508,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -531,7 +531,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -554,7 +554,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1239,7 +1239,7 @@ const styles = StyleSheet.create({
     "fontSize": 13,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginLeft":3
   },
@@ -1251,7 +1251,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
   },
@@ -1262,7 +1262,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
   },
@@ -1274,7 +1274,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
   },
@@ -1286,7 +1286,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1309,7 +1309,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1332,7 +1332,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1354,7 +1354,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
   },
@@ -1366,7 +1366,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1389,7 +1389,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,

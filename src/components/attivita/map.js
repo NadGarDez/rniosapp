@@ -88,7 +88,7 @@ export default class Map extends Component {
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign":"center",
         marginLeft:"5%",
         marginRight:"5%"

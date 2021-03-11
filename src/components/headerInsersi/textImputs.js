@@ -127,7 +127,7 @@ export default class TextInputs extends Component {
         "fontSize": 12,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
         marginLeft:"5%",
         marginRight:"5%"
