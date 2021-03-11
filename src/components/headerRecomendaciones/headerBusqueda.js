@@ -72,7 +72,7 @@ export default class HeaderRecomendaciones extends Component {
         "fontSize": 22,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "center",
       },
       "categoria_tuAsCherche": {
@@ -83,7 +83,7 @@ export default class HeaderRecomendaciones extends Component {
         "fontSize": 20,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
         marginLeft:"5%"
       },

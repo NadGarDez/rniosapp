@@ -129,7 +129,7 @@ export default class Social extends Component {
         "fontSize": 12,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
         marginLeft:"5%",
       },
@@ -158,7 +158,7 @@ export default class Social extends Component {
         "fontSize": 14,
         "fontWeight": "300",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
 
       },
@@ -177,7 +177,7 @@ export default class Social extends Component {
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "center",
 
       },
@@ -199,7 +199,7 @@ export default class Social extends Component {
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "center",
 
       },
@@ -211,7 +211,7 @@ export default class Social extends Component {
         "fontSize": 14,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "center",
       },
 
@@ -231,7 +231,7 @@ export default class Social extends Component {
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "center",
 
       },
@@ -251,7 +251,7 @@ export default class Social extends Component {
         "fontSize": 18,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
 
 
       },

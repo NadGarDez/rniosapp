@@ -78,7 +78,7 @@ export default class HeaderI extends Component {
         "fontSize": 12,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
         marginLeft:"5%"
 
@@ -91,7 +91,7 @@ export default class HeaderI extends Component {
         "fontSize": 22,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "center",
 
       },

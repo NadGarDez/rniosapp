@@ -73,6 +73,7 @@
 		BBA5766017F44326BEEE442B /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A47A276B6EF44E8FA1CD4658 /* libRNCNetInfo-tvOS.a */; };
 		BD4F0C0DB1A54C7E8D3155A0 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E15469BEE8B469CB3694FC8 /* libRNGestureHandler-tvOS.a */; };
 		C530C5E7CE144E0DA7513433 /* libRNScreens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6453D79A7D9B40D4BAFA18A7 /* libRNScreens.a */; };
+		CC4728F825F9526900B8D9C5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC4728BF25F9526900B8D9C5 /* Montserrat-Regular.ttf */; };
 		CC60751825EFD917001C45BF /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF0FFE72056DD460020B375 /* libdouble-conversion.a */; };
 		CCFBF46725F878990047D8FB /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFBF46625F878710047D8FB /* libRNCAsyncStorage.a */; };
 		CCFBF46825F879940047D8FB /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC87C01E25EE70570047011A /* libRNCSafeAreaContext.a */; };
@@ -593,6 +594,7 @@
 		C3497FFE2AF84032B06DAB63 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		C487F0EDB4AE41949ABC58AD /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		C849C44F5E7FFA201571AC5E /* Pods-modulo4-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modulo4-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-modulo4-tvOSTests/Pods-modulo4-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		CC4728BF25F9526900B8D9C5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../Montserrat/fonts/ttf/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		CC6074D925EFD4F3001C45BF /* double-conversion-1.1.6 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "double-conversion-1.1.6"; path = "../node_modules/react-native/third-party/double-conversion-1.1.6"; sourceTree = "<group>"; };
 		CCC579CAE1C74FE7989606AB /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		CCFBF46125F878710047D8FB /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCAsyncStorage.xcodeproj; path = "../node_modules/@react-native-async-storage/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CC4728BF25F9526900B8D9C5 /* Montserrat-Regular.ttf */,
 				13B07FAE1A68108700A75B9A /* modulo4 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* modulo4Tests */,
@@ -1784,6 +1787,7 @@
 				0AC7867F39104AA8A99B4A8C /* EvilIcons.ttf in Resources */,
 				5355C7ADA10540CE8D538827 /* Feather.ttf in Resources */,
 				9155B9C8399B4A09BE250059 /* FontAwesome.ttf in Resources */,
+				CC4728F825F9526900B8D9C5 /* Montserrat-Regular.ttf in Resources */,
 				DABD18CA490D44439587B2EA /* FontAwesome5_Brands.ttf in Resources */,
 				9BF740727AB24E42BDFAB279 /* FontAwesome5_Regular.ttf in Resources */,
 				678836B8BED849AF82648A5C /* FontAwesome5_Solid.ttf in Resources */,

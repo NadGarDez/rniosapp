@@ -72,7 +72,7 @@ export default class Info extends Component {
         "fontSize": 13,
         "fontWeight": "300",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
 
       },
@@ -105,7 +105,7 @@ export default class Info extends Component {
         "fontSize": 13,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
 
         "marginLeft": "5%",
@@ -120,7 +120,7 @@ export default class Info extends Component {
         "fontSize": 15,
         "fontWeight": "700",
         "fontStyle": "normal",
-        "fontFamily": "Montserrat",
+        "fontFamily": "Montserrat-Regular",
         "textAlign": "left",
         "marginLeft": "5%",
         width:"80%"
