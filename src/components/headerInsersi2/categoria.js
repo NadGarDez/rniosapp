@@ -231,7 +231,7 @@ export default class Checks extends Component {
                   this.validate();
 
               }}
-
+              text=""
               isChecked={this.state.categoria1}
             />
           </View>
@@ -239,6 +239,7 @@ export default class Checks extends Component {
             <Text>Visiter</Text>
             <BouncyCheckbox
              fillColor="blue"
+             text=""
               onPress={(newValue) => {
                   this.state.categoria2=newValue;
                   this.forceUpdate()
@@ -253,6 +254,7 @@ export default class Checks extends Component {
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
             <BouncyCheckbox
+            text=""
               onPress={(newValue) => {
                   this.state.categoria3=newValue;
                   this.forceUpdate()
@@ -268,6 +270,7 @@ export default class Checks extends Component {
             <Text>Dormir</Text>
             <BouncyCheckbox
             fillColor="blue"
+            text=""
               onPress={(newValue) => {
                   this.state.categoria4=newValue;
                   this.forceUpdate()

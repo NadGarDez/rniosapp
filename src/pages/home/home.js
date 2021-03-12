@@ -223,15 +223,15 @@ export default class Home extends Component {
               this.state.selectCategoria= value;
               this.forceUpdate()
             }}
-            placeholder={{ label: "Cerca per categoria", value: "todas" }}
+            placeholder={{}}
 	    style={{
     fontSize: 14,
-  height: "100%", width: "100%",
+  height: 28, width: this.anchoC,
     color: "black",
     paddingRight: 30, // to ensure the text is never behind the icon
   }}
             items={[
-                /*{ label: 'Cerca per categoria', value: 'todas' },*/
+                { label: 'Cerca per categoria', value: 'todas' },
                 { label: 'Degustare', value: 'manger' },
                 { label: 'Divertisi', value: "s'amuser" },
                 { label: 'Rilassarti', value: "dormir" },

@@ -1753,7 +1753,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Dolce Vita Heavy",
+    "fontFamily": "Montserrat-Regular",
     "textAlign": "center",
 
   },
