@@ -173,8 +173,9 @@ export default class Home extends Component {
             <View style={{diaplay:'flex', flexDirection:"column", flexWrap:'wrap', justifyContent:'center',height:'60%',width:'100%'}}>
               <View style={{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',height:"25%",alignItems:"center"}}>
                 <View data-layer="b6f95810-29c9-4480-a241-74cfcddf0ca1" style={styles.home_rettangolo3}>
-                  <View style={{width:"80%",height:"100%"}}>
+                  <View style={{width:"84%",paddingLeft:10,height:"100%"}}>
                     <TextInput
+                      style={{width:"100%",height:"100%"}}
                       placeholder="Cerca per località"
                       value={this.state.textDove}
 
