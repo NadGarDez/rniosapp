@@ -222,6 +222,7 @@ export default class Checks extends Component {
           <View style={misEstilos.SectionImputCheck}>
             <Text>Manger</Text>
             <BouncyCheckbox
+              borderColor="blue"
               fillColor="blue"
               onPress={(newValue) => {
 
@@ -238,6 +239,7 @@ export default class Checks extends Component {
           <View style={misEstilos.SectionImputCheck}>
             <Text>Visiter</Text>
             <BouncyCheckbox
+            borderColor="blue"
              fillColor="blue"
              text=""
               onPress={(newValue) => {
@@ -254,6 +256,7 @@ export default class Checks extends Component {
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
             <BouncyCheckbox
+            borderColor="blue"
             text=""
               onPress={(newValue) => {
                   this.state.categoria3=newValue;
@@ -269,6 +272,7 @@ export default class Checks extends Component {
           <View style={misEstilos.SectionImputCheck}>
             <Text>Dormir</Text>
             <BouncyCheckbox
+            borderColor="blue"
             fillColor="blue"
             text=""
               onPress={(newValue) => {
