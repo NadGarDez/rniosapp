@@ -225,11 +225,16 @@ export default class Home extends Component {
             }}
             placeholder={{}}
 	    style={{
-    fontSize: 14,
-  height: 28, width: this.anchoC,
-    color: "black",
+
+inputIOS: {
+    fontSize: 13,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+   width:this.anchoC,
+   color: 'black',
     paddingRight: 30, // to ensure the text is never behind the icon
-  }}
+  }}}
+	textDone="Selezionare"
             items={[
                 { label: 'Cerca per categoria', value: 'todas' },
                 { label: 'Degustare', value: 'manger' },
