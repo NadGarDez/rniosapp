@@ -314,6 +314,7 @@ const styles = StyleSheet.create({
 
   },
   "attivita_rettangolo11": {
+    "paddingTop":"5%"
     "opacity": 1,
 
     "backgroundColor": "#F9F9F9",
