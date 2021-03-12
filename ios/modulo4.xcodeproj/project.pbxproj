@@ -75,6 +75,7 @@
 		C530C5E7CE144E0DA7513433 /* libRNScreens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6453D79A7D9B40D4BAFA18A7 /* libRNScreens.a */; };
 		CC4728F825F9526900B8D9C5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC4728BF25F9526900B8D9C5 /* Montserrat-Regular.ttf */; };
 		CC60751825EFD917001C45BF /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF0FFE72056DD460020B375 /* libdouble-conversion.a */; };
+		CC9F1EE925FBB06D00644936 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
 		CCFBF46725F878990047D8FB /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFBF46625F878710047D8FB /* libRNCAsyncStorage.a */; };
 		CCFBF46825F879940047D8FB /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC87C01E25EE70570047011A /* libRNCSafeAreaContext.a */; };
 		D77E440EA4DD416DB8C0F7B2 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCC579CAE1C74FE7989606AB /* MaterialCommunityIcons.ttf */; };
@@ -1211,10 +1212,12 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 4695BPF944;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 4695BPF944;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1780,6 +1783,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9F1EE925FBB06D00644936 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				2B8F21E0309C482681926156 /* AntDesign.ttf in Resources */,
@@ -1832,7 +1836,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		1E8C2CE518CA0FFEB3F7C0D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2016,6 +2020,7 @@
 			baseConfigurationReference = 2EFB7270D199C1F298EBBB61 /* Pods-modulo4Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4695BPF944;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2040,7 +2045,7 @@
 					"$(SRCROOT)/../node_modules/react-native-webview/apple/**",
 				);
 				INFOPLIST_FILE = modulo4Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2067,6 +2072,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 4695BPF944;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -2087,7 +2093,7 @@
 					"$(SRCROOT)/../node_modules/react-native-webview/apple/**",
 				);
 				INFOPLIST_FILE = modulo4Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2113,6 +2119,8 @@
 			baseConfigurationReference = 1F48293F630F0DA9E234CE7C /* Pods-modulo4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 4695BPF944;
@@ -2146,6 +2154,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ccinice.costazzurra;
 				PRODUCT_NAME = modulo4;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2155,6 +2164,8 @@
 			baseConfigurationReference = 0338CCBD5F60B00DAFF02E93 /* Pods-modulo4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4695BPF944;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(PROJECT_DIR)";
@@ -2187,6 +2198,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ccinice.costazzurra;
 				PRODUCT_NAME = modulo4;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
