@@ -11,9 +11,9 @@ import App from './App';
 const Root = () => (
   <Provider store={store}>
     <Fragment>
-      <StatusBar
+      <View style={{width:"100%",height:"4%"}}
         backgroundColor="white"
-        barStyle="dark"
+        barStyle="dark-content"
       />
       <App />
       <Toast messageStyle={{ color: 'white' }} />
