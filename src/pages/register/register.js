@@ -365,7 +365,17 @@ export default class Register extends Component {
     <View data-layer="10e3e5e0-d684-4683-855a-adb2248fb403" style={styles.menu_rettangolo1}>
       <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
         onPress={
-          ()=>{this.props.navigation.navigate("Menu")}
+          ()=>{
+		//this.props.navigation.navigate("Menu")
+
+		if(this.props.variables.tokenLogin.value!==""){
+			this.props.navigation.navigate("Menu")
+		}
+
+		else{	
+			this.props.navigation.navigate("MLogin")
+		}
+	  }
         }
       >
 
