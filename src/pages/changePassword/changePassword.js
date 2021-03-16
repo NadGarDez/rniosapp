@@ -46,14 +46,14 @@ export default class changePassword extends Component {
   this.state.paso= 2;
   this.forceUpdate()
     //console.log(url());
-    Alert.alert("invio")
+//    Alert.alert("invio")
 
     baseUrl = scom.url;
     baseUrl+="/changeP1";
     a = new Sfetch(baseUrl);
 
     try{
-      b = await a.postJson(obj);
+      b = await a.postJson(obj,this.props.variables.tokenLogin.value);
       console.log(b)
       this.handleResponse(b);
 

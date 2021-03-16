@@ -167,7 +167,7 @@ export default class InserimentoAttivita extends Component {
       a = new Sfetch(baseUrl);
 
       try{
-        b = await a.postJson(objE);
+        b = await a.postJson(objE,this.props.variables.tokenLogin.value);
         console.log(b)
         this.handleResponse(b);
 

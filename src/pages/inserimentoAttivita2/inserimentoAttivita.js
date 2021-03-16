@@ -94,7 +94,7 @@ export default class InserimentoAttivita extends Component {
     a = new Sfetch(baseUrl);
 
     try{
-      b = await a.postJson({id:id});
+      b = await a.postJson({id:id},this.props.variables.tokenLogin.value);
       //console.log(b)
       //this.handleResponse(b);
       this.state.imagine = b[0].imagine
@@ -209,7 +209,7 @@ export default class InserimentoAttivita extends Component {
       a = new Sfetch(baseUrl);
 
       try{
-        b = await a.postJson(up);
+        b = await a.postJson(up, this.props.variables.tokeLogin.value);
         console.log(b)
         if(b.resultado==1){
           Alert.alert("Editado correctamente")

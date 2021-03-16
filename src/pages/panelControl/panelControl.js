@@ -91,7 +91,7 @@ export default class Recomendaciones extends Component {
       a = new Sfetch(baseUrl);
 
       try{
-        b = await a.postJson(mensaje);
+        b = await a.postJson(mensaje,this.props.value.variables.tokenLogin.value);
         console.log(b)
         if(b.resultado==1){
             this.reload()
@@ -114,7 +114,7 @@ export default class Recomendaciones extends Component {
     let obj=1
 
     try{
-      b = await a.getJson(obj,token.value);
+      b = await a.getJson(obj,this.props.value.variables.tokenLogin.value);
       console.log(b.links[1].href)
       this.state.urlAprove = b.links[1].href;
       this.state.conPaypal= id;
@@ -318,7 +318,13 @@ export default class Recomendaciones extends Component {
       });
   }
   action1(){
-    this.props.navigation.navigate("Menu")
+    	if(this.props.variables.tokenLogin.value!==""){
+		this.props.navigation.navigate("Menu")
+	}
+
+	else{
+		this.props.navigation.navigate("MLogin")
+	}
   }
 
   action2(){

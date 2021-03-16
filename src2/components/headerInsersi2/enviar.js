@@ -12,7 +12,7 @@ import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
-import CheckBox from '@react-native-community/checkbox';
+import { CheckBox } from 'react-native-elements';
 //import Absolute from 'react-native-absolute';
 
 export default class Social extends Component {
