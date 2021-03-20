@@ -121,8 +121,13 @@ export default class Imagenes2 extends Component {
           } else if (response.customButton) {
             console.log('User tapped custom button: ', response.customButton);
           } else {
+		//console.log("uuuuurrrriiiiii"+response.uri)
 
-            extension = response.fileName.split(".");
+          let part= response.uri.split("/")
+          console.log("parrrrrt" + part.length)
+          let name= part[part.length-1]
+          let extension = name.split(".");
+           // extension = response.fileName.split(".");
             this.state.imagenes[imagen].loading = true;
             this.state.imagenes[imagen].data = response.data;
             this.state.imagenes[imagen].name =`${this.props.id}-${imagen}.${extension[1]}`;

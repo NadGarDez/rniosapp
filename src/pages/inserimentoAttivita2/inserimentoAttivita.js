@@ -55,7 +55,9 @@ export default class InserimentoAttivita extends Component {
           images2:true,
           social:true
         },
-        b:{}
+        b:{},
+	ref1:React.createRef(),
+	ref2:React.createRef()
       };
       this.enviar2 = this.enviar2.bind(this)
       this.changeModal = this.changeModal.bind(this);
@@ -370,7 +372,7 @@ export default class InserimentoAttivita extends Component {
       <ScrollView data-layer="1398e460-2e53-4563-9977-48bb596277a5" keyboardShouldPersistTaps="always" style={styles.inserimentoAttivita}>
         <View data-layer="30490757-9eba-42ee-9721-60e6b086022e" style={styles.inserimentoAttivita_rettangolo11}>
           <HeaderI datos={objDat} />
-          <TextInputs b={this.state.b} saveValidacion={this.saveValidacion} saveText={this.handleTextInput} navigation={this.props.navigation} changeModal={this.changeModal} dataCitta={this.state.citta} dataIndirizo={this.state.indirizzo.data}/>
+          <TextInputs modal={{one:this.state.modalVisible,two:this.state.modalVisible2}} b={this.state.b} saveValidacion={this.saveValidacion} saveText={this.handleTextInput} navigation={this.props.navigation} changeModal={this.changeModal} dataCitta={this.state.citta} dataIndirizo={this.state.indirizzo.data}/>
           <Checks b={this.state.b} saveValidacion={this.saveValidacion} saveCheck={this.handleTextInput} />
           <Imagenes1 enviar2={this.enviar2} b={this.state.b} saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>
           <Imagenes2 enviar2={this.enviar2} b={this.state.b} saveValidacion={this.saveValidacion} saveImages={this.handleTextInput} dif={this.dif} variables={this.props.variables} id={this.state.id}/>

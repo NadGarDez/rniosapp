@@ -57,7 +57,11 @@ export default class TextInputs extends Component {
               message:""
             },
 
-          }
+          },
+	 blockModal1:false,
+	blockModal2:false,
+          ref1: React.createRef(),
+          ref2: React.createRef()
         };
 
         this.alto = Dimensions.get('window').height,
@@ -68,6 +72,16 @@ export default class TextInputs extends Component {
 
     }
 
+
+     componentWillReceiveProps(nextProps){
+
+     }
+     componentDidMount(){
+
+      console.log(JSON.stringify(this.state.ref1.current.isFocused()))        
+	if(this.props.dataIndirizo != ""){         
+		this.state.ref1.current.blur()        
+	}}
 
     changeValueImputs(value){
       this.state.value=value;
@@ -85,9 +99,8 @@ export default class TextInputs extends Component {
     }
 
   render(){
-
-    var ref1 = React.createRef()
-    var ref2 = React.createRef()
+  //  var ref1 = React.createRef()
+  //  var ref2 = React.createRef()
 
     misEstilos ={
       padre:{
@@ -172,6 +185,8 @@ export default class TextInputs extends Component {
 
     }
     value="";
+
+    
     const color1 = this.state.inputs.input1.validateStatus == "empty input" ? "red" : "white";
     const color2 = this.state.inputs.input2.validateStatus == "empty input" ? "red" : "white";
     const color3 = this.state.inputs.input3.validateStatus == "empty input" ? "red" : "white";
@@ -254,17 +269,25 @@ export default class TextInputs extends Component {
           <TextInput
             style={{ height: "100%", width:"100%", backgroundColor:"white",borderColor: color2, borderStyle:"solid", borderWidth:1}}
             value={a[0]}
+            ref={this.state.ref1}
             onChangeText={
               (text)=>{
-
+		this.props.changeModal(1)
                 this.props.saveText(text,"attivitaLuogo")
                 this.forceUpdate()
               }
             }
             onFocus={
               ()=>{
-
-                this.props.changeModal(1)
+                 //ref1.current.blur()	
+		if(this.state.blockModal1==false){
+			this.props.changeModal(1)
+		}
+		else{
+			this.state.blockModal1=false
+			this.state.ref1.current.blur()
+		}
+                //this.props.changeModal(1)
                 //this.props.navigation.navigate("indirizzoI",{saveText:this.props.saveText})
                 if(this.props.dataIndirizo == ""){
                    this.state.inputs.input3.validateStatus = "default";
@@ -278,8 +301,14 @@ export default class TextInputs extends Component {
 
             onBlur={
               ()=>{
-
+		if(this.props.modal.one==true){
+			this.state.blockModal1=true;
+			this.forceUpdate()
+		}
+		else{
+		
                 if(this.props.dataIndirizo == ""){
+		 
                    this.state.inputs.input2.validateStatus = "empty input";
                    this.state.inputs.input2.message = "Champ obligatoire"
                    this.forceUpdate();
@@ -289,7 +318,7 @@ export default class TextInputs extends Component {
                    this.state.inputs.input2.validateStatus = "default";
                     this.forceUpdate();
                 }
-                  this.enviarValidacion()
+                }  this.enviarValidacion()
               }
             }
           />
@@ -310,14 +339,20 @@ export default class TextInputs extends Component {
             onChangeText={
               (text)=>{
                 this.state.inputs.input3.currentValue = text;
-
+		this.props.changeModal(2)
                 this.props.saveText(text,"attivitaLuogo")
                 this.forceUpdate()
               }
             }
+            ref={this.state.ref2}
             onFocus={
               ()=>{
-                  this.props.changeModal(2)
+		  if(this.state.blockModal2==true){
+			this.state.blockModal2=false
+			this.state.ref2.current.blur()
+		}else{
+
+                  this.props.changeModal(2)}
                   if(this.state.inputs.input3.currentValue == ""){
                      this.state.inputs.input3.validateStatus = "default";
                      this.state.inputs.input3.message = ""
@@ -331,6 +366,11 @@ export default class TextInputs extends Component {
 
             onBlur={
               ()=>{
+
+		if(this.props.modal.two==true){
+			this.state.blockModal2=true;
+		}
+		else{
                 if(this.props.dataCitta == ""){
                    this.state.inputs.input3.validateStatus = "empty input";
                    this.state.inputs.input3.message = "Champ obligatoire"
@@ -341,7 +381,7 @@ export default class TextInputs extends Component {
                   this.state.inputs.input3.message = ""
                   this.state.inputs.input3.validateStatus = "default";
                    this.forceUpdate();
-                }
+                }}
                 this.enviarValidacion()
               }
             }

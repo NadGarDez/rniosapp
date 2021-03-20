@@ -85,7 +85,7 @@ export default class Imagenes extends Component {
 
 
       ImagePicker.showImagePicker(options, (response) => {
-        console.log('Response = ', response);
+        console.log('Response = ', response.fileName);
 
         if (response.didCancel) {
           console.log('User cancelled image picker');
@@ -94,7 +94,12 @@ export default class Imagenes extends Component {
         } else if (response.customButton) {
           console.log('User tapped custom button: ', response.customButton);
         } else {
-          extension = response.fileName.split(".");
+          //console.log("uuuuurrrriiiiii"+response.uri)
+
+	  let part= response.uri.split("/")
+	  console.log("parrrrrt" + part.length)
+	  let name= part[part.length-1]
+          let extension = name.split(".");
           this.state.imagenes[imagen].loading = true;
           this.state.imagenes[imagen].data = response.data;
           this.state.imagenes[imagen].name =`${this.props.id}-${imagen}.${extension[1]}`;
