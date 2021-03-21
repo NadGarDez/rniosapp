@@ -241,6 +241,11 @@ export default class TextInputs extends Component {
                     this.forceUpdate();
 
                  }
+		else{
+                   this.state.inputs.input1.message = ""
+                   this.state.inputs.input1.validateStatus = "default";
+                    this.forceUpdate();
+                 }
                 this.enviarValidacion()
                }
              }
@@ -313,6 +318,11 @@ export default class TextInputs extends Component {
                    this.state.inputs.input2.message = "questo ingresso non può essere vuoto"
                    this.forceUpdate();
                 }
+		else{
+                  this.state.inputs.input2.message = ""
+                  this.state.inputs.input2.validateStatus = "default";
+                   this.forceUpdate();
+                }
 		}
                   this.enviarValidacion()
               }
@@ -375,6 +385,11 @@ export default class TextInputs extends Component {
                    this.forceUpdate();
 
                 }
+		else{
+                  this.state.inputs.input3.message = ""
+                  this.state.inputs.input3.validateStatus = "default";
+                   this.forceUpdate();
+                }
 		}
                 this.enviarValidacion()
               }
@@ -410,6 +425,11 @@ export default class TextInputs extends Component {
                     this.state.inputs.input4.message = "questo ingresso non può essere vuoto"
                     this.forceUpdate();
 
+                 }
+		else{
+                   this.state.inputs.input4.message = ""
+                   this.state.inputs.input4.validateStatus = "default";
+                    this.forceUpdate();
                  }
 
                    this.enviarValidacion()
@@ -459,6 +479,11 @@ export default class TextInputs extends Component {
                      this.state.inputs.input5.message = "questo ingresso non può essere vuoto"
                      this.forceUpdate();
 
+                  }
+                  else{
+                    this.state.inputs.input5.message = ""
+                    this.state.inputs.input5.validateStatus = "default";
+                     this.forceUpdate();
                   }
                     this.enviarValidacion()
                 }

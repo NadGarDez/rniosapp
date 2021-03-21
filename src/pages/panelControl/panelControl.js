@@ -231,6 +231,7 @@ export default class Recomendaciones extends Component {
   }
 
   handleResponse(array){
+    if(array.length>0){
     baseUrl = scom.url;
     baseUrl+="/files/"
     array.forEach(
@@ -267,8 +268,11 @@ export default class Recomendaciones extends Component {
     this.forceUpdate()
   //  console.log(this.state.dataRender)
 
+	}
+	else{
 
-  }
+	this.state.dataRender=null
+	this.forceUpdate()  }}
 
 
   handlePress(target, owner) {
@@ -337,6 +341,9 @@ export default class Recomendaciones extends Component {
 
   render() {
     let l
+    if(this.state.dataRender==null){
+   	l=<View style={{marginTop:5,width:"100%"}}><Text style={{textAlign:"center"}}>Aucune activié</Text></View> 
+   }else{
     if(this.state.dataRender==""){
         l=<ActivityIndicator/>
     }
@@ -347,7 +354,7 @@ export default class Recomendaciones extends Component {
 
       />
     }
-
+}
     objDat={
       nombre:"Città di Bra",
       imagenLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT-mBYkXItmGJJ2NlsOpXBK_fekdpKj7gjg&usqp=CAU",

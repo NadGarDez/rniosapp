@@ -6,6 +6,7 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bun":"node node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
     "test": "jest"
   },
   "dependencies": {

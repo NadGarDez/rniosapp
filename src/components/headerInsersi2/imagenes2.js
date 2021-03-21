@@ -149,7 +149,7 @@ export default class Imagenes2 extends Component {
             this.validate();
 
             this.guardarImagenes(imagen)
-            this.props.enviar2()
+          //  this.props.enviar2()
             //this.props.saveImages(this.state.imagenes, "imagine2")
           }
         });

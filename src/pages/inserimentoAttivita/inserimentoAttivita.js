@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker,Modal, Alert, ScrollView, TouchableHighlight,TouchableOpacity,Button} from 'react-native';
+import {Dimensions,StyleSheet, Text, View, TextInput, FlatList, Picker,Modal, Alert, ScrollView, TouchableHighlight,TouchableOpacity,Button} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -22,7 +22,7 @@ import Icon2 from 'react-native-vector-icons/Feather';
 import BottonMenu from "../../components/menus/bottonMenu.js";
 
 const scom = require("../../services/url.js");
-
+const alto = Dimensions.get('window').height*4;
 export default class InserimentoAttivita extends Component {
 
   constructor(props) {
@@ -30,6 +30,7 @@ export default class InserimentoAttivita extends Component {
       let d = new Date()
       console.log(d)
       let v = d.getTime() + 31536000000;
+      
       console.log(new Date(v))
       this.state = {
         estado:"activo",
@@ -458,7 +459,7 @@ const styles = StyleSheet.create({
 
 
     "width": "100%",
-    "height": 2980,
+    "height": alto,
 
   },
   "inserimentoAttivita_rettangolo4": {

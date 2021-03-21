@@ -128,7 +128,7 @@ export default class Home extends Component {
         }
 
         objDat5={
-          tit:"Rilassarsi",
+          tit:"Visitare",
           subtit:"Hai cercato",
           imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ne4fxlOxhGDTycjkVZd_4KxtraQ0WP4DoQ&usqp=CAU",
           imagen2: require("./assets/2.jpg")

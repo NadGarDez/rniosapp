@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,Modal,TouchableOpacity,Image} from 'react-native';
+import {Dimensions,StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight,Modal,TouchableOpacity,Image} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -16,6 +16,7 @@ import Info from '~/components/attivita/info.js';
 import Map from '~/components/attivita/map.js';
 import BottonMenu from "../../components/menus/bottonMenu.js";
 import Icon from 'react-native-vector-icons/AntDesign';
+const alto = Dimensions.get('window').height*2.8
 export default class Attivita extends Component {
 
   constructor(props) {
@@ -331,7 +332,7 @@ const styles = StyleSheet.create({
     "borderBottomLeftRadius": 0,
     "borderBottomRightRadius": 0,
     "width": "100%",
-    "height": 1700,
+    "height": alto,
 
   },
   "attivita_linea6d1eb21a6": {
