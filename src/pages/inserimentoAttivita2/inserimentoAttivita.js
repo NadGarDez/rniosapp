@@ -180,6 +180,7 @@ export default class InserimentoAttivita extends Component {
 
   async enviar(){
     //if(this.validar() == true){
+//	Alert.alert(JSON.stringify(this.props.variables))
       this.state.idUsuario = this.props.variables.user.value.id;
       this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
       this.state.imagine = this.compareImagine(this.state.b[0].imagine, this.state.imagine)
@@ -209,12 +210,12 @@ export default class InserimentoAttivita extends Component {
       baseUrl = scom.url;
       baseUrl+="/updateA";
       a = new Sfetch(baseUrl);
-
+      let toc = this.props.variables.tokenLogin.value
       try{
-        b = await a.postJson(up, this.props.variables.tokeLogin.value);
+        b = await a.postJson(up, toc);
         console.log(b)
         if(b.resultado==1){
-          Alert.alert("Editado correctamente")
+          Alert.alert("Modifié correctement")
           this.props.navigation.navigate("Panel",{reload:true})
         }
 
@@ -314,7 +315,7 @@ export default class InserimentoAttivita extends Component {
 
 
   render() {
-
+//	Alert.alert(JSON.stringify(this.props.variables.tokenLogin))
     objDat={
       nameUser:this.props.variables.user.value.name,
       idUser:this.props.variables.user.value.id

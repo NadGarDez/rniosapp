@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {CheckBox} from "react-native-elements"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from "prop-types";
 import Icon2 from "react-native-vector-icons/Entypo";
@@ -75,7 +76,9 @@ export default class Checks extends Component {
         this.state.categoria2 = a[0].categoria2
           this.state.categoria3 = a[0].categoria3
             this.state.categoria4 = a[0].categoria4
-              this.props.saveCheck(this.state.categoria1,"categoria1")
+             
+//	       this.setState({categoria1:a[0].categoria1})
+	        this.props.saveCheck(this.state.categoria1,"categoria1")
                 this.props.saveCheck(this.state.categoria2,"categoria2")
                   this.props.saveCheck(this.state.categoria3,"categoria3")
                     this.props.saveCheck(this.state.categoria4,"categoria4")
@@ -83,8 +86,10 @@ export default class Checks extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-
+      console.log(`categoria1 : ${this.state.categoria1}`)
+	console.log(nextProps.b)
       if(this.state.categoria1==null){
+//	this.validate()
         this.updateValues(nextProps.b)
 
       }
@@ -123,13 +128,13 @@ export default class Checks extends Component {
 
     }
     catch(e){
-
-      v1 = null
+//	Alert.alert(JSON.stringify(e))
+      v1 = null //this.state.categoria1
       v2 = null
       v3 = null
       v4 = null
     }
-
+//Alert.alert(v1)
     misEstilos ={
       padre:{
         "width":this.ancho,
@@ -212,6 +217,7 @@ export default class Checks extends Component {
 
     return (
       <View style={misEstilos.padre}>
+	
         <View style={misEstilos.contenedorText}>
           <Text style={misEstilos.inserimentoAttivita_attivitaluogo}>Categoria</Text>
         </View>
@@ -221,70 +227,61 @@ export default class Checks extends Component {
         <View style={misEstilos.contenedorCheck}>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Manger</Text>
-            <BouncyCheckbox
-              borderColor="blue"
-              fillColor="blue"
-              onPress={(newValue) => {
+            <CheckBox
+              onPress={() => {
 
-                  this.state.categoria1=newValue;
+                  this.state.categoria1= !this.state.categoria1;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria1")
+                  this.props.saveCheck(this.state.categoria1,"categoria1")
                   this.validate();
 
               }}
-              text=""
-              isChecked={this.state.categoria1}
+              checked={this.state.categoria1}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Visiter</Text>
-            <BouncyCheckbox
-            borderColor="blue"
-             fillColor="blue"
-             text=""
-              onPress={(newValue) => {
-                  this.state.categoria2=newValue;
+            <CheckBox
+              onPress={() => {
+                  this.state.categoria2= !this.state.categoria2;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria2")
+                  this.props.saveCheck(this.state.categoria2,"categoria2")
                   this.forceUpdate();
                   this.validate();
               }}
 
-              isChecked={this.state.categoria2}
+              checked={this.state.categoria2}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
-            <BouncyCheckbox
-            borderColor="blue"
-            text=""
-              onPress={(newValue) => {
-                  this.state.categoria3=newValue;
+            <CheckBox
+
+              onPress={() => {
+                  this.state.categoria3=!this.state.categoria3;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria3")
+                  this.props.saveCheck(this.state.categoria3,"categoria3")
                   this.forceUpdate();
                   this.validate();
               }}
 
-              isChecked={this.state.categoria3}
+              checked={this.state.categoria3}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Dormir</Text>
-            <BouncyCheckbox
-            borderColor="blue"
-            fillColor="blue"
-            text=""
-              onPress={(newValue) => {
-                  this.state.categoria4=newValue;
+            <CheckBox
+              onPress={() => {
+                  this.state.categoria4= !this.state.categoria4;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria4")
+                  this.props.saveCheck(this.state.categoria4,"categoria4")
                   this.forceUpdate();
                   this.validate();
               }}
 
-              isChecked={this.state.categoria4}
+              checked={this.state.categoria4}
             />
+             
           </View>
         </View>
 

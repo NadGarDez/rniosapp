@@ -186,7 +186,6 @@ export default class App extends Component {
   render() {
 
 
-
     const Stack = createStackNavigator();
     return(
 
