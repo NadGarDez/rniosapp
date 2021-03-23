@@ -10,7 +10,7 @@ import {Image as SvgImage} from 'react-native-svg';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Feather';
 import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native'
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+//import CheckBox from '@react-native-community/checkbox';
 import Sfetch from "../../services/fetchManager.js";
 import NetInfo from "@react-native-community/netinfo";
 import BottonMenu from "../../components/menus/bottonMenu.js";
@@ -50,7 +50,7 @@ export default class MenuLogin extends Component {
   this.state.paso= 2;
   this.forceUpdate()
     //console.log(url());
-    Alert.alert("invio")
+  //  Alert.alert("invio")
 
     baseUrl = scom.url;
     baseUrl+="/recuperacionP";
@@ -60,6 +60,7 @@ export default class MenuLogin extends Component {
       b = await a.postJson({email:correo});
       console.log(b)
       this.handleResponse(b);
+
 
     }
     catch(error){
@@ -84,7 +85,9 @@ export default class MenuLogin extends Component {
     }
 
     else{
-      Alert.alert("Errore durante l'invio del messaggio alla posta registrata")
+      Alert.alert(response.error)
+      this.state.paso= 1;
+      this.forceUpdate()
     }
 
   }
@@ -151,7 +154,7 @@ export default class MenuLogin extends Component {
           <View style={{display:this.state.paso==1?"flex" : "none", flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',alignItems:"center"}}>
             <Text size="15" style={{color:"#28337F",fontSize:18,textAlign:"center",marginBottom:5}}>Inserisci l'email associata all'account che desideri recuperare</Text>
             <TextInput
-              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50, marginBottom:5}}
+              style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50, marginBottom:10,borderColor:"#28337F", borderStyle:"solid", borderWidth:1}}
               onChangeText={
                 (text)=>{
                     this.setState({email:text})
@@ -160,20 +163,35 @@ export default class MenuLogin extends Component {
               value={this.state.email}
             />
 
-            <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'50%',height:50,alignItems:"center"}]}
+            <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'40%',height:50,alignItems:"center",marginLeft:"5%", marginRight:"5%"}]}
               onPress={
                 ()=>{
-                  this.enviar(this.state.email)
+                  if(this.state.email!=""){
+                    this.enviar(this.state.email)
+                  }
+                  else{
+                    Alert.alert("E-mail non valido")
+                  }
+
                 }
               }
             >
               <Text style={{color:"#F9F9F9"}}>Spedire</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'40%',height:50,alignItems:"center",marginLeft:"5%", marginRight:"5%"}]}
+              onPress={
+                ()=>{
+                  this.props.navigation.navigate("MLogin")
+                }
+              }
+            >
+              <Text style={{color:"#F9F9F9"}}>Annulla</Text>
+            </TouchableOpacity>
           </View>
 
 
           <View style={{display:this.state.paso == 3 ? "flex" : "none", flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'100%',alignItems:"center"}}>
-          <Text size="15" style={{color:"rgba(35, 171, 224, 1)",fontSize:18,textAlign:"center",marginBottom:5}}>Il messaggio è stato inviato alla tua email registrata. Copia il codice e incollalo nel seguente modulo</Text>
+          <Text size="15" style={{color:"#28337F",fontSize:18,textAlign:"center",marginBottom:10}}>Il messaggio è stato inviato alla tua email registrata. Copia il codice e incollalo nel seguente modulo</Text>
           <TextInput
             onChangeText={(text)=>{
               this.setState({code:text})
@@ -181,12 +199,12 @@ export default class MenuLogin extends Component {
 
 
 
-            style={{backgroundColor:"#B8B8B8", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:5}}
+            style={{backgroundColor:"white", color:"black",width:"80%", height:50, borderRadius:50,marginBottom:10,borderColor:"#28337F", borderStyle:"solid", borderWidth:1}}
           />
 
 
 
-          <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'50%',height:50,alignItems:"center"}]}
+          <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center",marginLeft:"1.5%", marginRight:"1.5%"}]}
             onPress={
               ()=>{
 
@@ -196,7 +214,7 @@ export default class MenuLogin extends Component {
           >
             <Text style={{color:"white"}}>Spedire</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'50%',height:50,alignItems:"center"}]}
+          <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center",marginLeft:"1.5%", marginRight:"1.5%"}]}
             onPress={
               ()=>{
 
@@ -205,6 +223,19 @@ export default class MenuLogin extends Component {
             }
           >
             <Text style={{color:"white"}}>Invia di nuovo</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.menuLogin_rettangolo20,{diaplay:'flex', flexDirection:"row", flexWrap:'wrap', justifyContent:'center',width:'30%',height:50,alignItems:"center",marginLeft:"1.5%", marginRight:"1.5%"}]}
+            onPress={
+              async ()=>{
+
+                //this.enviar(this.state.email)
+
+                await AsyncStorage.removeItem('code')
+                  this.props.navigation.navigate("MLogin")
+              }
+            }
+          >
+            <Text style={{color:"white"}}>Annulla</Text>
           </TouchableOpacity>
           </View>
 
@@ -271,7 +302,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
 
 
@@ -477,7 +508,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -500,7 +531,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -523,7 +554,7 @@ const styles = StyleSheet.create({
     "fontSize": 15,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -545,7 +576,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
 
   },
@@ -557,7 +588,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -580,7 +611,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -603,7 +634,7 @@ const styles = StyleSheet.create({
     "fontSize": 30,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1288,7 +1319,7 @@ const styles = StyleSheet.create({
     "fontSize": 13,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginLeft":3
   },
@@ -1300,7 +1331,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
 
   },
@@ -1311,7 +1342,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
 
   },
@@ -1323,7 +1354,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
 
   },
@@ -1335,7 +1366,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1358,7 +1389,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1381,7 +1412,7 @@ const styles = StyleSheet.create({
     "fontSize": 20,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1403,7 +1434,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
 
   },
@@ -1415,7 +1446,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
@@ -1438,7 +1469,7 @@ const styles = StyleSheet.create({
     "fontSize": 25,
     "fontWeight": "700",
     "fontStyle": "normal",
-    "fontFamily": "Montserrat-Regular",
+    "fontFamily": "Montserrat",
     "textAlign": "center",
     "marginTop": 0,
     "marginRight": 0,
