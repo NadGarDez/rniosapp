@@ -220,7 +220,7 @@ export default class TextInputs extends Component {
                  this.forceUpdate();
                }
              }
-
+	     maxLength={50}
              placeholder="Ecrire ici"
 
              onBlur={
@@ -296,7 +296,7 @@ export default class TextInputs extends Component {
                 }
               }
             }
-
+	    mexLength={200}
             placeholder="Ecrire ici"
 
             onBlur={
@@ -361,7 +361,7 @@ export default class TextInputs extends Component {
                 //this.props.navigation.navigate("cittaI",{saveText:this.props.saveText})
               }
             }
-
+	    maxLength={200}
             placeholder="Ecrire ici"
 
             onBlur={
@@ -398,7 +398,7 @@ export default class TextInputs extends Component {
 
           <View style={misEstilos.inserimentoAttivita_rettangolo4}>
             <TextInput
-             keyboardType='numeric'
+	     maxLength={15}
              style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor: color4, borderStyle:"solid", borderWidth:1}}
              onChangeText={
                (text)=>{
@@ -450,6 +450,7 @@ export default class TextInputs extends Component {
 
           <View style={misEstilos.inserimentoAttivita_rettangolo42}>
             <TextInput
+	      maxLength={150}
               multiline
               numberOfLines={10}
               style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor:color5, borderStyle:"solid", borderWidth:1}}

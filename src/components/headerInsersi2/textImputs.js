@@ -229,7 +229,7 @@ export default class TextInputs extends Component {
                  this.forceUpdate();
                }
              }
-
+	     maxLength={50}
              placeholder="Scrivere qui"
 
              onBlur={
@@ -303,7 +303,7 @@ export default class TextInputs extends Component {
                 }
               }
             }
-
+	    maxLength={200}
             placeholder="Scrivere qui"
 
             onBlur={
@@ -371,7 +371,7 @@ export default class TextInputs extends Component {
             }
 
             placeholder="Scrivere qui"
-
+	    maxLength={200}
             onBlur={
               ()=>{
 		if(this.props.modal.two==true){
@@ -416,6 +416,7 @@ export default class TextInputs extends Component {
                  this.forceUpdate()
                }
              }
+	     maxength={15}
              placeholder="Scrivere qui"
              onBlur={
                ()=>{
@@ -460,6 +461,7 @@ export default class TextInputs extends Component {
             <TextInput
             value={this.state.inputs.input5.currentValue}
               multiline
+	      maxLength={150}
               numberOfLines={10}
               style={{ height: "100%", width:"100%", backgroundColor:"white", borderColor:color5, borderStyle:"solid", borderWidth:1}}
               onChangeText={
