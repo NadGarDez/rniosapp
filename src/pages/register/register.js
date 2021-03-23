@@ -32,11 +32,13 @@ export default class Register extends Component {
       this.handleTextInput = this.handleTextInput.bind(this);
       this.handleResponse = this.handleResponse.bind(this);
       this.compararContracenas = this.compararContracenas.bind(this);
-
+       
       this.alto = Dimensions.get('window').height,
       this.ancho = Dimensions.get('window').width,
       console.log(this.ancho)
-      this.anchoC = 45 * this.ancho;
+	this.altoComponente = 55 * this.alto;
+        this.altoComponente = this.altoComponente / 100;
+      this.anchoC = 55 * this.ancho;
       this.anchoC = this.anchoC / 100;
       this.imgH = 27*this.anchoC
       this.imgH = this.imgH/100
@@ -157,7 +159,7 @@ export default class Register extends Component {
 
 
   render() {
-
+	console.log(`Este es el token : ${this.props.variables.tokenLogin.value}`)
     return (
     <View>
     <ScrollView data-layer="26f51415-36ae-463f-a28e-b88814318c36" style={styles.register}>
@@ -261,16 +263,19 @@ export default class Register extends Component {
 
           </View>
         </View>
-        <View style={{width:"100%", height:"40%"}}>
+        
+        <View style={{width:"100%", height:this.altoComponente}}>
           <View data-layer="16a0e816-7c20-4c60-8f73-fcaeaf03bf47" style={styles.register_rettangolo14}>
             <View style={{width:"100%", height:"50%", display:"flex", flexDirection:"row"}}>
-              <View style={{width:"50%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-                <ReactImage data-layer="87167693-f1f7-45ab-8177-5a62928e8441" source={require('./assets/logo.png')} style={{width:160,height:80,resizeMode:"stretch"}} />
+              <View style={{width:"100%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
+                <ReactImage data-layer="87167693-f1f7-45ab-8177-5a62928e8441" source={require('./assets/logo.png')} style={{width:200,height:100,resizeMode:"stretch"}} />
               </View>
-              <View style={{width:"50%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center",flexDirection:"row"}}>
+	      {/*
+              <View style={{width:"100%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center",flexDirection:"row"}}>
                 <Image source={require("~/pages/register/assets/adveraLogo.png")}  style={{width:this.anchoC,height:this.imgH,resizeMode:"stretch"}}/>
-              </View>
+              </View>*/}
             </View>
+
             <View style={{width:"100%", height:"50%", display:"flex", flexDirection:"row", justifyContent:"center"}}>
 
             <View style={{width:"100%", height:"40%", display:"flex", flexDirection:"row", justifyContent:"center"}}>
@@ -368,13 +373,13 @@ export default class Register extends Component {
           ()=>{
 		//this.props.navigation.navigate("Menu")
 
-		if(this.props.variables.tokenLogin.value!==""){
-			this.props.navigation.navigate("Menu")
-		}
+		if(this.props.variables.tokenLogin.value!=="" && this.props.variables.tokenLogin.value!==null){
+              this.props.navigation.navigate("Menu");
+            }
+            else{
+              this.props.navigation.navigate("MLogin");
+            }
 
-		else{	
-			this.props.navigation.navigate("MLogin")
-		}
 	  }
         }
       >

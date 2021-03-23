@@ -30,8 +30,10 @@ export default class Social extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          value:""
-        };
+          value:"",
+	  b:false
+        
+};
 
         this.alto = Dimensions.get('window').height,
         this.ancho = Dimensions.get('window').width,
@@ -261,13 +263,14 @@ export default class Social extends Component {
 
     }
     value= this.altoComponente*3;
+	
     value2= this.altoComponente*4;
     return (
       <View style={[misEstilos.flexColumn,this.sizes("100%",this.altoComponente), misEstilos.borderTopBlue, {marginTop:30}]}>
 
         <View style={[misEstilos.flexPerfectCenter, misEstilos.flexRow, this.sizes("100%","50%")]}>
           <Text style={misEstilos.inserimentoAttivita_homePage}>Home Page</Text>
-          <CheckBox isChecked={false} style={{marginLeft:"5%"}} />
+          <CheckBox checked={this.state.b} onPress={()=>{this.state.b=!this.state.b; this.forceUpdate()}} style={{marginLeft:"5%"}} />
         </View>
         <View style={[misEstilos.flexPerfectCenter, this.sizes("100%","50%")]}>
           <TouchableOpacity style={[misEstilos.flexPerfectCenter, misEstilos.inserimentoAttivita_raggruppa50_rettangolo122c2ea86a]}

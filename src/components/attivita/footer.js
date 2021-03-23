@@ -31,7 +31,7 @@ export default class Footer extends Component {
 
         this.alto = Dimensions.get('window').height,
         this.ancho = Dimensions.get('window').width,
-        this.altoComponente = 40 * this.alto;
+        this.altoComponente = 55 * this.alto;
         this.altoComponente = this.altoComponente / 100;
         this.imgW = this.ancho / 2
         this.imgH = this.imgH / 2
@@ -131,12 +131,12 @@ export default class Footer extends Component {
       <View style={misEstilos.padre}>
         <View data-layer="16a0e816-7c20-4c60-8f73-fcaeaf03bf47" style={misEstilos.register_rettangolo14}>
           <View style={{width:"100%", height:"60%", display:"flex", flexDirection:"row"}}>
-            <View style={{width:"50%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
-              <Image source={require("~/pages/register/assets/logo.png")}  style={{width:160,height:80,resizeMode:"stretch"}}/>
+            <View style={{width:"100%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center", flexDirection:"row"}}>
+              <Image source={require("~/pages/register/assets/logo.png")}  style={{width:200,height:100,resizeMode:"stretch"}}/>
             </View>
-            <View style={{width:"50%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center",flexDirection:"row"}}>
+            {/*<View style={{width:"50%", height:"100%",display:"flex",alignItems:"center", justifyContent:"center",flexDirection:"row"}}>
               <Image source={require("~/pages/register/assets/adveraLogo.png")}  style={{width:this.anchoC2,height:this.imgH2,resizeMode:"stretch"}}/>
-            </View>
+            </View>*/}
           </View>
           <View style={{width:"100%", height:"40%", display:"flex", flexDirection:"row", justifyContent:"center"}}>
             <Image source={require("~/pages/register/assets/costaLogo2.png")}  style={{width:200,height:25,resizeMode:"stretch"}}/>

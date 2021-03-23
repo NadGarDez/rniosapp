@@ -587,7 +587,7 @@ de Nice La capitale de la gastronomie, à ....</Text>
       <TouchableOpacity style={{width:"33%", height:"100%",display:"flex", alignItems:"center", justifyContent:"center"}} underlayColor="white"
         onPress={
           ()=>{
-            if(this.props.variables.tokenLogin.value!==""){
+            if(this.props.variables.tokenLogin.value!=="" && this.props.variables.tokenLogin.value!==null){
               this.props.navigation.navigate("Menu");
             }
             else{

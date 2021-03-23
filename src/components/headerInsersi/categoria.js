@@ -12,7 +12,7 @@ import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import {CheckBox} from "react-native-elements";
 //import Absolute from 'react-native-absolute';
 export default class Checks extends Component {
 
@@ -163,69 +163,59 @@ export default class Checks extends Component {
         <View style={misEstilos.contenedorCheck}>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Goûter</Text>
-            <BouncyCheckbox
-              borderColor="blue"
-              fillColor="blue"
-              onPress={(newValue) => {
+            <CheckBox
+              
+              onPress={() => {
 
-                  this.state.categoria1=newValue;
+                  this.state.categoria1=!this.state.categoria1;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria1")
+                  this.props.saveCheck(this.state.categoria1,"categoria1")
                   this.validate();
 
               }}
-              text=""
-              isChecked={this.state.categoria1}
+              checked={this.state.categoria1}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>S'amuser</Text>
-            <BouncyCheckbox
-            text=""
-              fillColor="blue"
-              onPress={(newValue) => {
-                  this.state.categoria2=newValue;
+            <CheckBox
+              onPress={() => {
+                  this.state.categoria2=!this.state.categoria2;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria2")
+                  this.props.saveCheck(this.state.categoria2,"categoria2")
                   this.forceUpdate();
                   this.validate();
               }}
-              borderColor="blue"
-              isChecked={this.state.categoria2}
+              checked={this.state.categoria2}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Se détendre</Text>
-            <BouncyCheckbox
-            borderColor="blue"
-            text=""
-            fillColor="blue"
-              onPress={(newValue) => {
-                  this.state.categoria3=newValue;
+            <CheckBox
+              onPress={() => {
+                  this.state.categoria3=!this.state.categoria3;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria3")
+                  this.props.saveCheck(this.state.categoria3,"categoria3")
                   this.forceUpdate();
                   this.validate();
               }}
 
-              isChecked={this.state.categoria3}
+              checked={this.state.categoria3}
             />
           </View>
           <View style={misEstilos.SectionImputCheck}>
             <Text>Visite</Text>
-            <BouncyCheckbox
-            text=""
-            borderColor="blue"
-              fillColor="blue"
-              onPress={(newValue) => {
-                  this.state.categoria4=newValue;
+            <CheckBox
+            
+              onPress={() => {
+                  this.state.categoria4=!this.state.categoria4;
                   this.forceUpdate()
-                  this.props.saveCheck(newValue,"categoria4")
+                  this.props.saveCheck(this.state.categoria4,"categoria4")
                   this.forceUpdate();
                   this.validate();
               }}
 
-              isChecked={this.state.categoria4}
+              checked={this.state.categoria4}
             />
           </View>
         </View>
