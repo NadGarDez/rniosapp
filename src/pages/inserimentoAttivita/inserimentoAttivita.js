@@ -253,7 +253,7 @@ export default class InserimentoAttivita extends Component {
           visible={this.state.modalVisible}
 
       >
-        <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
+        <View style={{width:"100%", height:"100%", backgroundColor:"white", paddingTop:"6%"}}>
           <Prueba saveText={this.handleTextInput} changeModal={this.changeModal}/>
           <Button
             onPress={()=>{
@@ -271,7 +271,7 @@ export default class InserimentoAttivita extends Component {
           visible={this.state.modalVisible2}
 
       >
-        <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
+        <View style={{width:"100%", height:"100%", backgroundColor:"white", paddingTop:"5%"}}>
           <Prueba2 saveText={this.handleTextInput} changeModal={this.changeModal}/>
           <Button
             onPress={()=>{

@@ -181,7 +181,7 @@ export default class InserimentoAttivita extends Component {
   async enviar(){
     //if(this.validar() == true){
 //	Alert.alert(JSON.stringify(this.props.variables))
-      this.state.idUsuario = this.props.variables.user.value.id;
+//      this.state.idUsuario = this.props.variables.user.value.id;
       this.state.imagine = this.state.imagine1.concat(this.state.imagine2)
       this.state.imagine = this.compareImagine(this.state.b[0].imagine, this.state.imagine)
       //this.state.citta= JSON.stringify(this.state.citta);
@@ -340,7 +340,7 @@ export default class InserimentoAttivita extends Component {
           visible={this.state.modalVisible}
 
       >
-        <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
+        <View style={{width:"100%", height:"100%", backgroundColor:"white", paddingTop:"6%"}}>
           <Prueba saveText={this.handleTextInput} changeModal={this.changeModal}/>
           <Button
             onPress={()=>{
@@ -358,7 +358,7 @@ export default class InserimentoAttivita extends Component {
           visible={this.state.modalVisible2}
 
       >
-        <View style={{width:"100%", height:"100%", backgroundColor:"white"}}>
+        <View style={{width:"100%", height:"100%", backgroundColor:"white", paddingTop:"6%"}}>
           <Prueba2 saveText={this.handleTextInput} changeModal={this.changeModal}/>
           <Button
             onPress={()=>{

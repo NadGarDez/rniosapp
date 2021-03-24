@@ -119,20 +119,20 @@ export default class Content extends Component {
                 let phone =this.props.datos.telefono
                 let phoneNumber = phone//this.props.datos.telefono;
                 if (Platform.OS !== 'android') {
-                phoneNumber = `telprompt:${phone}`;
+                phoneNumber = `tel:${phone}`;
                 }
                 else  {
-                phoneNumber = `tel:${phone}`;
+                phoneNumber = `telprompt:${phone}`;
                 }
 
                 Linking.canOpenURL(phoneNumber)
                 .then(supported => {
-                  if (!supported) {
+                 /* if (!supported) {
                       Alert.alert('Phone number is not available');
                   }
-                  else {
+                  else {*/
                       return Linking.openURL(phoneNumber);
-                  }
+                  //}
                 })
                 .catch(err => console.log(err));
 
